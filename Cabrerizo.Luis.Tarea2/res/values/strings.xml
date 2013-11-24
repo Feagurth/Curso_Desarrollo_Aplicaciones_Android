@@ -21,6 +21,12 @@
         <item>Tienda de Videojuegos</item>
         <item>Tienda de Ordenadores</item>
     </string-array>
+    
+    <string-array name="drawer_options">
+        <item>Imágenes</item>
+        <item>Tiendas</item>
+        <item>Comunidad</item>        
+    </string-array>
 
     <string name="botonLlamada">Llamar por teléfono</string>
     <string name="botonImagen">Imágen</string>

@@ -18,6 +18,11 @@
         <activity
             android:name="cabrerizo.luis.tarea2.activities.MainActivity"
             android:label="@string/app_name" >
+		<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>                  
         </activity>
         <activity
             android:name="cabrerizo.luis.tarea2.activities.DetalleActivity"
@@ -30,12 +35,6 @@
         <activity
             android:name="cabrerizo.luis.tarea2.activities.MarcoImagenesActivity"
             android:label="@string/title_activity_MarcoImagenes" >
-		<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>                 
-            
         </activity>
         
     </application>
