@@ -8,6 +8,9 @@
     <string name="title_activity_fotografia">Vista Fotografia</string>
     <string name="title_activity_MarcoImagenes">Vista Imágenes</string>
     
+    <string name="title_fragment_Listado">Listado</string>
+    <string name="title_fragment_Mapa">Mapa</string>
+    
 
     <string-array name="ListaTiendas">
         <item>Tienda de Zapatos</item>
