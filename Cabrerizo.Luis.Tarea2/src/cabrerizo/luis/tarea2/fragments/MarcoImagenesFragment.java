@@ -17,7 +17,7 @@ public class MarcoImagenesFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-		View vista = inflater.inflate(R.layout.fragment_marco_imagenes, container);
+		View vista = inflater.inflate(R.layout.fragment_marco_imagenes, container, false);
 		
 		viewPager = (ViewPager)vista.findViewById(R.id.viewPager);
 		

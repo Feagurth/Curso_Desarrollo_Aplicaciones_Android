@@ -16,7 +16,7 @@ public class ImagenesFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-		View vista = inflater.inflate(R.layout.fragment_imagen, null);
+		View vista = inflater.inflate(R.layout.fragment_imagen, container, false);
 		
 		ImageView imageView =(ImageView)vista.findViewById(R.id.ImageView);
 		
