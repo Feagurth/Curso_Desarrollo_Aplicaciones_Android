@@ -49,10 +49,11 @@ public class MainActivity extends ActionBarActivity{
 			   .add(R.id.contentFrame, fragments[2])			   
 			   .commit();
 
-		setContent(0);
-		
 		actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		
+		setContent(0);
+		
 	}
 	
 	public void setContent(int index)
