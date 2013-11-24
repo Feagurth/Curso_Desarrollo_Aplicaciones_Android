@@ -1,0 +1,165 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".DetalleActivity" >
+
+	<TextView
+	    android:id="@+id/Nombre"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:textSize="20sp" />
+    
+	<View
+	    android:layout_width="fill_parent"
+	    android:id="@+id/linea1"
+	    android:layout_below="@id/Nombre"
+	    android:layout_height="1dp"
+	    android:layout_marginTop="3dp"
+	    android:layout_marginBottom="3dp"
+	    android:background="@android:color/darker_gray"/>	
+	
+    <TextView
+        android:id="@+id/textoDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linea1"
+        android:layout_marginLeft="30dp"
+        android:text="@string/textoDireccion"
+        android:textSize="15sp" />
+	
+    <TextView
+        android:id="@+id/Direccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textoDireccion"
+        android:layout_marginLeft="30dp"
+        android:textSize="12sp" />
+        
+    <TextView
+        android:id="@+id/textoTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Direccion"
+        android:layout_marginLeft="30dp"
+        android:text="@string/textoTelefono"
+        android:textSize="15sp" />    
+    
+    <TextView
+        android:id="@+id/Telefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/textoTelefono"
+        android:textSize="12sp" />
+
+	<TextView
+        android:id="@+id/textoWebsite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Telefono"
+        android:layout_marginLeft="30dp"
+        android:text="@string/textoWebsite"
+        android:textSize="15sp" />
+	
+	<TextView
+	    android:id="@+id/Website"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/textoWebsite"
+	    android:textSize="12sp" />
+		
+	    <TextView
+        android:id="@+id/textoEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Website"
+        android:layout_marginLeft="30dp"
+        android:text="@string/textoEMail"
+        android:textSize="15sp" />	
+	
+	<TextView
+	    android:id="@+id/EMail"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/textoEmail"
+	    android:textSize="12sp" />
+	
+    	<View
+	    android:layout_width="fill_parent"
+	    android:id="@+id/linea2"
+	    android:layout_below="@id/EMail"
+	    android:layout_height="1dp"
+	    android:layout_marginTop="3dp"
+	    android:layout_marginBottom="3dp"
+	    android:background="@android:color/darker_gray"/>	
+	    
+    <TextView
+        android:id="@+id/textoHorarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linea2"
+        android:layout_marginLeft="30dp"
+        android:text="@string/textoHorarios"
+        android:textSize="15sp" />    
+            
+	<TextView
+	    android:id="@+id/Horarios"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/textoHorarios"
+	    android:textSize="12sp" />
+        	
+	<View
+	    android:layout_width="fill_parent"
+	    android:id="@+id/linea3"
+	    android:layout_below="@id/Horarios"
+	    android:layout_height="1dp"
+	    android:layout_marginTop="3dp"
+	    android:layout_marginBottom="3dp"
+	    android:background="@android:color/darker_gray"/>	
+			
+	<Button
+	    android:id="@+id/botonLlamada"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/linea3"
+	    android:text="@string/botonLlamada" />
+
+	<Button
+	    android:id="@+id/botonImagen"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBaseline="@+id/botonLlamada"
+	    android:layout_alignBottom="@+id/botonLlamada"
+	    android:layout_toRightOf="@+id/botonLlamada"
+	    android:text="@string/botonImagen" />
+	
+	<View
+	    android:layout_width="fill_parent"
+	    android:id="@+id/linea4"
+	    android:layout_below="@id/botonLlamada"
+	    android:layout_height="1dp"
+	    android:layout_marginTop="3dp"
+	    android:layout_marginBottom="3dp"
+	    android:background="@android:color/darker_gray"/>	
+	
+	
+	<fragment
+	   android:name="cabrerizo.luis.tarea2.fragments.ComentariosFragment"
+	   android:id="@+id/com_fragment"
+	   android:layout_below="@id/linea4"
+	   android:layout_width="match_parent"
+	   android:layout_height="match_parent" />
+	
+</RelativeLayout>
