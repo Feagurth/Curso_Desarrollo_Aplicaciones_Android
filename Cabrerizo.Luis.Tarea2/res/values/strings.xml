@@ -11,6 +11,8 @@
     <string name="title_fragment_Listado">Listado</string>
     <string name="title_fragment_Mapa">Mapa</string>
     
+    <string name="de">de</string>
+    
 
     <string-array name="ListaTiendas">
         <item>Tienda de Zapatos</item>

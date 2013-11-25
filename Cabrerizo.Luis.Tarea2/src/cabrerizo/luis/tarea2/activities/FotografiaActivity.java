@@ -1,8 +1,17 @@
 package cabrerizo.luis.tarea2.activities;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,45 +76,84 @@ public class FotografiaActivity extends FragmentActivity{
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		int ImageId = 0;
+		
 		switch (item.getItemId()) 
 		{
 		case R.id.action_share:
 
-			String cadena = "";
+			String[] nombreTiendas;
+			
+			nombreTiendas = getResources().getStringArray(R.array.ListaTiendas);
 			
 			switch (foto) {
 			case 0:
-				cadena = "tiendadezapatos";
+				ImageId = R.drawable.tiendadezapatos;
 				break;
 			case 1:
-				cadena = "tiendadepantalones";
+				ImageId = R.drawable.tiendadepantalones;
 				break;
 			case 2:
-				cadena = "tiendadecamisas";
+				ImageId = R.drawable.tiendadecamisas;
 				break;
 			case 3:
-				cadena = "tiendadedeportes";
+				ImageId = R.drawable.tiendadedeportes;
 				break;
 			case 4:
-				cadena = "tiendadecaramelos";
+				ImageId = R.drawable.tiendadecaramelos;
 				break;
 			case 5:
-				cadena = "tiendadevideojuegos";
+				ImageId = R.drawable.tiendadevideojuegos;
 				break;
 			case 6:
-				cadena = "tiendadeordenadores";
+				ImageId = R.drawable.tiendadeordenadores;
 				break;				
 			default:
 				break;
 			}
 			
-		    Uri uri = Uri.parse("android.resource://" + getPackageName() + "/drawable/" + cadena);
-		    
-		    Intent intent = new Intent(Intent.ACTION_SEND);
-		    intent.setType("image/jpg");
-		    intent.putExtra(Intent.EXTRA_STREAM, uri);
-		    
-		    startActivity(Intent.createChooser(intent, getString(R.string.action_share)));
+			File storageDirectory = null;
+			final String FILENAME = ImageId + ".jpg";
+			Bitmap bitmap = BitmapFactory.decodeResource(getResources(), ImageId);
+			if(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+			    storageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+			} 
+			else 
+			{
+			    storageDirectory = Environment.getDataDirectory();
+			}
+			
+			if(!storageDirectory.exists()) 
+			{
+			    storageDirectory.mkdirs();
+			}
+			
+			File dataFile = new File(storageDirectory, FILENAME);
+			
+			if(!dataFile.exists()) 
+			{
+			     ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+			     byte[] bitmapdata = stream.toByteArray();
+			     try {
+			         FileOutputStream fos = new FileOutputStream(dataFile);
+			         fos.write(bitmapdata);
+			         fos.close();
+			     } catch (FileNotFoundException e) 
+			     {
+			         e.printStackTrace();
+			     } catch (IOException e) 
+			     {
+			         e.printStackTrace();
+			     }
+			}
+			Intent intent = new Intent();
+			intent.setAction(Intent.ACTION_SEND);
+			intent.putExtra("sms_body", "Te envio una foto de : " + nombreTiendas[foto]);
+			intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(dataFile));
+			intent.setType("image/*");
+			startActivity(Intent.createChooser(intent, getText(R.string.action_share)));			
 			
 			return true;
 		default:
