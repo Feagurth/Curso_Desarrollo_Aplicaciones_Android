@@ -988,20 +988,21 @@ containing a value of this type.
         public static final int ic_action_share=0x7f020057;
         public static final int ic_action_star=0x7f020058;
         public static final int ic_launcher=0x7f020059;
-        public static final int nombre=0x7f02005a;
-        public static final int talk=0x7f02005b;
-        public static final int tiendadecamisas=0x7f02005c;
-        public static final int tiendadecaramelos=0x7f02005d;
-        public static final int tiendadedeportes=0x7f02005e;
-        public static final int tiendadeordenadores=0x7f02005f;
-        public static final int tiendadepantalones=0x7f020060;
-        public static final int tiendadevideojuegos=0x7f020061;
-        public static final int tiendadezapatos=0x7f020062;
-        public static final int viewpager_imagen1=0x7f020063;
-        public static final int viewpager_imagen2=0x7f020064;
-        public static final int viewpager_imagen3=0x7f020065;
-        public static final int viewpager_imagen4=0x7f020066;
-        public static final int viewpager_imagen5=0x7f020067;
+        public static final int ic_navigation_drawer=0x7f02005a;
+        public static final int nombre=0x7f02005b;
+        public static final int talk=0x7f02005c;
+        public static final int tiendadecamisas=0x7f02005d;
+        public static final int tiendadecaramelos=0x7f02005e;
+        public static final int tiendadedeportes=0x7f02005f;
+        public static final int tiendadeordenadores=0x7f020060;
+        public static final int tiendadepantalones=0x7f020061;
+        public static final int tiendadevideojuegos=0x7f020062;
+        public static final int tiendadezapatos=0x7f020063;
+        public static final int viewpager_imagen1=0x7f020064;
+        public static final int viewpager_imagen2=0x7f020065;
+        public static final int viewpager_imagen3=0x7f020066;
+        public static final int viewpager_imagen4=0x7f020067;
+        public static final int viewpager_imagen5=0x7f020068;
     }
     public static final class id {
         public static final int Direccion=0x7f050040;
@@ -1171,6 +1172,8 @@ containing a value of this type.
     }
     public static final class string {
         public static final int Descripcion_imagenes_marco=0x7f0a002c;
+        public static final int Drawer_Close=0x7f0a002e;
+        public static final int Drawer_Open=0x7f0a002d;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0a0001;

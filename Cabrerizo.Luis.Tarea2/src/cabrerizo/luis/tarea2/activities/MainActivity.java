@@ -1,11 +1,15 @@
 package cabrerizo.luis.tarea2.activities;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,7 +21,7 @@ import cabrerizo.luis.tarea2.fragments.TiendasContentFragment;
 
 public class MainActivity extends ActionBarActivity{
 	private ActionBar actionBar;
-	
+	private ActionBarDrawerToggle drawerToggle;
 	private ListView drawerList;
 	private DrawerLayout drawerLayout;
 	private String[] drawerOptions;
@@ -41,6 +45,34 @@ public class MainActivity extends ActionBarActivity{
 		drawerList.setItemChecked(0, true);
 		drawerList.setOnItemClickListener(new DrawerItemClickListener());
 		
+		drawerToggle = new ActionBarDrawerToggle(this, 
+												 drawerLayout, 
+												 R.drawable.ic_navigation_drawer, 
+												 R.string.Drawer_Open, 
+												 R.string.Drawer_Close){
+			
+			public void onDrawerClosed(View view)
+			{
+				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
+				
+				
+			}
+
+			public void onDrawerOpened(View drawerView)
+			{
+				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
+			}
+		};
+		
+		drawerLayout.setDrawerListener(drawerToggle);
+		
+		actionBar = getSupportActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setHomeButtonEnabled(true);
+		
+		
 		FragmentManager manager = getSupportFragmentManager();
 		
 		manager.beginTransaction()
@@ -49,13 +81,39 @@ public class MainActivity extends ActionBarActivity{
 			   .add(R.id.contentFrame, fragments[2])			   
 			   .commit();
 
-		actionBar = getSupportActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		
 		setContent(0);
-		
 	}
 	
+	public boolean onOptionsItemSelected(MenuItem item){
+		if(item.getItemId() == android.R.id.home)
+		{
+			if(drawerLayout.isDrawerOpen(drawerList))
+			{
+				
+				drawerLayout.closeDrawer(drawerList);
+			}
+			else
+			{
+				drawerLayout.openDrawer(drawerList);
+				
+			}
+		}
+		return true;
+	}
+	
+	
+	public void onConfigurationChanged(Configuration newConfig){
+		super.onConfigurationChanged(newConfig);
+		drawerToggle.onConfigurationChanged(newConfig);
+	}
+	
+	
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		drawerToggle.syncState();					
+	}
+
 	public void setContent(int index)
 	{
 		FragmentManager manager = getSupportFragmentManager();

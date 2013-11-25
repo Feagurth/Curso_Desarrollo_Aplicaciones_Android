@@ -23,7 +23,6 @@ public class TiendasContentFragment extends Fragment
 			super.onActivityCreated(savedInstanceState);
 
 			ActionBar actionbar = ((MainActivity)getActivity()).getSupportActionBar();
-			//actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 			
 			actionbar.addTab(actionbar.newTab()
 			 		.setText(R.string.title_fragment_Listado)
