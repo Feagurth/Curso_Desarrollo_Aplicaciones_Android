@@ -1,0 +1,251 @@
+[
+   {
+      "type":"store",
+      "name":"Tienda de Zapatos",
+      "address":"436 Mayfield Ave, Stanford, CA",
+      "phone":"(415) 555-1212",
+      "hoursOfOperation":"Lunes a Sabado : 9:00 - 16:00",
+      "url":"www.zapateria.com",
+      "email":"info@zapatos.com",
+      "comments":[
+         {
+            "comment":"Mi lugar favorito!"
+         },
+         {
+            "comment":"Calzado sin igual!"
+         },
+         {
+            "comment":"Lo mejor de lo mejor..."
+         }
+      ],
+      "favorites":5,
+      "location":[
+         {
+            "lat":36.75,
+            "lon":-2.8
+         }
+      ],
+      "photo":{
+         "url":"http://www.interactivity.com.ar/wp-content/uploads//2012/03/munich-decoracion-tienda-zapatos-5.jpg",
+         "description":"Tienda de zapatos",
+         "comments":[
+            {
+               "comment":"Me encanta!"
+            },
+            {
+               "comment":"Fabuloso"
+            }
+         ],
+         "favorites":4
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Pantalones",
+      "address":"34 Maint St New York, NY",
+      "phone":"(456) 555-1212",
+      "hoursOfOperation":"Lunes a Viernes : 10:00 - 19:00\nSabado : 10:00 - 14:00",
+      "url":"www.pantalones.com",
+      "email":"info@pantalones.com",
+      "comments":[
+         {
+            "comment":"Los pantalones de campana son lo más"
+         },
+         {
+            "comment":"Que calidades!"
+         }
+      ],
+      "favorites":15,
+      "location":[
+         {
+            "lat":36.76,
+            "lon":-2.81
+         }
+      ],
+      "photo":{
+         "url":"http://www.interactivity.com.ar/wp-content/uploads//2012/03/munich-decoracion-tienda-zapatos-5.jpg",
+         "description":"Tienda de zapatos",
+         "comments":[
+            {
+               "comment":"Me encanta!"
+            },
+            {
+               "comment":"Fabuloso"
+            }
+         ],
+         "favorites":4
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Camisas",
+      "address":"42 Maint St Los Angeles, LA",
+      "phone":"(415) 555-2222",
+      "hoursOfOperation":"Lunes a Viernes : 09:30 - 20:00\nSabado : 10:30 - 14:30",
+      "url":"www.camisas.com",
+      "email":"info@camisas.com",
+      "comments":[
+         {
+            "comment":"No tienen tallas grandes..."
+         }
+      ],
+      "favorites":2,
+      "location":[
+         {
+            "lat":36.83,
+            "lon":-2.45
+         }
+      ],
+      "photo":{
+         "type":"photo",
+         "url":"http://www.acr.es/imagenes/DSCN34045858858.JPG",
+         "description":"Tienda de camisas",
+         "comments":[
+            {
+               "comment":"Que foto mas chula..!"
+            }
+         ],
+         "favorites":2
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Deporte",
+      "address":"47 Maint St Illinois, IL",
+      "phone":"(415) 555-1232",
+      "hoursOfOperation":"Lunes a Viernes : 10:00 - 20:00\nSabado : 10:00 - 18:30",
+      "url":"www.deportes.com",
+      "email":"info@deportes.com",
+      "comments":[
+         {
+            "comment":"Estan faltos de personal..."
+         }
+      ],
+      "favorites":1,
+      "location":[
+         {
+            "lat":36.84,
+            "lon":-2.46
+         }
+      ],
+      "photo":{
+         "url":"http://images04.olx.es/ui/1/93/74/15808974_1.jpg",
+         "description":"Tienda de deportes",
+         "comments":[
+            {
+               "comment":"El mejor surtido"
+            }
+         ],
+         "favorites":2
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Caramelos",
+      "address":"31 Maint St New York, NY",
+      "phone":"(415) 555-1111",
+      "hoursOfOperation":"Lunes a Viernes : 09:00 - 15:00\nSabado : 16:30 - 19:30",
+      "url":"www.caramelos.com",
+      "email":"info@caramelos.com",
+      "comments":[
+         {
+            "comment":"Los mejores caramelos del mundo...!"
+         },
+         {
+            "comment":"Fantásticos...!"
+         },
+         {
+            "comment":"Que sabores..."
+         }
+      ],
+      "favorites":20,
+      "location":[
+         {
+            "lat":36.83,
+            "lon":-2.44
+         }
+      ],
+      "photo":{
+         "url":"http://1.bp.blogspot.com/-cXtzfvmaG6w/TuTmKNhaukI/AAAAAAAAAd4/JWxlpy3IsjM/s400/IMG_1832.jpg",
+         "description":"Tienda de caramelos",
+         "comments":[
+            {
+               "comment":"El mejor lugar del mundo...!"
+            },
+            {
+               "comment":"Mi exceso de peso oida este sitio...:("
+            },
+            {
+               "comment":"Todo está buenísimo...!"
+            }
+         ],
+         "favorites":20
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Videojuegos",
+      "address":"34 Saints St New York, NY",
+      "phone":"(111) 111-1111",
+      "hoursOfOperation":"Lunes a Viernes : 10:00 - 22:00",
+      "url":"www.videojuegos.com",
+      "email":"info@videojuegos.com",
+      "comments":[
+         {
+            "comment":"La mejor tienda del mundo...!!"
+         },
+         {
+            "comment":"No tienen el nuevo CoD!!!"
+         }
+      ],
+      "favorites":22,
+      "location":[
+         {
+            "lat":36.75,
+            "lon":-2.8
+         }
+      ],
+      "photo":{
+         "url":"http://www.todo-tiendas.com/Fotos/13759738362674811_big.jpg",
+         "description":"Tienda de videojuegos",
+         "comments":[
+            {
+               "comment":"Siguen sin tener el último CoD!!!"
+            }
+         ],
+         "favorites":10
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Ordenadores",
+      "address":"23 Jordan Av New York, NY",
+      "phone":"(222) 222-2222",
+      "hoursOfOperation":"Lunes a Viernes : 10:00 - 20:30\nSabado: 10:30 - 14:30",
+      "url":"www.ordenadores.com",
+      "email":"info@ordenadores.com",
+      "comments":[
+         {
+            "comment":"Gran servicio técnico...!"
+         }
+      ],
+      "favorites":12,
+      "location":[
+         {
+            "lat":36.55,
+            "lon":-2.78
+         }
+      ],
+      "photo":{
+         "type":"photo",
+         "url":"http://www.appinformatica.com/comunicador/1244/1.jpg",
+         "description":"Tienda de ordenadores",
+         "comments":[
+            {
+               "comment":"Los mejores"
+            }
+         ],
+         "favorites":10
+      }
+   }
+]

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Mall-K</string>
+    <string name="titulo_lista">MALL-K</string>
+    
+    <string name="title_activity_detalle">Vista Detalle</string>
+    <string name="title_activity_fotografia">Vista Fotografia</string>
+    <string name="title_activity_MarcoImagenes">Vista Imágenes</string>
+    
+    <string name="title_fragment_Listado">Listado</string>
+    <string name="title_fragment_Mapa">Mapa</string>
+
+    <string-array name="drawer_options">
+        <item>Imágenes</item>
+        <item>Tiendas</item>
+        <item>Comunidad</item>        
+    </string-array>
+
+    <string name="botonLlamada">Llamar por teléfono</string>
+    <string name="botonImagen">Imágen</string>
+    
+    <string name="textoDireccion">Dirección</string>
+    <string name="textoTelefono">Teléfono</string>
+    <string name="textoHorarios">Horarios</string>
+    <string name="textoWebsite">Website</string>
+    <string name="textoEMail">E-Mail</string>
+    
+    <string name="descripcion_fotografia">Foto del comercio</string>
+    <string name="descripcion_nombre">Reloj en NYC loren ipsum loren ipsum loren ipsum loren ipsum loren ipsum</string>
+    <string name="descripcion_icono">Icono de chat</string>
+    
+    <string name="action_share">Compartir</string>
+    <string name="action_star">Favorito</string>
+    <string name="action_settings">Opciones</string>
+    
+    <string name="msg_share_text">Te comparto esta informacion: </string>
+    <string name="msg_share_pic">Te comparto esta imagen: </string>
+    
+    <string name="introduzca_comentario">Introduzca comentario</string>
+    <string name="boton_comentarios">Enviar</string>
+    
+    <string name="Descripcion_imagenes_marco">Imágenes de centro comercial</string>
+    
+    <string name="Drawer_Open">Abrir</string>
+    <string name="Drawer_Close">Cerrar</string>
+    
+    
+    
+
+</resources>
