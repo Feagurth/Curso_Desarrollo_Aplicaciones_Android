@@ -17,7 +17,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import cabrerizo.luis.tarea2.R;
+import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea3.data.Comment;
+import cabrerizo.luis.tarea3.data.Photo;
+import cabrerizo.luis.tarea3.data.Store;
 
 public class ComentariosFragment extends Fragment{ 
 	 
@@ -38,7 +41,7 @@ public class ComentariosFragment extends Fragment{
 			public void onClick(View v) {
 				HashMap<String, String> comentario = new HashMap<String, String>();
 				String fecha = new SimpleDateFormat("dd/mm/aaaa HH:mm", 
-													Locale.getDefault()).format(Calendar.getInstance().getTime());
+						Locale.getDefault()).format(Calendar.getInstance().getTime());
 
 
 				EditText textoComentario = (EditText)vista.findViewById(R.id.texto_comentario);
@@ -74,12 +77,32 @@ public class ComentariosFragment extends Fragment{
 		
 		lista.setAdapter(adapter);
 		
-		HashMap<String, String> comentario = new HashMap<String, String>();
 		
-		comentario.put(COMENTARIO, "Comentario 1");
-		comentario.put(FECHA, "21/11/2013 13:26");
-
-		comentarios.add(comentario);
+		
+		ArrayList<Comment> commentarios = null;
+		
+		if(getActivity().getIntent().hasExtra("store"))
+		{
+			Store tienda = (Store) getActivity().getIntent().getExtras().getSerializable("store");
+			
+			commentarios = tienda.getListadoComentarios();
+			
+		}
+		else if(getActivity().getIntent().hasExtra("photo"))
+		{
+			Photo Foto = (Photo) getActivity().getIntent().getExtras().getSerializable("photo");
+			commentarios = Foto.getListaComentarios();
+			
+		}
+		
+		for (Comment comment : commentarios) {
+			
+			HashMap<String, String> comentario = new HashMap<String, String>();
+			
+			comentario.put(COMENTARIO, comment.getComentario());
+			comentario.put(FECHA, comment.getFecha());
+			comentarios.add(comentario);
+		}
 		
 		adapter.notifyDataSetChanged();
 	}

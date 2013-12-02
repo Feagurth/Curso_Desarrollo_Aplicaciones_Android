@@ -1,11 +1,11 @@
 package cabrerizo.luis.tarea3.data;
 
-import cabrerizo.luis.tarea2.R;
-import cabrerizo.luis.tarea3.fragments.ImagenesFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea3.fragments.ImagenesFragment;
 
 public class ImagenesFragmentAdapter extends FragmentPagerAdapter {
 

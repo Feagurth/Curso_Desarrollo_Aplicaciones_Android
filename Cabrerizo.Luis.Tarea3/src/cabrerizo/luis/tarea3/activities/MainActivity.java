@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import cabrerizo.luis.tarea2.R;
+import cabrerizo.luis.tarea3.R;
 import cabrerizo.luis.tarea3.fragments.ComunidadFragment;
 import cabrerizo.luis.tarea3.fragments.MarcoImagenesFragment;
 import cabrerizo.luis.tarea3.fragments.TiendasContentFragment;

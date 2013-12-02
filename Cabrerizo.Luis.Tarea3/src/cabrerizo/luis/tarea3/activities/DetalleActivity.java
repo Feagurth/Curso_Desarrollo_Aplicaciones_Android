@@ -11,10 +11,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import cabrerizo.luis.tarea2.R;
+import cabrerizo.luis.tarea3.R;
 import cabrerizo.luis.tarea3.data.Store;
 
 public class DetalleActivity extends FragmentActivity {
+	
+	public void pruebas()  
+	{
+		
+		
+		
+	}
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +53,6 @@ public class DetalleActivity extends FragmentActivity {
 		Button llamada = (Button)findViewById(R.id.botonLlamada);
 		Button imagen = (Button)findViewById(R.id.botonImagen);
 		
-		
 		OnClickListener botonImagen = new OnClickListener() {
 			
 			@Override
@@ -53,7 +60,7 @@ public class DetalleActivity extends FragmentActivity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(),FotografiaActivity.class);
 				
-				intent.putExtra("foto", store.getFoto());
+				intent.putExtra("photo", store.getFoto());
 				
 				startActivity(intent);
 			}

@@ -23,7 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cabrerizo.luis.tarea2.R;
+import cabrerizo.luis.tarea3.R;
 import cabrerizo.luis.tarea3.data.Photo;
 
 public class FotografiaActivity extends FragmentActivity{
@@ -38,7 +38,7 @@ public class FotografiaActivity extends FragmentActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fotografia);
 		
-		final Photo foto = (Photo) getIntent().getExtras().getSerializable("foto");
+		final Photo foto = (Photo) getIntent().getExtras().getSerializable("photo");
 		
 		imagen = (ImageView)findViewById(R.id.imagen);
 		texto = (TextView)findViewById(R.id.textoDescriptivo);

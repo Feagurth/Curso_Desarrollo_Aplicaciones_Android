@@ -1,13 +1,13 @@
 package cabrerizo.luis.tarea3.fragments;
 
-import cabrerizo.luis.tarea2.R;
-import cabrerizo.luis.tarea3.data.ImagenesFragmentAdapter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea3.data.ImagenesFragmentAdapter;
 
 public class MarcoImagenesFragment extends Fragment {
 

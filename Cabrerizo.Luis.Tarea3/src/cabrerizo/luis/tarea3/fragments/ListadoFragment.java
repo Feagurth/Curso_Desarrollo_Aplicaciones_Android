@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import cabrerizo.luis.tarea2.R;
+import cabrerizo.luis.tarea3.R;
 import cabrerizo.luis.tarea3.activities.DetalleActivity;
 import cabrerizo.luis.tarea3.data.Data;
 import cabrerizo.luis.tarea3.data.Store;

@@ -63,13 +63,9 @@ public class Data {
 
 				try {
 					obj = comentarios.getJSONObject(j);
-				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				try {
+					
 					comment.setComentario(obj.getString("comment"));
+					comment.setFecha(obj.getString("fecha"));					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
