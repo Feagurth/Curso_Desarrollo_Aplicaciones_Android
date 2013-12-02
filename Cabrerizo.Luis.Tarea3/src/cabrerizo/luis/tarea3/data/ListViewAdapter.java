@@ -103,7 +103,7 @@ public class ListViewAdapter extends BaseAdapter {
 		}
 			
 		holder.txt.setText(arrayTextos[position].toString());
-		holder.img.setImageBitmap(decodeSampledBitmapFromResource(resources, arrayImagenes[position], 400, 200));
+		holder.img.setImageBitmap(decodeSampledBitmapFromResource(resources, arrayImagenes[position], 600, 300));
 			
 		return convertView;
 	}
