@@ -19,6 +19,7 @@
 
     <string name="botonLlamada">Llamar por teléfono</string>
     <string name="botonImagen">Imágen</string>
+    <string name="botonCamara">Hacer foto</string>    
     
     <string name="textoDireccion">Dirección</string>
     <string name="textoTelefono">Teléfono</string>
