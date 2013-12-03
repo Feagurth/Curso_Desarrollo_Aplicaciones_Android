@@ -18,6 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ListViewAdapter extends BaseAdapter {
+	
+	private static final int PIC_HEIGHT = 600;
+	private static final int PIC_WIDTH = 300;
+	
 
 	private ArrayList<Bitmap> arrayPics = new ArrayList<Bitmap>();
 	private ArrayList<String> arrayFecha = new ArrayList<String>();
@@ -27,8 +31,8 @@ public class ListViewAdapter extends BaseAdapter {
 
 
 	public void addImage(Bitmap imagen){
-		arrayPics.add(imagen);
-		arrayFecha.add(new SimpleDateFormat("dd/mm/aaaa HH:mm", 
+		arrayPics.add(Bitmap.createScaledBitmap(imagen, PIC_WIDTH, PIC_HEIGHT, false));
+		arrayFecha.add(new SimpleDateFormat("dd/MM/yyyy HH:mm", 
 						Locale.getDefault()).format(Calendar.getInstance().getTime()));
 		
 		this.notifyDataSetChanged();
@@ -40,17 +44,17 @@ public class ListViewAdapter extends BaseAdapter {
 		this.resources = context.getResources();
 		this.inflater = LayoutInflater.from(context);
 		
-		arrayPics.add(decodeSampledBitmapFromResource(resources, R.drawable.viewpager_imagen1, 600, 300));
-		arrayPics.add(decodeSampledBitmapFromResource(resources, R.drawable.viewpager_imagen2, 600, 300));
-		arrayPics.add(decodeSampledBitmapFromResource(resources, R.drawable.viewpager_imagen3, 600, 300));
-		arrayPics.add(decodeSampledBitmapFromResource(resources, R.drawable.viewpager_imagen4, 600, 300));
-		arrayPics.add(decodeSampledBitmapFromResource(resources, R.drawable.viewpager_imagen5, 600, 300));
+		arrayPics.add(decodeSampledBitmapFromResource(resources, R.drawable.viewpager_imagen1, PIC_WIDTH, PIC_HEIGHT));
+		arrayPics.add(decodeSampledBitmapFromResource(resources, R.drawable.viewpager_imagen2, PIC_WIDTH, PIC_HEIGHT));
+		arrayPics.add(decodeSampledBitmapFromResource(resources, R.drawable.viewpager_imagen3, PIC_WIDTH, PIC_HEIGHT));
+		arrayPics.add(decodeSampledBitmapFromResource(resources, R.drawable.viewpager_imagen4, PIC_WIDTH, PIC_HEIGHT));
+		arrayPics.add(decodeSampledBitmapFromResource(resources, R.drawable.viewpager_imagen5, PIC_WIDTH, PIC_HEIGHT));
 		
-		arrayFecha.add("22/12/2013");
-		arrayFecha.add("23/12/2013");
-		arrayFecha.add("24/12/2013");
-		arrayFecha.add("25/12/2013");
-		arrayFecha.add("26/12/2013");
+		arrayFecha.add("22/12/2013 22:22");
+		arrayFecha.add("23/12/2013 23:23");
+		arrayFecha.add("24/12/2013 24:24");
+		arrayFecha.add("25/12/2013 25:25");
+		arrayFecha.add("26/12/2013 26:26");
 
 	};
 
@@ -79,7 +83,7 @@ public class ListViewAdapter extends BaseAdapter {
 		options.inJustDecodeBounds = true;
 
 		BitmapFactory.decodeResource(res, resId, options);
-
+		
 		options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
 		options.inJustDecodeBounds = false;
 

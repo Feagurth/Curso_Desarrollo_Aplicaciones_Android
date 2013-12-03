@@ -13,9 +13,6 @@ public class FotoDialogFragment extends DialogFragment {
 
 	NoticeDialogListener listener;
 	
-	
-	
-	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -53,12 +50,9 @@ public class FotoDialogFragment extends DialogFragment {
 									@Override
 									public void onClick(DialogInterface dialog, int which) {
 										listener.onDialogNegativeClick();
-
-										
 									}
 								});
-								
-		
+
 		return builder.create();
 	}
 	

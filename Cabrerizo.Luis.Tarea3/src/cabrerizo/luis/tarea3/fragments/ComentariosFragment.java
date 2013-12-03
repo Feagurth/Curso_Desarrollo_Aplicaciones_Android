@@ -40,7 +40,7 @@ public class ComentariosFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				HashMap<String, String> comentario = new HashMap<String, String>();
-				String fecha = new SimpleDateFormat("dd/mm/aaaa HH:mm", 
+				String fecha = new SimpleDateFormat("dd/MM/yyyy HH:mm", 
 						Locale.getDefault()).format(Calendar.getInstance().getTime());
 
 
