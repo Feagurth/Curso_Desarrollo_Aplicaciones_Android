@@ -37,6 +37,9 @@
     
     <string name="msg_share_text">Te comparto esta informacion: </string>
     <string name="msg_share_pic">Te comparto esta imagen: </string>
+    <string name="msg_foto">Fotografía!</string>
+    <string name="msg_camara">Cámara</string>
+    <string name="msg_galeria">Galería</string>
     
     <string name="introduzca_comentario">Introduzca comentario</string>
     <string name="boton_comentarios">Enviar</string>
@@ -45,6 +48,7 @@
     
     <string name="Drawer_Open">Abrir</string>
     <string name="Drawer_Close">Cerrar</string>
+    
     
     
     

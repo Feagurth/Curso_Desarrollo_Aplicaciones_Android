@@ -1,7 +1,13 @@
 package cabrerizo.luis.tarea3.activities;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -15,11 +21,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea3.data.ListViewAdapter;
 import cabrerizo.luis.tarea3.fragments.ComunidadFragment;
+import cabrerizo.luis.tarea3.fragments.FotoDialogFragment.NoticeDialogListener;
 import cabrerizo.luis.tarea3.fragments.MarcoImagenesFragment;
 import cabrerizo.luis.tarea3.fragments.TiendasContentFragment;
 
-public class MainActivity extends ActionBarActivity{
+public class MainActivity extends ActionBarActivity implements NoticeDialogListener{
+	private static final int LOAD_IMAGE = 1;
+	private static final int CAMARA = 2;
+	
 	private ActionBar actionBar;
 	private ActionBarDrawerToggle drawerToggle;
 	private ListView drawerList;
@@ -81,7 +92,7 @@ public class MainActivity extends ActionBarActivity{
 			   .add(R.id.contentFrame, fragments[2])			   
 			   .commit();
 
-		setContent(0);
+		setContent(0);		
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item){
@@ -166,9 +177,83 @@ public class MainActivity extends ActionBarActivity{
 				long arg3) {
 			
 			setContent(position);
+		
+		}
+			
+	}
+
+	@Override
+	public void onDialogPositiveClick() {
+		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		
+		startActivityForResult(intent, CAMARA);
+		
+	}
+
+	@Override
+	public void onDialogNegativeClick() {
+		Intent intent = new Intent(
+				Intent.ACTION_PICK,
+				android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+		
+		startActivityForResult(intent, LOAD_IMAGE);
+		
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if(resultCode == RESULT_OK && data != null)
+		{
+			switch (requestCode) {
+			case LOAD_IMAGE:
+				deGaleria(data);
+				
+				break;
+			case CAMARA:
+				deCamara(data);
+				break;
+	
+			}
+		}
+		
+	}
+	
+	private void deCamara(Intent data)
+	{
+		Bundle extras = data.getExtras();
+		
+		if (extras != null)
+		{
+			ListViewAdapter lstView = (ListViewAdapter) ((ListView) fragments[2].getActivity().findViewById(R.id.listaImagenes)).getAdapter();
+			lstView.addImage((Bitmap) extras.get("data"));
 			
 		}
 		
 		
+		
+	}
+	
+	private void deGaleria(Intent data)
+	{
+		Uri selectedImagen = data.getData();
+		
+		String[] filePathColumn ={MediaStore.Images.Media.DATA};
+		
+		Cursor cursor = getContentResolver().query(selectedImagen, filePathColumn, null, null, null);
+		
+		if (cursor.moveToFirst()) {
+			int columIndex = cursor.getColumnIndex(filePathColumn[0]);
+			
+			String picturePath = cursor.getString(columIndex);
+			
+			cursor.close();
+			
+			ListViewAdapter lstView = (ListViewAdapter) ((ListView) fragments[2].getActivity().findViewById(R.id.listaImagenes)).getAdapter();
+			lstView.addImage(BitmapFactory.decodeFile(picturePath));
+		}		
+	
 	}
 }

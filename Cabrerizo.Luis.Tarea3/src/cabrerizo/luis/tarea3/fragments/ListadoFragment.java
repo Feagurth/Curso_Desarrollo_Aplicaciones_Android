@@ -54,7 +54,6 @@ public class ListadoFragment extends Fragment implements OnItemClickListener {
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		inflater.inflate(R.menu.main, menu);
 	}	
 	

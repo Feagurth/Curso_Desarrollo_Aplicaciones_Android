@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 import cabrerizo.luis.tarea3.R;
 import cabrerizo.luis.tarea3.data.ListViewAdapter;
 
@@ -16,7 +15,7 @@ public class ComunidadFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
+
 		return inflater.inflate(R.layout.fragment_comunidad, container, false);
 	}
 
@@ -26,17 +25,17 @@ public class ComunidadFragment extends Fragment{
 
 		ListView lista = (ListView)getActivity().findViewById(R.id.listaImagenes);
 		lista.setAdapter(new ListViewAdapter(getActivity().getApplicationContext()));
-		
+
 		ImageButton tomaFoto = (ImageButton)getActivity().findViewById(R.id.btnCamara);
-		
+
 		tomaFoto.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getActivity(), "Foto!", Toast.LENGTH_LONG).show();
-				
+				new FotoDialogFragment().show(getFragmentManager(), "");	
 			}
 		});
 	}
-		
-}
+}	
+
+
