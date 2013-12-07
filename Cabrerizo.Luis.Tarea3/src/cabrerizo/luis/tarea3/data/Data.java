@@ -34,7 +34,6 @@ public class Data {
 			    in.close();					
 		} catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -42,7 +41,6 @@ public class Data {
 			jsonobj = new JSONArray(buf.toString());
 			return jsonobj;
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return jsonobj;
@@ -67,7 +65,6 @@ public class Data {
 					comment.setComentario(obj.getString("comment"));
 					comment.setFecha(obj.getString("fecha"));					
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -96,7 +93,6 @@ public class Data {
 				}
 				catch (JSONException e) 
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -105,7 +101,6 @@ public class Data {
 	
 		return loc;
 	}
-	
 	
 	public static ArrayList<Store> ParseStore(String fileName, Context context){
 

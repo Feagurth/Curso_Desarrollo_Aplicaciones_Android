@@ -5,14 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -24,6 +20,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea3.data.APITask;
 import cabrerizo.luis.tarea3.data.Photo;
 
 public class FotografiaActivity extends FragmentActivity{
@@ -60,28 +57,7 @@ public class FotografiaActivity extends FragmentActivity{
 		
 	}
 	
-	class APITask extends AsyncTask<String, Void, Bitmap>{
 
-		@Override
-		protected Bitmap doInBackground(String... params) {
-		    try {
-	            URL url = new URL(params[0]);
-	            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-	            
-	            connection.setDoInput(true);
-	            connection.connect();
-	            
-	            InputStream input = connection.getInputStream();
-	            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-
-	            return myBitmap;
-	            
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	            return null;
-	        }
-		}
-	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

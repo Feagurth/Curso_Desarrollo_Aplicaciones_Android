@@ -157,8 +157,7 @@ public class MainActivity extends ActionBarActivity implements NoticeDialogListe
 			   .hide(fragments[1])
 			   .show(fragments[2])
 			   .commit();
-			drawerList.setItemChecked(2, true);
-			
+			drawerList.setItemChecked(2, true);			
 			break;			
 		default:
 			break;
@@ -217,6 +216,15 @@ public class MainActivity extends ActionBarActivity implements NoticeDialogListe
 				break;
 	
 			}
+			
+			FragmentManager manager = getSupportFragmentManager();
+			
+			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+			manager.beginTransaction()
+			   .hide(fragments[0])
+			   .hide(fragments[1])
+			   .show(fragments[2])
+			   .commit();			
 		}
 		
 	}
