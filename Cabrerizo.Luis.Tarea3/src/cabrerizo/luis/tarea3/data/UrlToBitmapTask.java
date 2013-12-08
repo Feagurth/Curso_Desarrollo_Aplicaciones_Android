@@ -9,12 +9,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 
-public class APITask extends AsyncTask<String, Void, Bitmap>{
+public class UrlToBitmapTask extends AsyncTask<String, Void, Bitmap>{
 
 		@Override
 		protected Bitmap doInBackground(String... params) {
 		    try {
-	            URL url = new URL(params[0]);
+		    	URL url = new URL(params[0]);
 	            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 	            
 	            connection.setDoInput(true);

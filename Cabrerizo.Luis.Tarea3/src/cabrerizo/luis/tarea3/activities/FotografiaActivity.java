@@ -20,7 +20,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import cabrerizo.luis.tarea3.R;
-import cabrerizo.luis.tarea3.data.APITask;
+import cabrerizo.luis.tarea3.data.UrlToBitmapTask;
 import cabrerizo.luis.tarea3.data.Photo;
 
 public class FotografiaActivity extends FragmentActivity{
@@ -40,7 +40,7 @@ public class FotografiaActivity extends FragmentActivity{
 		imagen = (ImageView)findViewById(R.id.imagen);
 		texto = (TextView)findViewById(R.id.textoDescriptivo);
 		
-		APITask tarea = new APITask();
+		UrlToBitmapTask tarea = new UrlToBitmapTask();
 		AsyncTask<String,Void,Bitmap> fotiqui = tarea.execute(foto.getUrl());
 		
 		try {

@@ -2,9 +2,7 @@ package cabrerizo.luis.tarea3.data;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Locale;
-import java.util.concurrent.ExecutionException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,32 +12,35 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea3.global.BitmapLRUCache;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 
 public class ListViewAdapter extends BaseAdapter {
 
 	private static final int PIC_HEIGHT = 600;
 	private static final int PIC_WIDTH = 300;
+	
+	private ImageLoader imageLoader;
 
-	private static ArrayList<Bitmap> arrayPics = new ArrayList<Bitmap>();
-	private static ArrayList<String> arrayFecha = new ArrayList<String>();
 
+	private ArrayList<InstagramPicture> dataArray = new ArrayList<InstagramPicture>();
+	
 	//private Resources resources;
 	private LayoutInflater inflater;
 
@@ -48,54 +49,42 @@ public class ListViewAdapter extends BaseAdapter {
 	static ListView lista;
 
 	public void addImage(Bitmap imagen) {
-		arrayPics
-				.add(0, Bitmap.createScaledBitmap(imagen, PIC_WIDTH,
-						PIC_HEIGHT, false));
-		arrayFecha.add(0,
-				new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-						.format(Calendar.getInstance().getTime()));
+		/*		
+		InstagramPicture pic = new InstagramPicture();
+		
 
+		pic.setFoto(Bitmap.createScaledBitmap(imagen, PIC_WIDTH,
+				PIC_HEIGHT, false));
+		
+		pic.setFecha(new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+						.format(Calendar.getInstance().getTime()));
+		
+		dataArray.add(pic);
+		
 		this.notifyDataSetChanged();
+*/		
 
 	}
 
-	public ListViewAdapter(Activity activity, int idBarraProgreso,
+	public ListViewAdapter(Activity activity, ArrayList<InstagramPicture> dataArray, int idBarraProgreso,
 			int idListView) {
 
 		requestQueue = Volley.newRequestQueue(activity.getApplicationContext());
 
-		//this.resources = activity.getApplicationContext().getResources();
+		this.dataArray = dataArray;
 		this.inflater = LayoutInflater.from(activity.getApplicationContext());
+		this.imageLoader = new ImageLoader(requestQueue, new BitmapLRUCache());
 
 		barra = (ProgressBar) activity.findViewById(idBarraProgreso);
 		lista = (ListView) activity.findViewById(idListView);
 		
 		ApiCall();
-
-		/*
-		 arrayPics.add(0, decodeSampledBitmapFromResource(resources,
-		 R.drawable.viewpager_imagen1, PIC_WIDTH, PIC_HEIGHT));
-		 arrayPics.add(0, decodeSampledBitmapFromResource(resources,
-		 R.drawable.viewpager_imagen2, PIC_WIDTH, PIC_HEIGHT));
-		 arrayPics.add(0, decodeSampledBitmapFromResource(resources,
-		 R.drawable.viewpager_imagen3, PIC_WIDTH, PIC_HEIGHT));
-		 arrayPics.add(0, decodeSampledBitmapFromResource(resources,
-		 R.drawable.viewpager_imagen4, PIC_WIDTH, PIC_HEIGHT));
-		 arrayPics.add(0, decodeSampledBitmapFromResource(resources,
-		 R.drawable.viewpager_imagen5, PIC_WIDTH, PIC_HEIGHT));
-		 
-		 arrayFecha.add(0, "22/12/2013 22:22"); arrayFecha.add(0,
-		 "23/12/2013 23:23"); arrayFecha.add(0, "24/12/2013 24:24");
-		 arrayFecha.add(0, "25/12/2013 25:25"); arrayFecha.add(0,
-		 "26/12/2013 26:26");
-		 */
-		 
-
+		
 	};
 
-	public static void ApiCall() {
+	public void ApiCall() {
 
-		if (arrayPics.isEmpty()) {
+		if (dataArray.isEmpty()) {
 			String url = HelperInstagram.getRecentMediaUrl("shopping_mall");
 
 			Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
@@ -124,30 +113,20 @@ public class ListViewAdapter extends BaseAdapter {
 								String urlPic = standardResolution
 										.getString("url");
 
-								APITask tarea = new APITask();
-								AsyncTask<String, Void, Bitmap> imagen = tarea
-										.execute(urlPic);
-
-								try {
-									arrayPics.add(0, Bitmap.createScaledBitmap(
-											imagen.get(), PIC_WIDTH,
-											PIC_HEIGHT, false));
-								} catch (InterruptedException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								} catch (ExecutionException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-
 								String fecha = new SimpleDateFormat(
 										"dd/MM/yyyy HH:mm", Locale.getDefault())
 										.format(new java.util.Date(
 												(long) createdTime * 1000));
-
-								arrayFecha.add(0, fecha);
-
-								this.notifyDataSetChanged();
+								
+								InstagramPicture img = new InstagramPicture();
+								
+								img.setFecha(fecha);
+								img.setFoto(urlPic);
+								
+								dataArray.add(img);
+								
+								
+								notifyDataSetChanged();
 
 							}
 						}
@@ -158,20 +137,11 @@ public class ListViewAdapter extends BaseAdapter {
 
 					lista.setVisibility(View.VISIBLE);
 					barra.setVisibility(View.GONE);
-
-				}
-
-				private void notifyDataSetChanged() {
-					// TODO Auto-generated method stub
-
 				}
 			};
 
 			JsonObjectRequest request = new JsonObjectRequest(
 					Request.Method.GET, url, null, listener, null);
-
-			lista.setVisibility(View.GONE);
-			barra.setVisibility(View.VISIBLE);
 
 			requestQueue.add(request);
 		}
@@ -180,7 +150,7 @@ public class ListViewAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return arrayPics.size();
+		return dataArray.size();
 	}
 
 	@Override
@@ -233,13 +203,15 @@ public class ListViewAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
 
+		InstagramPicture current = dataArray.get(position);
+		 
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.listview_image, null);
 
 			holder = new ViewHolder();
 
 			holder.txt = (TextView) convertView.findViewById(R.id.listTexto);
-			holder.img = (ImageView) convertView.findViewById(R.id.listImagen);
+			holder.img = (NetworkImageView)convertView.findViewById(R.id.listImagen);
 
 			convertView.setTag(holder);
 		} else {
@@ -247,14 +219,14 @@ public class ListViewAdapter extends BaseAdapter {
 
 		}
 
-		holder.txt.setText(arrayFecha.get(position));
-		holder.img.setImageBitmap(arrayPics.get(position));
+		holder.txt.setText(current.getFecha());
+		holder.img.setImageUrl(current.getFoto(), imageLoader);
 
 		return convertView;
 	}
 
 	static class ViewHolder {
-		public ImageView img;
+		public NetworkImageView img;
 		public TextView txt;
 	}
 }
