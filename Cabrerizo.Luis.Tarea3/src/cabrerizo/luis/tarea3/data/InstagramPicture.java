@@ -3,14 +3,15 @@ package cabrerizo.luis.tarea3.data;
 
 public class InstagramPicture {
 
-	private String foto;
+	private String url;
 	private String fecha;
+	private String descripcion;
 	
-	public String getFoto() {
-		return foto;
+	public String getUrl() {
+		return url;
 	}
-	public void setFoto(String foto) {
-		this.foto = foto;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public String getFecha() {
 		return fecha;
@@ -18,6 +19,13 @@ public class InstagramPicture {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 	
+
 
 }

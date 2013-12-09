@@ -51,18 +51,12 @@ public class ListViewAdapter extends BaseAdapter {
 	public void addImage(String picturePath) {
 
 		InstagramPicture pic = new InstagramPicture();
-
-/*		try {
-			picturePath = new File(picturePath).toURI().toURL().toString();
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
-		pic.setFoto(picturePath);
-
-		pic.setFecha(new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale
-				.getDefault()).format(Calendar.getInstance().getTime()));
+		String fecha = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale
+				.getDefault()).format(Calendar.getInstance().getTime());
+	
+		pic.setUrl(picturePath);
+		pic.setDescripcion(fecha);
+		pic.setFecha(fecha);
 
 		dataArray.add(0, pic);
 
@@ -118,6 +112,9 @@ public class ListViewAdapter extends BaseAdapter {
 								String urlPic = standardResolution
 										.getString("url");
 
+								String descripcion = caption.getString("text");
+								
+								
 								String fecha = new SimpleDateFormat(
 										"dd/MM/yyyy HH:mm", Locale.getDefault())
 										.format(new java.util.Date(
@@ -126,7 +123,8 @@ public class ListViewAdapter extends BaseAdapter {
 								InstagramPicture img = new InstagramPicture();
 
 								img.setFecha(fecha);
-								img.setFoto(urlPic);
+								img.setDescripcion(descripcion);
+								img.setUrl(urlPic);
 
 								dataArray.add(img);
 
@@ -190,15 +188,15 @@ public class ListViewAdapter extends BaseAdapter {
 
 		}
 
-		holder.txt.setText(current.getFecha());
+		holder.txt.setText(current.getDescripcion());
 		
-		if (((current.getFoto()).indexOf(urlHttp) != -1) || ((current.getFoto()).indexOf(urlHttps) != -1)) {
-			holder.img.setImageUrl(current.getFoto(), imageLoader);
+		if (((current.getUrl()).indexOf(urlHttp) != -1) || ((current.getUrl()).indexOf(urlHttps) != -1)) {
+			holder.img.setImageUrl(current.getUrl(), imageLoader);
 			Log.w("[function] CustomListenAdpaterCommunity.getView", "url file: " + String.valueOf(position) + "/" + String.valueOf(dataArray.size()));
 		}
 		else
 		{
-			holder.img.setImageURI(Uri.parse(current.getFoto()));
+			holder.img.setImageURI(Uri.parse(current.getUrl()));
 			holder.img.setMinimumHeight(PIC_HEIGHT);
 			holder.img.setMinimumWidth(PIC_WIDTH);
 			holder.img.setMaxHeight(PIC_HEIGHT);
