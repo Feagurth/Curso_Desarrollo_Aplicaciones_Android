@@ -10,7 +10,7 @@ import android.support.v7.app.ActionBar.TabListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea4.R;
 import cabrerizo.luis.tarea4.activities.MainActivity;
 
 public class TiendasContentFragment extends Fragment

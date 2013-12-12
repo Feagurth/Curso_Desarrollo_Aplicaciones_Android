@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea4.R;
 import cabrerizo.luis.tarea4.data.Store;
 
 public class DetalleActivity extends FragmentActivity {

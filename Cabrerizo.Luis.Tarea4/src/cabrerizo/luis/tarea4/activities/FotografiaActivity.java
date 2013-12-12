@@ -14,7 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea4.R;
 import cabrerizo.luis.tarea4.data.Photo;
 import cabrerizo.luis.tarea4.data.UrlToBitmapTask;
 import cabrerizo.luis.tarea4.global.Utiles;

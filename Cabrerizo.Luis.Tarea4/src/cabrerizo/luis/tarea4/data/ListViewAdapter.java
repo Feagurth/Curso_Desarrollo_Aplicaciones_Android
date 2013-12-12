@@ -9,6 +9,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout;
+
 import android.app.Activity;
 import android.net.Uri;
 import android.util.Log;
@@ -19,7 +21,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea4.R;
 import cabrerizo.luis.tarea4.global.BitmapLRUCache;
 
 import com.android.volley.Request;
@@ -46,6 +48,7 @@ public class ListViewAdapter extends BaseAdapter {
 	static RequestQueue requestQueue;
 	static ProgressBar barra;
 	static ListView lista;
+	static PullToRefreshLayout pull;
 
 	public void addImage(String picturePath) {
 
@@ -65,7 +68,7 @@ public class ListViewAdapter extends BaseAdapter {
 
 	public ListViewAdapter(Activity activity,
 			ArrayList<InstagramPicture> dataArray, int idBarraProgreso,
-			int idListView) {
+			int idListView, PullToRefreshLayout valorPull) {
 
 		requestQueue = Volley.newRequestQueue(activity.getApplicationContext());
 
@@ -75,15 +78,16 @@ public class ListViewAdapter extends BaseAdapter {
 
 		barra = (ProgressBar) activity.findViewById(idBarraProgreso);
 		lista = (ListView) activity.findViewById(idListView);
+		pull = valorPull;
 
-		ApiCall();
+		ApiCall(false);
 
 	};
 
-	public void ApiCall() {
+	public void ApiCall(boolean refresh) {
 
-		if (dataArray.isEmpty()) {
-			String url = HelperInstagram.getRecentMediaUrl("shopping_mall");
+		if (dataArray.isEmpty() || refresh) {
+			String url = HelperInstagram.getRecentMediaUrl("shopping");
 
 			Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
 
@@ -138,6 +142,11 @@ public class ListViewAdapter extends BaseAdapter {
 
 					lista.setVisibility(View.VISIBLE);
 					barra.setVisibility(View.GONE);
+					
+					if(pull.isRefreshing())
+					{
+						pull.setRefreshComplete();
+					}
 				}
 			};
 

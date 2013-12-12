@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea4.R;
 
 public class ImagenesFragment extends Fragment {
 

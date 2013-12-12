@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea4.R;
 
 public class MapaFragment extends Fragment {
 

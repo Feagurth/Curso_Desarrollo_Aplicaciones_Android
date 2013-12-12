@@ -21,7 +21,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea4.R;
 import cabrerizo.luis.tarea4.data.ListViewAdapter;
 import cabrerizo.luis.tarea4.fragments.ComunidadFragment;
 import cabrerizo.luis.tarea4.fragments.FotoDialogFragment.NoticeDialogListener;

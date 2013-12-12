@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import cabrerizo.luis.tarea3.R;
+import cabrerizo.luis.tarea4.R;
 import cabrerizo.luis.tarea4.data.Comment;
 import cabrerizo.luis.tarea4.data.Photo;
 import cabrerizo.luis.tarea4.data.Store;
