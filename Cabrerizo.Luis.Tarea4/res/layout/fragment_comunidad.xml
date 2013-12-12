@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_comunidad"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:tag="fragment_comunidad" >
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/listaImagenes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.90">
+    </ListView>
+
+    <ImageButton
+        android:id="@+id/btnCamara"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#000"
+        android:contentDescription="@string/botonCamara"
+        android:src="@drawable/ic_action_camera" />
+
+</LinearLayout>

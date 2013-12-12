@@ -1,0 +1,276 @@
+[
+   {
+      "type":"store",
+      "name":"Tienda de Zapatos",
+      "address":"436 Mayfield Ave, Stanford, CA",
+      "phone":"(415) 555-1212",
+      "hoursOfOperation":"Lunes a Sabado : 9:00 - 16:00",
+      "url":"www.zapateria.com",
+      "email":"info@zapatos.com",
+      "comments":[
+         {
+            "comment":"Mi lugar favorito!",
+            "fecha": "21/11/2013 13:26"
+         },
+         {
+            "comment":"Calzado sin igual!",
+            "fecha": "20/10/2013 12:06"            
+         },
+         {
+            "comment":"Lo mejor de lo mejor...",
+            "fecha": "01/01/2003 03:26"
+         }
+      ],
+      "favorites":5,
+      "location":[
+         {
+            "lat":36.75,
+            "lon":-2.8
+         }
+      ],
+      "photo":{
+         "url":"http://www.interactivity.com.ar/wp-content/uploads//2012/03/munich-decoracion-tienda-zapatos-5.jpg",
+         "description":"Tienda de zapatos",
+         "comments":[
+            {
+               "comment":"Me encanta!",
+               "fecha": "11/05/2011 12:51"
+               
+            },
+            {
+               "comment":"Fabuloso",
+               "fecha": "01/01/2000 14:35"               
+            }
+         ],
+         "favorites":4
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Pantalones",
+      "address":"34 Maint St New York, NY",
+      "phone":"(456) 555-1212",
+      "hoursOfOperation":"Lunes a Viernes : 10:00 - 19:00\nSabado : 10:00 - 14:00",
+      "url":"www.pantalones.com",
+      "email":"info@pantalones.com",
+      "comments":[
+         {
+            "comment":"Los pantalones de campana son lo mas",
+            "fecha": "11/08/2003 18:35"
+         },
+         {
+            "comment":"Que calidades!",
+            "fecha": "01/09/2013 15:05"            
+         }
+      ],
+      "favorites":15,
+      "location":[
+         {
+            "lat":36.76,
+            "lon":-2.81
+         }
+      ],
+      "photo":{
+         "url":"http://balazote.com/wp-content/uploads/2011/12/Restos-de-serie1.jpg",
+         "description":"Tienda de pantalones",
+         "comments":[
+            {
+               "comment":"Que estilazo!!!",
+               "fecha": "07/07/2007 07:07"               
+            },
+            {
+               "comment":"Precios increibles",
+               "fecha": "08/08/2008 08:08"               
+            }
+         ],
+         "favorites":4
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Camisas",
+      "address":"42 Maint St Los Angeles, LA",
+      "phone":"(415) 555-2222",
+      "hoursOfOperation":"Lunes a Viernes : 09:30 - 20:00\nSabado : 10:30 - 14:30",
+      "url":"www.camisas.com",
+      "email":"info@camisas.com",
+      "comments":[
+         {
+            "comment":"No tienen tallas grandes...",
+            "fecha": "09/09/2009 09:09"            
+         }
+      ],
+      "favorites":2,
+      "location":[
+         {
+            "lat":36.83,
+            "lon":-2.45
+         }
+      ],
+      "photo":{
+         "type":"photo",
+         "url":"http://www.acr.es/imagenes/DSCN34045858858.JPG",
+         "description":"Tienda de camisas",
+         "comments":[
+            {
+               "comment":"Que foto mas chula..!",
+               "fecha": "09/09/2009 09:09"
+            }
+         ],
+         "favorites":2
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Deporte",
+      "address":"47 Maint St Illinois, IL",
+      "phone":"(415) 555-1232",
+      "hoursOfOperation":"Lunes a Viernes : 10:00 - 20:00\nSabado : 10:00 - 18:30",
+      "url":"www.deportes.com",
+      "email":"info@deportes.com",
+      "comments":[
+         {
+            "comment":"Estan faltos de personal...",
+            "fecha": "10/10/2010 10:10"
+         }
+      ],
+      "favorites":1,
+      "location":[
+         {
+            "lat":36.84,
+            "lon":-2.46
+         }
+      ],
+      "photo":{
+         "url":"http://images04.olx.es/ui/1/93/74/15808974_1.jpg",
+         "description":"Tienda de deportes",
+         "comments":[
+            {
+               "comment":"El mejor surtido",
+               "fecha": "11/11/2011 11:11"
+            }
+         ],
+         "favorites":2
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Caramelos",
+      "address":"31 Maint St New York, NY",
+      "phone":"(415) 555-1111",
+      "hoursOfOperation":"Lunes a Viernes : 09:00 - 15:00\nSabado : 16:30 - 19:30",
+      "url":"www.caramelos.com",
+      "email":"info@caramelos.com",
+      "comments":[
+         {
+            "comment":"Los mejores caramelos del mundo...!",
+            "fecha": "12/12/2012 12:12"
+         },
+         {
+            "comment":"Fantasticos...!",
+            "fecha": "01/01/2001 01:01"
+         },
+         {
+            "comment":"Que sabores...",
+            "fecha": "02/02/2002 02:02"
+         }
+      ],
+      "favorites":20,
+      "location":[
+         {
+            "lat":36.83,
+            "lon":-2.44
+         }
+      ],
+      "photo":{
+         "url":"http://1.bp.blogspot.com/-cXtzfvmaG6w/TuTmKNhaukI/AAAAAAAAAd4/JWxlpy3IsjM/s400/IMG_1832.jpg",
+         "description":"Tienda de caramelos",
+         "comments":[
+            {
+               "comment":"El mejor lugar del mundo...!",
+               "fecha": "03/03/2003 03:03"
+            },
+            {
+               "comment":"Mi exceso de peso oida este sitio...:(",
+               "fecha": "04/04/2004 04:04"
+            },
+            {
+               "comment":"Todo esta buenísimo...!",
+               "fecha": "05/05/2005 05:05"
+            }
+         ],
+         "favorites":20
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Videojuegos",
+      "address":"34 Saints St New York, NY",
+      "phone":"(111) 111-1111",
+      "hoursOfOperation":"Lunes a Viernes : 10:00 - 22:00",
+      "url":"www.videojuegos.com",
+      "email":"info@videojuegos.com",
+      "comments":[
+         {
+            "comment":"La mejor tienda del mundo...!!",
+            "fecha": "30/01/2014 05:05"
+         },
+         {
+            "comment":"No tienen el nuevo CoD!!!",
+            "fecha": "02/08/2011 00:55"
+         }
+      ],
+      "favorites":22,
+      "location":[
+         {
+            "lat":36.75,
+            "lon":-2.8
+         }
+      ],
+      "photo":{
+         "url":"http://www.todo-tiendas.com/Fotos/13759738362674811_big.jpg",
+         "description":"Tienda de videojuegos",
+         "comments":[
+            {
+               "comment":"Siguen sin tener el ultimo CoD!!!",
+               "fecha": "02/08/2013 00:55"
+            }
+         ],
+         "favorites":10
+      }
+   },
+   {
+      "type":"store",
+      "name":"Tienda de Ordenadores",
+      "address":"23 Jordan Av New York, NY",
+      "phone":"(222) 222-2222",
+      "hoursOfOperation":"Lunes a Viernes : 10:00 - 20:30\nSabado: 10:30 - 14:30",
+      "url":"www.ordenadores.com",
+      "email":"info@ordenadores.com",
+      "comments":[
+         {
+            "comment":"Gran servicio tecnico...!",
+            "fecha": "08/02/1999 12:00"
+         }
+      ],
+      "favorites":12,
+      "location":[
+         {
+            "lat":36.55,
+            "lon":-2.78
+         }
+      ],
+      "photo":{
+         "type":"photo",
+         "url":"http://www.appinformatica.com/comunicador/1244/1.jpg",
+         "description":"Tienda de ordenadores",
+         "comments":[
+            {
+               "comment":"Los mejores",
+               "fecha": "01/12/2013 21:00"
+            }
+         ],
+         "favorites":10
+      }
+   }
+]

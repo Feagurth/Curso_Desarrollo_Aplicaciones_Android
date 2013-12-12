@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent">
+   
+    <ImageView
+        android:id="@+id/icono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/descripcion_icono"
+        android:src="@drawable/talk" />
+
+    <Button
+        android:id="@+id/boton_comentarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/boton_comentarios" />
+
+    <EditText
+        android:id="@+id/texto_comentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/boton_comentarios"
+        android:layout_alignBottom="@+id/boton_comentarios"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/boton_comentarios"
+        android:ems="8"
+        android:hint="@string/introduzca_comentario"
+        android:inputType="text"
+        android:lines="3"
+        android:singleLine="false" />
+
+    <ListView
+        android:id="@+id/lista_comentarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/boton_comentarios"
+        android:layout_alignParentLeft="true"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/icono" >
+
+    </ListView>
+
+</RelativeLayout>
