@@ -1,11 +1,15 @@
 package cabrerizo.luis.tarea4.activities;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -230,8 +234,35 @@ public class MainActivity extends ActionBarActivity implements
 			ListViewAdapter lstView = (ListViewAdapter) ((ListView) fragments[2]
 					.getActivity().findViewById(R.id.listaImagenes))
 					.getAdapter();
-			lstView.addImage(picturePath);
+
+			
+			Bitmap bm = readBitmap(Uri.fromFile(new File(picturePath)));
+			
+			File fichero = Utiles.saveFile(bm, "");
+			
+			lstView.addImage(fichero.getAbsolutePath());						
 		}
 	}
+	
+	public Bitmap readBitmap(Uri selectedImage) {
+		Bitmap bm = null;
+		BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inSampleSize = 5;
+		AssetFileDescriptor fileDescriptor = null;
+		try {
+			fileDescriptor = getContentResolver().openAssetFileDescriptor(selectedImage, "r");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				bm = BitmapFactory.decodeFileDescriptor(
+						fileDescriptor.getFileDescriptor(), null, options);
+				fileDescriptor.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return bm;
+	}	
 
 }

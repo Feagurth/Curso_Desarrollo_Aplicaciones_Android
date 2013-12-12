@@ -63,8 +63,12 @@ public class ComunidadFragment extends Fragment implements OnRefreshListener {
 
 	@Override
 	public void onRefreshStarted(View view) {
-		adapter.ApiCall(true);
-	}
+		imagesArray = new ArrayList<InstagramPicture>();
+		adapter = new ListViewAdapter(getActivity(), imagesArray,
+				R.id.progressBar, R.id.listaImagenes, mPullToRefreshLayout);
+
+		lista.setAdapter(adapter);	
+		}
 
 
 }

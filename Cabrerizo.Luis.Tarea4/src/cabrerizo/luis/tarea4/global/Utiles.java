@@ -46,70 +46,60 @@ public class Utiles {
 
 		return inSampleSize;
 	}
-	
-	public static File saveFile(Bitmap bitmap, String nombre){
-		
+
+	public static File saveFile(Bitmap bitmap, String nombre) {
+
 		File storageDirectory = null;
 		final String FILENAME = "tmpimg.jpg";
 		final int PIC_HEIGHT = 600;
 		final int PIC_WIDTH = 300;
-		
-		
-		if(nombre.isEmpty())
-		{
+
+		if (nombre.isEmpty()) {
 			nombre = FILENAME;
 		}
-		
 
-		if(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-		    storageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-		} 
-		else 
-		{
-		    storageDirectory = Environment.getDataDirectory();
+		if (Environment.MEDIA_MOUNTED.equals(Environment
+				.getExternalStorageState())) {
+			storageDirectory = Environment
+					.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+		} else {
+			storageDirectory = Environment.getDataDirectory();
 		}
-		
-		if(!storageDirectory.exists()) 
-		{
-		    storageDirectory.mkdirs();
+
+		if (!storageDirectory.exists()) {
+			storageDirectory.mkdirs();
 		}
-		
+
 		File dataFile = new File(storageDirectory, nombre);
-		
 
-		if(dataFile.exists())
-		{
+		if (dataFile.exists()) {
 			dataFile.delete();
-			
+
 		}
-		if(!dataFile.exists())
-		{
-		     ByteArrayOutputStream stream = new ByteArrayOutputStream();
-		     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-		     
-		     Bitmap tmp;
-		     
-		     tmp = Bitmap.createScaledBitmap(bitmap, PIC_WIDTH, PIC_HEIGHT, false);
-		     
-		     bitmap = tmp;
-		     
-		     
-		     byte[] bitmapdata = stream.toByteArray();
-		     try {
-		         FileOutputStream fos = new FileOutputStream(dataFile);
-		         fos.write(bitmapdata);
-		         fos.close();
-		     } catch (FileNotFoundException e) 
-		     {
-		         e.printStackTrace();
-		     } catch (IOException e) 
-		     {
-		         e.printStackTrace();
-		     }
-		}		
-		
+		if (!dataFile.exists()) {
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+
+			Bitmap tmp;
+
+			tmp = Bitmap.createScaledBitmap(bitmap, PIC_WIDTH, PIC_HEIGHT,
+					false);
+
+			bitmap = tmp;
+
+			byte[] bitmapdata = stream.toByteArray();
+			try {
+				FileOutputStream fos = new FileOutputStream(dataFile);
+				fos.write(bitmapdata);
+				fos.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 		return dataFile;
-		
+
 	}
-	
 }
