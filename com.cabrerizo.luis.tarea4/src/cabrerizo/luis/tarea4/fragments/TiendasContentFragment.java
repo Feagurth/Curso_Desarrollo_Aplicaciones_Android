@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.IntentSender;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,8 +13,12 @@ import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBar.TabListener;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import cabrerizo.luis.tarea4.activities.MainActivity;
 
 import com.cabrerizo.luis.tarea4.R;
@@ -24,6 +29,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.maps.GoogleMap;
 
 public class TiendasContentFragment extends Fragment implements TabListener,
 		OnConnectionFailedListener, ConnectionCallbacks, LocationListener {
@@ -36,7 +42,8 @@ public class TiendasContentFragment extends Fragment implements TabListener,
 
 	private LocationClient locationClient;
 	private LocationRequest locationRequest;
-	
+	ActionBar actionbar;
+
 	public int currentTab;
 
 	Location currentLocation;
@@ -56,8 +63,7 @@ public class TiendasContentFragment extends Fragment implements TabListener,
 		locationRequest
 				.setFastestInterval(FAST_INTERVAL_CEILING_IN_MILLISECONDS);
 
-		ActionBar actionbar = ((MainActivity) getActivity())
-				.getSupportActionBar();
+		actionbar = ((MainActivity) getActivity()).getSupportActionBar();
 
 		actionbar.addTab(actionbar.newTab()
 				.setText(R.string.title_fragment_Listado).setTabListener(this));
@@ -69,12 +75,14 @@ public class TiendasContentFragment extends Fragment implements TabListener,
 		manager.beginTransaction().add(R.id.MainContent, fragments[0])
 				.add(R.id.MainContent, fragments[1]).commit();
 
+		setHasOptionsMenu(true);
+
 	}
 
 	@Override
 	public void onStart() {
 		super.onStart();
-		locationClient.connect();		
+		locationClient.connect();
 		((MapaFragment) fragments[1]).centerMap(locationClient);
 	}
 
@@ -112,6 +120,8 @@ public class TiendasContentFragment extends Fragment implements TabListener,
 			break;
 		}
 
+		ActivityCompat.invalidateOptionsMenu(getActivity());
+
 		if (servicesConnected(mostrar)) {
 			ft.hide(esconder).show(mostrar);
 		} else {
@@ -121,6 +131,26 @@ public class TiendasContentFragment extends Fragment implements TabListener,
 				ft.hide(esconder).show(mostrar);
 			}
 		}
+	}
+
+	@Override
+	public void onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+
+		MenuItem menuItem = menu.findItem(R.id.mapa_satelite);
+		menuItem.setVisible(currentTab == 1);
+		menuItem = menu.findItem(R.id.mapa_hibrido);
+		menuItem.setVisible(currentTab == 1);
+		menuItem = menu.findItem(R.id.mapa_normal);
+		menuItem.setVisible(currentTab == 1);
+		menuItem = menu.findItem(R.id.mapa_terreno);
+		menuItem.setVisible(currentTab == 1);
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.mapa, menu);
 
 	}
 
@@ -200,6 +230,40 @@ public class TiendasContentFragment extends Fragment implements TabListener,
 	public void onLocationChanged(Location location) {
 		if (locationClient.isConnected()) {
 			((MapaFragment) fragments[1]).updateLocation(locationClient);
+		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle presses on the action bar items
+		switch (item.getItemId()) {
+		case R.id.mapa_hibrido:
+			Toast.makeText(getActivity(), R.string.Cambiando_A_Mapa_Hibrido,
+					Toast.LENGTH_SHORT).show();
+			((MapaFragment) fragments[1])
+					.changeMapType(GoogleMap.MAP_TYPE_HYBRID);
+			return true;
+		case R.id.mapa_satelite:
+			Toast.makeText(getActivity(), R.string.Cambiando_A_Mapa_Satelite,
+					Toast.LENGTH_SHORT).show();
+			((MapaFragment) fragments[1])
+					.changeMapType(GoogleMap.MAP_TYPE_SATELLITE);
+			return true;
+		case R.id.mapa_normal:
+			Toast.makeText(getActivity(), R.string.Cambiando_A_Mapa_Normal,
+					Toast.LENGTH_SHORT).show();
+			((MapaFragment) fragments[1])
+					.changeMapType(GoogleMap.MAP_TYPE_NORMAL);
+			return true;
+		case R.id.mapa_terreno:
+			Toast.makeText(getActivity(), R.string.Cambiando_A_Mapa_Terreno,
+					Toast.LENGTH_SHORT).show();
+			((MapaFragment) fragments[1])
+					.changeMapType(GoogleMap.MAP_TYPE_TERRAIN);
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
 }

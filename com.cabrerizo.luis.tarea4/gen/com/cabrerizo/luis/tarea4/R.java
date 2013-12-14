@@ -1251,21 +1251,25 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_dark=0x7f02006d;
         public static final int common_signin_btn_text_pressed_light=0x7f02006e;
         public static final int ic_action_camera=0x7f02006f;
-        public static final int ic_action_share=0x7f020070;
-        public static final int ic_action_star=0x7f020071;
-        public static final int ic_launcher=0x7f020072;
-        public static final int ic_navigation_drawer=0x7f020073;
-        public static final int ic_plusone_medium_off_client=0x7f020074;
-        public static final int ic_plusone_small_off_client=0x7f020075;
-        public static final int ic_plusone_standard_off_client=0x7f020076;
-        public static final int ic_plusone_tall_off_client=0x7f020077;
-        public static final int nombre=0x7f020078;
-        public static final int talk=0x7f020079;
-        public static final int viewpager_imagen1=0x7f02007a;
-        public static final int viewpager_imagen2=0x7f02007b;
-        public static final int viewpager_imagen3=0x7f02007c;
-        public static final int viewpager_imagen4=0x7f02007d;
-        public static final int viewpager_imagen5=0x7f02007e;
+        public static final int ic_action_map_default=0x7f020070;
+        public static final int ic_action_map_type_hybrid=0x7f020071;
+        public static final int ic_action_map_type_satellite=0x7f020072;
+        public static final int ic_action_map_type_terrain=0x7f020073;
+        public static final int ic_action_share=0x7f020074;
+        public static final int ic_action_star=0x7f020075;
+        public static final int ic_launcher=0x7f020076;
+        public static final int ic_navigation_drawer=0x7f020077;
+        public static final int ic_plusone_medium_off_client=0x7f020078;
+        public static final int ic_plusone_small_off_client=0x7f020079;
+        public static final int ic_plusone_standard_off_client=0x7f02007a;
+        public static final int ic_plusone_tall_off_client=0x7f02007b;
+        public static final int nombre=0x7f02007c;
+        public static final int talk=0x7f02007d;
+        public static final int viewpager_imagen1=0x7f02007e;
+        public static final int viewpager_imagen2=0x7f02007f;
+        public static final int viewpager_imagen3=0x7f020080;
+        public static final int viewpager_imagen4=0x7f020081;
+        public static final int viewpager_imagen5=0x7f020082;
     }
     public static final class id {
         public static final int Direccion=0x7f060048;
@@ -1275,7 +1279,6 @@ containing a value of this type.
         public static final int LinearLayout1=0x7f060044;
         public static final int MainContent=0x7f06006b;
         public static final int Nombre=0x7f060045;
-        public static final int Normal=0x7f060073;
         public static final int RelativeLayout1=0x7f060057;
         public static final int Telefono=0x7f06004a;
         public static final int Website=0x7f06004c;
@@ -1315,7 +1318,6 @@ containing a value of this type.
         public static final int fragment_comunidad=0x7f060061;
         public static final int fragment_mapa=0x7f060069;
         public static final int frament_listado=0x7f060067;
-        public static final int hibrido=0x7f060072;
         public static final int home=0x7f060017;
         public static final int homeAsUp=0x7f060009;
         public static final int hybrid=0x7f060004;
@@ -1339,6 +1341,10 @@ containing a value of this type.
         public static final int listaImagenes=0x7f060064;
         public static final int listaTiendas=0x7f060068;
         public static final int lista_comentarios=0x7f060060;
+        public static final int mapa_hibrido=0x7f060074;
+        public static final int mapa_normal=0x7f060072;
+        public static final int mapa_satelite=0x7f060073;
+        public static final int mapa_terreno=0x7f060075;
         public static final int middle=0x7f060015;
         public static final int never=0x7f06000d;
         public static final int none=0x7f060000;
@@ -1352,7 +1358,6 @@ containing a value of this type.
         public static final int ptr_text=0x7f060020;
         public static final int pull=0x7f060063;
         public static final int radio=0x7f060037;
-        public static final int satelite=0x7f060074;
         public static final int satellite=0x7f060002;
         public static final int search_badge=0x7f06003a;
         public static final int search_bar=0x7f060039;
@@ -1372,7 +1377,6 @@ containing a value of this type.
         public static final int submit_area=0x7f060041;
         public static final int tabMode=0x7f060006;
         public static final int terrain=0x7f060003;
-        public static final int terreno=0x7f060075;
         public static final int textoDescriptivo=0x7f060059;
         public static final int textoDireccion=0x7f060047;
         public static final int textoEmail=0x7f06004d;
@@ -1460,6 +1464,10 @@ containing a value of this type.
         public static final int mapa=0x7f0d0004;
     }
     public static final class string {
+        public static final int Cambiando_A_Mapa_Hibrido=0x7f07004d;
+        public static final int Cambiando_A_Mapa_Normal=0x7f07004e;
+        public static final int Cambiando_A_Mapa_Satelite=0x7f07004f;
+        public static final int Cambiando_A_Mapa_Terreno=0x7f070050;
         public static final int Descripcion_imagenes_marco=0x7f070046;
         public static final int Drawer_Close=0x7f070048;
         public static final int Drawer_Open=0x7f070047;

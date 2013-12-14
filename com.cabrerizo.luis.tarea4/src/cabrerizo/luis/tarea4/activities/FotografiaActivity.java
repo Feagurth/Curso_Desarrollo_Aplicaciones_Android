@@ -50,7 +50,7 @@ public class FotografiaActivity extends FragmentActivity {
 		}
 
 		texto.setText(foto.getDescripcion());
-		
+
 	}
 
 	@Override

@@ -1,7 +1,10 @@
 package cabrerizo.luis.tarea4.fragments;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
+import com.cabrerizo.luis.tarea4.R;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,13 +21,17 @@ public class MapaFragment extends SupportMapFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.savedInstance = savedInstanceState;
-		setHasOptionsMenu(true);
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
 		setupMap();
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.mapa, menu);
 	}
 
 	public void updateLocation(LocationClient location) {
@@ -34,7 +41,6 @@ public class MapaFragment extends SupportMapFragment {
 
 			map.moveCamera(CameraUpdateFactory.newLatLng(lastPosition));
 		}
-
 	}
 
 	public void centerMap(LocationClient location) {

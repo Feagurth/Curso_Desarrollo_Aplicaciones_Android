@@ -36,7 +36,7 @@ import com.cabrerizo.luis.tarea4.R;
 
 public class MainActivity extends ActionBarActivity implements
 		NoticeDialogListener {
-	
+
 	private static final int LOAD_IMAGE = 1;
 	private static final int CAMARA = 2;
 
@@ -98,14 +98,15 @@ public class MainActivity extends ActionBarActivity implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
 			if (drawerLayout.isDrawerOpen(drawerList)) {
-
 				drawerLayout.closeDrawer(drawerList);
+				return true;
 			} else {
 				drawerLayout.openDrawer(drawerList);
+				return true;
 
 			}
 		}
-		return true;
+		return false;
 	}
 
 	public void onConfigurationChanged(Configuration newConfig) {

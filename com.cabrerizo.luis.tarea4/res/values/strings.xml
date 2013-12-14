@@ -54,6 +54,13 @@
     <string name="Mapa_Satelite">Mapa Satélite</string>
     <string name="Mapa_Terreno">Mapa Terreno</string>
     
+    <string name="Cambiando_A_Mapa_Hibrido">Cambiando a mapa híbrido</string>
+    <string name="Cambiando_A_Mapa_Normal">Cambiando a mapa normal</string>
+    <string name="Cambiando_A_Mapa_Satelite">Cambiando a mapa satelital</string>
+    <string name="Cambiando_A_Mapa_Terreno">Cambiando a mapa de terreno</string>
+    
+    
+    
     
     
     
