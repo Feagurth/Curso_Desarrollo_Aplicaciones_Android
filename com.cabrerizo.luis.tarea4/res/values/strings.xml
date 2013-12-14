@@ -49,6 +49,13 @@
     <string name="Drawer_Open">Abrir</string>
     <string name="Drawer_Close">Cerrar</string>
     
+    <string name="Mapa_Hibrido">Mapa Híbrido</string>
+    <string name="Mapa_Normal">Mapa Normal</string>
+    <string name="Mapa_Satelite">Mapa Satélite</string>
+    <string name="Mapa_Terreno">Mapa Terreno</string>
+    
+    
+    
     
     
     

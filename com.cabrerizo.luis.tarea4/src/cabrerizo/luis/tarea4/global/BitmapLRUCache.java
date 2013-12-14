@@ -5,16 +5,17 @@ import com.android.volley.toolbox.ImageLoader.ImageCache;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 
-public class BitmapLRUCache extends LruCache<String, Bitmap> implements ImageCache{
+public class BitmapLRUCache extends LruCache<String, Bitmap> implements
+		ImageCache {
 
-	private static final int CACHE_SIZE_BYTES = 4 * 1024 * 1024; 
-	
+	private static final int CACHE_SIZE_BYTES = 4 * 1024 * 1024;
+
 	public BitmapLRUCache() {
 		super(CACHE_SIZE_BYTES);
 	}
 
 	@Override
-	public Bitmap getBitmap(String arg0) {		
+	public Bitmap getBitmap(String arg0) {
 		return get(arg0);
 	}
 
@@ -22,9 +23,9 @@ public class BitmapLRUCache extends LruCache<String, Bitmap> implements ImageCac
 	public void putBitmap(String arg0, Bitmap arg1) {
 		put(arg0, arg1);
 	}
-	
+
 	@Override
-	protected int sizeOf(String key, Bitmap value){
+	protected int sizeOf(String key, Bitmap value) {
 		return value.getRowBytes() * value.getHeight();
 	}
 

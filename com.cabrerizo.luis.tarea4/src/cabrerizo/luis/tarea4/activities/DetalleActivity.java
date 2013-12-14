@@ -15,28 +15,25 @@ import com.cabrerizo.luis.tarea4.R;
 import cabrerizo.luis.tarea4.data.Store;
 
 public class DetalleActivity extends FragmentActivity {
-	
-	public void pruebas()  
-	{
-		
-		
-		
+
+	public void pruebas() {
+
 	}
 
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalle);
-		
-		final Store store = (Store) getIntent().getExtras().getSerializable("store");
-		
-		final TextView nombre = (TextView)findViewById(R.id.Nombre);
-		final TextView direccion = (TextView)findViewById(R.id.Direccion);
-		final TextView telefono = (TextView)findViewById(R.id.Telefono);
-		final TextView horarios = (TextView)findViewById(R.id.Horarios);
-		final TextView website = (TextView)findViewById(R.id.Website);
-		final TextView eMail = (TextView)findViewById(R.id.EMail);
+
+		final Store store = (Store) getIntent().getExtras().getSerializable(
+				"store");
+
+		final TextView nombre = (TextView) findViewById(R.id.Nombre);
+		final TextView direccion = (TextView) findViewById(R.id.Direccion);
+		final TextView telefono = (TextView) findViewById(R.id.Telefono);
+		final TextView horarios = (TextView) findViewById(R.id.Horarios);
+		final TextView website = (TextView) findViewById(R.id.Website);
+		final TextView eMail = (TextView) findViewById(R.id.EMail);
 
 		nombre.setText(store.getNombre());
 		direccion.setText(store.getDireccion());
@@ -44,43 +41,44 @@ public class DetalleActivity extends FragmentActivity {
 		horarios.setText(store.getHorarios());
 		website.setText(store.getWebsite());
 		eMail.setText(store.getEmail());
-		
+
 		Linkify.addLinks(direccion, Linkify.ALL);
 		Linkify.addLinks(telefono, Linkify.ALL);
 		Linkify.addLinks(website, Linkify.ALL);
 		Linkify.addLinks(eMail, Linkify.ALL);
-		
-		Button llamada = (Button)findViewById(R.id.botonLlamada);
-		Button imagen = (Button)findViewById(R.id.botonImagen);
-		
+
+		Button llamada = (Button) findViewById(R.id.botonLlamada);
+		Button imagen = (Button) findViewById(R.id.botonImagen);
+
 		OnClickListener botonImagen = new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),FotografiaActivity.class);
-				
+				Intent intent = new Intent(getApplicationContext(),
+						FotografiaActivity.class);
+
 				intent.putExtra("photo", store.getFoto());
-				
+
 				startActivity(intent);
 			}
 		};
-		
+
 		OnClickListener botonLlamada = new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub				
+				// TODO Auto-generated method stub
 				Intent intent = new Intent(Intent.ACTION_DIAL);
-				intent.setData(Uri.parse("tel:" + telefono.getText().toString().trim()));
-				startActivity(intent); 				
+				intent.setData(Uri.parse("tel:"
+						+ telefono.getText().toString().trim()));
+				startActivity(intent);
 			}
 		};
-		
+
 		llamada.setOnClickListener(botonLlamada);
 		imagen.setOnClickListener(botonImagen);
-		
-		
+
 	}
 
 	@Override
@@ -92,29 +90,40 @@ public class DetalleActivity extends FragmentActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) 
-		{
+		switch (item.getItemId()) {
 		case R.id.action_share:
 			Intent intent = new Intent();
 			intent.setAction(Intent.ACTION_SEND);
 			String mensaje = getString(R.string.msg_share_text) + "\r\n";
-			
-			mensaje = mensaje + ((TextView)findViewById(R.id.Nombre)).getText().toString() + "\r\n";
-			mensaje = mensaje + ((TextView)findViewById(R.id.Direccion)).getText().toString() + "\r\n";
-			mensaje = mensaje + ((TextView)findViewById(R.id.Telefono)).getText().toString() + "\r\n";
-			mensaje = mensaje + ((TextView)findViewById(R.id.Horarios)).getText().toString() + "\r\n";
-			mensaje = mensaje + ((TextView)findViewById(R.id.Website)).getText().toString() + "\r\n";
-			mensaje = mensaje + ((TextView)findViewById(R.id.EMail)).getText().toString() + "\r\n";
-			
+
+			mensaje = mensaje
+					+ ((TextView) findViewById(R.id.Nombre)).getText()
+							.toString() + "\r\n";
+			mensaje = mensaje
+					+ ((TextView) findViewById(R.id.Direccion)).getText()
+							.toString() + "\r\n";
+			mensaje = mensaje
+					+ ((TextView) findViewById(R.id.Telefono)).getText()
+							.toString() + "\r\n";
+			mensaje = mensaje
+					+ ((TextView) findViewById(R.id.Horarios)).getText()
+							.toString() + "\r\n";
+			mensaje = mensaje
+					+ ((TextView) findViewById(R.id.Website)).getText()
+							.toString() + "\r\n";
+			mensaje = mensaje
+					+ ((TextView) findViewById(R.id.EMail)).getText()
+							.toString() + "\r\n";
+
 			intent.putExtra(Intent.EXTRA_TEXT, mensaje);
 			intent.setType("text/plain");
-			startActivity(Intent.createChooser(intent, getString(R.string.action_share)));
-			
+			startActivity(Intent.createChooser(intent,
+					getString(R.string.action_share)));
+
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
 
 }

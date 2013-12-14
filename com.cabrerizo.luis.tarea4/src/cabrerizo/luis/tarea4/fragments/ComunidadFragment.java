@@ -36,13 +36,12 @@ public class ComunidadFragment extends Fragment implements OnRefreshListener {
 
 		lista = (ListView) getActivity().findViewById(R.id.listaImagenes);
 
-		  mPullToRefreshLayout = (PullToRefreshLayout) getActivity().findViewById(R.id.pull);
-		    
-		  ActionBarPullToRefresh.from(getActivity())
-		  			.allChildrenArePullable()
-		            .listener(this)
-		            .setup(mPullToRefreshLayout);		
-		
+		mPullToRefreshLayout = (PullToRefreshLayout) getActivity()
+				.findViewById(R.id.pull);
+
+		ActionBarPullToRefresh.from(getActivity()).allChildrenArePullable()
+				.listener(this).setup(mPullToRefreshLayout);
+
 		imagesArray = new ArrayList<InstagramPicture>();
 		adapter = new ListViewAdapter(getActivity(), imagesArray,
 				R.id.progressBar, R.id.listaImagenes, mPullToRefreshLayout);
@@ -51,7 +50,7 @@ public class ComunidadFragment extends Fragment implements OnRefreshListener {
 
 		final ImageButton tomaFoto = (ImageButton) getActivity().findViewById(
 				R.id.btnCamara);
-				
+
 		tomaFoto.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -67,8 +66,7 @@ public class ComunidadFragment extends Fragment implements OnRefreshListener {
 		adapter = new ListViewAdapter(getActivity(), imagesArray,
 				R.id.progressBar, R.id.listaImagenes, mPullToRefreshLayout);
 
-		lista.setAdapter(adapter);	
-		}
-
+		lista.setAdapter(adapter);
+	}
 
 }

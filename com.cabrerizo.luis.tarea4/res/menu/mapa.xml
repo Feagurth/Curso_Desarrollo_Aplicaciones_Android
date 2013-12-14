@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/Mapa_Hibrido"
+        android:title="@string/Mapa_Hibrido"
+        yourapp:showasaction="ifRoom|withText"/>
+    <item
+        android:id="@+id/Mapa_Normal"
+        android:title="@string/Mapa_Normal"
+        yourapp:showasaction="ifRoom|withText"/>
+    <item
+        android:id="@+id/Mapa_Satelite"
+        android:title="@string/Mapa_Satelite"
+        yourapp:showasaction="ifRoom|withText"/>
+    <item
+        android:id="@+id/Mapa_Terreno"
+        android:title="@string/Mapa_Terreno"
+        yourapp:showasaction="ifRoom|withText"/>
+</menu>

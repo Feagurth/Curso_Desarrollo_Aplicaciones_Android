@@ -105,28 +105,26 @@ public class ListViewAdapter extends BaseAdapter {
 							if (type.equals("image")) {
 
 								String descripcion = "";
-								
+
 								int createdTime = Integer.parseInt(element
 										.getString("created_time"));
-								
+
 								String fecha = new SimpleDateFormat(
 										"dd/MM/yyyy HH:mm", Locale.getDefault())
 										.format(new java.util.Date(
-												(long) createdTime * 1000));								
+												(long) createdTime * 1000));
 
 								if (!element.isNull("caption")) {
 									JSONObject caption = element
 											.getJSONObject("caption");
 
 									descripcion = caption.getString("text");
-									
-								}
-								else
-								{
+
+								} else {
 									descripcion = fecha;
-									
+
 								}
-								
+
 								JSONObject images = element
 										.getJSONObject("images");
 								JSONObject standardResolution = images

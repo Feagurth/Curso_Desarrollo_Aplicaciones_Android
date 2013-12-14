@@ -1275,6 +1275,7 @@ containing a value of this type.
         public static final int LinearLayout1=0x7f060044;
         public static final int MainContent=0x7f06006b;
         public static final int Nombre=0x7f060045;
+        public static final int Normal=0x7f060073;
         public static final int RelativeLayout1=0x7f060057;
         public static final int Telefono=0x7f06004a;
         public static final int Website=0x7f06004c;
@@ -1312,8 +1313,9 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f06002e;
         public static final int expanded_menu=0x7f060034;
         public static final int fragment_comunidad=0x7f060061;
+        public static final int fragment_mapa=0x7f060069;
         public static final int frament_listado=0x7f060067;
-        public static final int frament_mapa=0x7f060069;
+        public static final int hibrido=0x7f060072;
         public static final int home=0x7f060017;
         public static final int homeAsUp=0x7f060009;
         public static final int hybrid=0x7f060004;
@@ -1350,6 +1352,7 @@ containing a value of this type.
         public static final int ptr_text=0x7f060020;
         public static final int pull=0x7f060063;
         public static final int radio=0x7f060037;
+        public static final int satelite=0x7f060074;
         public static final int satellite=0x7f060002;
         public static final int search_badge=0x7f06003a;
         public static final int search_bar=0x7f060039;
@@ -1369,6 +1372,7 @@ containing a value of this type.
         public static final int submit_area=0x7f060041;
         public static final int tabMode=0x7f060006;
         public static final int terrain=0x7f060003;
+        public static final int terreno=0x7f060075;
         public static final int textoDescriptivo=0x7f060059;
         public static final int textoDireccion=0x7f060047;
         public static final int textoEmail=0x7f06004d;
@@ -1453,11 +1457,16 @@ containing a value of this type.
         public static final int fotocomunidad=0x7f0d0001;
         public static final int fotografia=0x7f0d0002;
         public static final int main=0x7f0d0003;
+        public static final int mapa=0x7f0d0004;
     }
     public static final class string {
         public static final int Descripcion_imagenes_marco=0x7f070046;
         public static final int Drawer_Close=0x7f070048;
         public static final int Drawer_Open=0x7f070047;
+        public static final int Mapa_Hibrido=0x7f070049;
+        public static final int Mapa_Normal=0x7f07004a;
+        public static final int Mapa_Satelite=0x7f07004b;
+        public static final int Mapa_Terreno=0x7f07004c;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f07001b;

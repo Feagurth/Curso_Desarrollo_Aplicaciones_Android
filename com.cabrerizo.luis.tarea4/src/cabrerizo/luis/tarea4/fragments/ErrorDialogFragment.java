@@ -6,19 +6,17 @@ import android.support.v4.app.DialogFragment;
 
 public class ErrorDialogFragment extends DialogFragment {
 	private Dialog dialog = null;
-	
-	public ErrorDialogFragment(){
-		super();		
+
+	public ErrorDialogFragment() {
+		super();
 	}
-	
-	public void setDialog(Dialog dialog)
-	{
+
+	public void setDialog(Dialog dialog) {
 		this.dialog = dialog;
 	}
-	
+
 	@Override
-	public Dialog onCreateDialog(Bundle savedInstance)
-	{
+	public Dialog onCreateDialog(Bundle savedInstance) {
 		return dialog;
 	}
 

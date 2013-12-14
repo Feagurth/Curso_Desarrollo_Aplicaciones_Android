@@ -15,21 +15,18 @@ public class ImagenesFragmentAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public Fragment getItem(int position) {
-		
-		int[] arrayImagenes = new int[]{
-				R.drawable.viewpager_imagen1,
-				R.drawable.viewpager_imagen2,
-				R.drawable.viewpager_imagen3,
-				R.drawable.viewpager_imagen4,
-				R.drawable.viewpager_imagen5};
+
+		int[] arrayImagenes = new int[] { R.drawable.viewpager_imagen1,
+				R.drawable.viewpager_imagen2, R.drawable.viewpager_imagen3,
+				R.drawable.viewpager_imagen4, R.drawable.viewpager_imagen5 };
 
 		Fragment fragmento = new ImagenesFragment();
 		Bundle args = new Bundle();
-		
+
 		args.putInt(ImagenesFragment.RESOURCE, arrayImagenes[position]);
-		
+
 		fragmento.setArguments(args);
-		
+
 		return fragmento;
 	}
 

@@ -25,7 +25,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.cabrerizo.luis.tarea4.R;
 import cabrerizo.luis.tarea4.data.ListViewAdapter;
 import cabrerizo.luis.tarea4.fragments.ComunidadFragment;
 import cabrerizo.luis.tarea4.fragments.FotoDialogFragment.NoticeDialogListener;
@@ -33,8 +32,11 @@ import cabrerizo.luis.tarea4.fragments.MarcoImagenesFragment;
 import cabrerizo.luis.tarea4.fragments.TiendasContentFragment;
 import cabrerizo.luis.tarea4.global.Utiles;
 
+import com.cabrerizo.luis.tarea4.R;
+
 public class MainActivity extends ActionBarActivity implements
 		NoticeDialogListener {
+	
 	private static final int LOAD_IMAGE = 1;
 	private static final int CAMARA = 2;
 
@@ -211,8 +213,8 @@ public class MainActivity extends ActionBarActivity implements
 					.getAdapter();
 
 			File fichero = Utiles.saveFile((Bitmap) extras.get("data"), "");
-			
-			lstView.addImage(fichero.getAbsolutePath());		
+
+			lstView.addImage(fichero.getAbsolutePath());
 		}
 	}
 
@@ -228,29 +230,29 @@ public class MainActivity extends ActionBarActivity implements
 			int columIndex = cursor.getColumnIndex(filePathColumn[0]);
 
 			String picturePath = cursor.getString(columIndex);
-			
+
 			cursor.close();
 
 			ListViewAdapter lstView = (ListViewAdapter) ((ListView) fragments[2]
 					.getActivity().findViewById(R.id.listaImagenes))
 					.getAdapter();
 
-			
 			Bitmap bm = readBitmap(Uri.fromFile(new File(picturePath)));
-			
+
 			File fichero = Utiles.saveFile(bm, "");
-			
-			lstView.addImage(fichero.getAbsolutePath());						
+
+			lstView.addImage(fichero.getAbsolutePath());
 		}
 	}
-	
+
 	public Bitmap readBitmap(Uri selectedImage) {
 		Bitmap bm = null;
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inSampleSize = 5;
 		AssetFileDescriptor fileDescriptor = null;
 		try {
-			fileDescriptor = getContentResolver().openAssetFileDescriptor(selectedImage, "r");
+			fileDescriptor = getContentResolver().openAssetFileDescriptor(
+					selectedImage, "r");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} finally {
@@ -263,6 +265,5 @@ public class MainActivity extends ActionBarActivity implements
 			}
 		}
 		return bm;
-	}	
-
+	}
 }

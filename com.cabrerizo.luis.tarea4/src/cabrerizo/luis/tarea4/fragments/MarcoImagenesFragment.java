@@ -12,25 +12,27 @@ import cabrerizo.luis.tarea4.data.ImagenesFragmentAdapter;
 public class MarcoImagenesFragment extends Fragment {
 
 	ViewPager viewPager;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
-		View vista = inflater.inflate(R.layout.fragment_marco_imagenes, container, false);
-		
-		viewPager = (ViewPager)vista.findViewById(R.id.viewPager);
-		
+
+		View vista = inflater.inflate(R.layout.fragment_marco_imagenes,
+				container, false);
+
+		viewPager = (ViewPager) vista.findViewById(R.id.viewPager);
+
 		return vista;
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
-		ImagenesFragmentAdapter adapter = new ImagenesFragmentAdapter(getChildFragmentManager());
+
+		ImagenesFragmentAdapter adapter = new ImagenesFragmentAdapter(
+				getChildFragmentManager());
 		viewPager.setAdapter(adapter);
-		
+
 	}
 
 }
