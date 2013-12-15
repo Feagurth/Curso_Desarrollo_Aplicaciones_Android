@@ -27,7 +27,7 @@ public class ListadoFragment extends Fragment implements OnItemClickListener {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		storeArray = Data.ParseStore("data", getActivity());
+		storeArray = Data.ParseStore("data.json", getActivity());
 
 		String[] listaTiendas = new String[storeArray.size()];
 

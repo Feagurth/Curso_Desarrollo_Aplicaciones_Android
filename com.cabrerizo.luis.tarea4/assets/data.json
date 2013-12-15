@@ -1,12 +1,12 @@
-[
+﻿[
    {
       "type":"store",
-      "name":"Tienda de Zapatos",
-      "address":"436 Mayfield Ave, Stanford, CA",
-      "phone":"(415) 555-1212",
+      "name":"Decimas",
+      "address":"Calle Juan Carlos Onetti 15, Roquetas de Mar, Almería",
+      "phone":"950 32 49 04",
       "hoursOfOperation":"Lunes a Sabado : 9:00 - 16:00",
-      "url":"www.zapateria.com",
-      "email":"info@zapatos.com",
+      "url":"www.decimas.es",
+      "email":"info@decimas.es",
       "comments":[
          {
             "comment":"Mi lugar favorito!",
@@ -24,13 +24,13 @@
       "favorites":5,
       "location":[
          {
-            "lat":36.75,
-            "lon":-2.8
+            "lat":36.75865,
+            "lon":-2.62887
          }
       ],
       "photo":{
-         "url":"http://www.interactivity.com.ar/wp-content/uploads//2012/03/munich-decoracion-tienda-zapatos-5.jpg",
-         "description":"Tienda de zapatos",
+         "url":"http://www.tiendeo.com/galeria/negocio/738/decimas1.jpg",
+         "description":"Tienda de Deporte Decimas",
          "comments":[
             {
                "comment":"Me encanta!",
@@ -47,15 +47,15 @@
    },
    {
       "type":"store",
-      "name":"Tienda de Pantalones",
-      "address":"34 Maint St New York, NY",
-      "phone":"(456) 555-1212",
-      "hoursOfOperation":"Lunes a Viernes : 10:00 - 19:00\nSabado : 10:00 - 14:00",
-      "url":"www.pantalones.com",
-      "email":"info@pantalones.com",
+      "name":"Springfield Man & Woman (C.C. El Copo)",
+      "address":"Crta.de Almerimar s/n, 04700 El Ejido, Almería", 
+      "phone":"950 57 35 70",
+      "hoursOfOperation":"Lunes a Sabado: 10:00 - 22:00",
+      "url":"www.spf.com/es",
+      "email":"copo@eu.spf.com",
       "comments":[
          {
-            "comment":"Los pantalones de campana son lo mas",
+            "comment":"Los pantalones de campana son lo más",
             "fecha": "11/08/2003 18:35"
          },
          {
@@ -66,13 +66,13 @@
       "favorites":15,
       "location":[
          {
-            "lat":36.76,
-            "lon":-2.81
+            "lat":36.75183,
+            "lon":-2.80587
          }
       ],
       "photo":{
-         "url":"http://balazote.com/wp-content/uploads/2011/12/Restos-de-serie1.jpg",
-         "description":"Tienda de pantalones",
+         "url":"http://www.copo.es/imagenes/empresas/zoomfotogaleria-125.jpg",
+         "description":"Tienda en El Ejido",
          "comments":[
             {
                "comment":"Que estilazo!!!",
@@ -88,12 +88,12 @@
    },
    {
       "type":"store",
-      "name":"Tienda de Camisas",
-      "address":"42 Maint St Los Angeles, LA",
-      "phone":"(415) 555-2222",
-      "hoursOfOperation":"Lunes a Viernes : 09:30 - 20:00\nSabado : 10:30 - 14:30",
-      "url":"www.camisas.com",
-      "email":"info@camisas.com",
+      "name":"H&M (C.C. Mediterráneo)",
+      "address":"Prolongación Avenida Mediterráneo s/n, 04009 Almería",
+      "phone":"901 12 00 84",
+      "hoursOfOperation":"Lunes a Sabado: 10:00 – 22:00",
+      "url":"www.hm.com/es/",
+      "email":"info@hm.com",
       "comments":[
          {
             "comment":"No tienen tallas grandes...",
@@ -103,14 +103,14 @@
       "favorites":2,
       "location":[
          {
-            "lat":36.83,
-            "lon":-2.45
+            "lat":36.85470,
+            "lon":-2.44660
          }
       ],
       "photo":{
          "type":"photo",
-         "url":"http://www.acr.es/imagenes/DSCN34045858858.JPG",
-         "description":"Tienda de camisas",
+         "url":"http://www.bonaire.es/W/cms_sites/SITE_9241/images9241/tiendas/tienda_hm_img.jpg",
+         "description":"Tienda en Almería",
          "comments":[
             {
                "comment":"Que foto mas chula..!",
@@ -122,12 +122,12 @@
    },
    {
       "type":"store",
-      "name":"Tienda de Deporte",
-      "address":"47 Maint St Illinois, IL",
-      "phone":"(415) 555-1232",
-      "hoursOfOperation":"Lunes a Viernes : 10:00 - 20:00\nSabado : 10:00 - 18:30",
-      "url":"www.deportes.com",
-      "email":"info@deportes.com",
+      "name":"Decathlon Vicar",
+      "address":"Autovía A7, Salida km 429, 04738 Vicar, Almería, Almería",
+      "phone":"950 18 72 87",
+      "hoursOfOperation":"Lunes a Sabado: 09:00 – 22:00",
+      "url":"www.decathlon.es",
+      "email":"vicar@Decathlon.es",
       "comments":[
          {
             "comment":"Estan faltos de personal...",
@@ -137,13 +137,13 @@
       "favorites":1,
       "location":[
          {
-            "lat":36.84,
-            "lon":-2.46
+            "lat":36.816262,            
+            "lon":-2.599796
          }
       ],
       "photo":{
-         "url":"http://images04.olx.es/ui/1/93/74/15808974_1.jpg",
-         "description":"Tienda de deportes",
+         "url":"http://www.decathlon.es/store//es/0070050200502/photo-mag-1638945631",
+         "description":"Tienda Decathlon",
          "comments":[
             {
                "comment":"El mejor surtido",
@@ -155,12 +155,12 @@
    },
    {
       "type":"store",
-      "name":"Tienda de Caramelos",
-      "address":"31 Maint St New York, NY",
-      "phone":"(415) 555-1111",
-      "hoursOfOperation":"Lunes a Viernes : 09:00 - 15:00\nSabado : 16:30 - 19:30",
-      "url":"www.caramelos.com",
-      "email":"info@caramelos.com",
+      "name":"Frutos Secos Isabel",
+      "address":"Avda. Roquetas 54, 04740 Roquetas de Mar, Almería",
+      "phone":"950 32 48 62",
+      "hoursOfOperation":"Lunes a Viernes\nMañanas: 10:00 a 14:00\nTardes: 16:30 a 20:30\nSabados\nMañanas 11:00 a 15:00",
+      "url":"www.frutossecosisabel.com",
+      "email":"info@frutossecosisabel.com",
       "comments":[
          {
             "comment":"Los mejores caramelos del mundo...!",
@@ -178,24 +178,24 @@
       "favorites":20,
       "location":[
          {
-            "lat":36.83,
-            "lon":-2.44
+            "lat":36.76452,
+            "lon":-2.61337
          }
       ],
       "photo":{
-         "url":"http://1.bp.blogspot.com/-cXtzfvmaG6w/TuTmKNhaukI/AAAAAAAAAd4/JWxlpy3IsjM/s400/IMG_1832.jpg",
-         "description":"Tienda de caramelos",
+         "url":"https://scontent-a-cdg.xx.fbcdn.net/hphotos-prn1/1010734_10201462952722517_443540204_n.jpg",
+         "description":"Tienda en Roquetas de Mar",
          "comments":[
             {
                "comment":"El mejor lugar del mundo...!",
                "fecha": "03/03/2003 03:03"
             },
             {
-               "comment":"Mi exceso de peso oida este sitio...:(",
+               "comment":"Mi exceso de peso odia este sitio... :(",
                "fecha": "04/04/2004 04:04"
             },
             {
-               "comment":"Todo esta buen�simo...!",
+               "comment":"Todo esta buen�simo...!",
                "fecha": "05/05/2005 05:05"
             }
          ],
@@ -204,12 +204,12 @@
    },
    {
       "type":"store",
-      "name":"Tienda de Videojuegos",
-      "address":"34 Saints St New York, NY",
-      "phone":"(111) 111-1111",
-      "hoursOfOperation":"Lunes a Viernes : 10:00 - 22:00",
-      "url":"www.videojuegos.com",
-      "email":"info@videojuegos.com",
+      "name":"Game - El Ejido",
+      "address":"Carretera De Almerimar S/N. C.C. Y De Ocio Copo L-106-107 04700, El Ejido, Almeria",
+      "phone":"950 48 45 85",
+      "hoursOfOperation":"Lunes a Sabado : 10:00 - 22:00",
+      "url":"www.game.es",
+      "email":"elejido@game.es",
       "comments":[
          {
             "comment":"La mejor tienda del mundo...!!",
@@ -223,13 +223,13 @@
       "favorites":22,
       "location":[
          {
-            "lat":36.75,
-            "lon":-2.8
+            "lat":36.75340,
+            "lon":-2.80685
          }
       ],
       "photo":{
-         "url":"http://www.todo-tiendas.com/Fotos/13759738362674811_big.jpg",
-         "description":"Tienda de videojuegos",
+         "url":"http://pixel2pixel.files.wordpress.com/2012/04/game-espac3b1a.jpg",
+         "description":"Frontal Centro Game",
          "comments":[
             {
                "comment":"Siguen sin tener el ultimo CoD!!!",
@@ -241,12 +241,12 @@
    },
    {
       "type":"store",
-      "name":"Tienda de Ordenadores",
-      "address":"23 Jordan Av New York, NY",
-      "phone":"(222) 222-2222",
-      "hoursOfOperation":"Lunes a Viernes : 10:00 - 20:30\nSabado: 10:30 - 14:30",
-      "url":"www.ordenadores.com",
-      "email":"info@ordenadores.com",
+      "name":"Pc Coste",
+      "address":"Mallorca 93, 04738 Vicar, Almeria",
+      "phone":"950 55 48 95",
+      "hoursOfOperation":"Lunes a Viernes\nMañanas: 10:00 a 14:00\nTardes: 16:30 a 20:30\nSabados\nMañanas 10:00 a 14:00",
+      "url":"www.pccoste.es",
+      "email":"vicar@pccoste.com",
       "comments":[
          {
             "comment":"Gran servicio tecnico...!",
@@ -256,19 +256,19 @@
       "favorites":12,
       "location":[
          {
-            "lat":36.55,
-            "lon":-2.78
+            "lat":36.80363,
+            "lon":-2.63235
          }
       ],
       "photo":{
          "type":"photo",
-         "url":"http://www.appinformatica.com/comunicador/1244/1.jpg",
-         "description":"Tienda de ordenadores",
+         "url":"http://backoffice.tiendeo.com/galeria/negocio/401/pccoste.jpg",
+         "description":"Pc Coste, tu tienda amiga",
          "comments":[
             {
                "comment":"Los mejores",
                "fecha": "01/12/2013 21:00"
-            }
+            }            
          ],
          "favorites":10
       }

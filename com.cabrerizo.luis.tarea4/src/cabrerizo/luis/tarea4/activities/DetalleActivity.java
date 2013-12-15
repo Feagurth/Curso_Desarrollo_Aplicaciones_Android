@@ -42,10 +42,10 @@ public class DetalleActivity extends FragmentActivity {
 		website.setText(store.getWebsite());
 		eMail.setText(store.getEmail());
 
-		Linkify.addLinks(direccion, Linkify.ALL);
-		Linkify.addLinks(telefono, Linkify.ALL);
-		Linkify.addLinks(website, Linkify.ALL);
-		Linkify.addLinks(eMail, Linkify.ALL);
+		Linkify.addLinks(direccion, Linkify.MAP_ADDRESSES);
+		Linkify.addLinks(telefono, Linkify.PHONE_NUMBERS);
+		Linkify.addLinks(website, Linkify.WEB_URLS);
+		Linkify.addLinks(eMail, Linkify.EMAIL_ADDRESSES);
 
 		Button llamada = (Button) findViewById(R.id.botonLlamada);
 		Button imagen = (Button) findViewById(R.id.botonImagen);

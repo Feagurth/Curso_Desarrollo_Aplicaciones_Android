@@ -22,7 +22,7 @@ public class Data {
 
 			json = context.getAssets().open(name);
 
-			BufferedReader in = new BufferedReader(new InputStreamReader(json));
+			BufferedReader in = new BufferedReader(new InputStreamReader(json, "UTF-8"));
 			String str;
 
 			while ((str = in.readLine()) != null) {
@@ -97,7 +97,7 @@ public class Data {
 
 		ArrayList<Store> storeArray = new ArrayList<Store>();
 		JSONArray json = new JSONArray();
-		json = Data.ReadDataFromFile("data", context);
+		json = Data.ReadDataFromFile(fileName, context);
 
 		try {
 			for (int i = 0; i < json.length(); i++) {

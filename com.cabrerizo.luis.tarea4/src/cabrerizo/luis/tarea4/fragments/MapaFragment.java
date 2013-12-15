@@ -1,8 +1,14 @@
 package cabrerizo.luis.tarea4.fragments;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+
+import cabrerizo.luis.tarea4.data.Data;
+import cabrerizo.luis.tarea4.data.Store;
 
 import com.cabrerizo.luis.tarea4.R;
 import com.google.android.gms.location.LocationClient;
@@ -10,23 +16,30 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapaFragment extends SupportMapFragment {
 
 	private GoogleMap map;
 	private Bundle savedInstance;
 	public LatLng lastPosition = new LatLng(0, 0);
+	ArrayList<Store> storeArray = new ArrayList<Store>();
+	private HashMap<String, Marker> markers = new HashMap<String, Marker>();
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.savedInstance = savedInstanceState;
+		
+		storeArray = Data.ParseStore("data.json", getActivity());
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		setupMap();
+		setupMap();		
 	}
 
 	@Override
@@ -38,8 +51,6 @@ public class MapaFragment extends SupportMapFragment {
 		if (location.isConnected()) {
 			lastPosition = new LatLng(location.getLastLocation().getLatitude(),
 					location.getLastLocation().getLongitude());
-
-			map.moveCamera(CameraUpdateFactory.newLatLng(lastPosition));
 		}
 	}
 
@@ -48,7 +59,7 @@ public class MapaFragment extends SupportMapFragment {
 			lastPosition = new LatLng(location.getLastLocation().getLatitude(),
 					location.getLastLocation().getLongitude());
 
-			map.moveCamera(CameraUpdateFactory.newLatLngZoom(lastPosition, 10));
+			map.moveCamera(CameraUpdateFactory.newLatLngZoom(lastPosition, 15));
 		}
 
 	}
@@ -67,9 +78,36 @@ public class MapaFragment extends SupportMapFragment {
 				}
 				map.setMyLocationEnabled(true);
 				map.getUiSettings().setZoomControlsEnabled(false);
-				map.getUiSettings().setMyLocationButtonEnabled(false);
+				map.getUiSettings().setMyLocationButtonEnabled(true);
+				populateMarkers(); 
 			}
 		}
 
 	}
+	
+	private void populateMarkers() {
+
+		if (map != null) {
+			if (!storeArray.isEmpty() && storeArray != null) {
+				int i = -1;
+
+				for (Store tienda : storeArray) {
+					i++;
+					MarkerOptions options = new MarkerOptions();
+
+					options.position(new LatLng(tienda.getUbicacionGeografica()[0], 
+												tienda.getUbicacionGeografica()[1]));
+					
+					options.title(tienda.getNombre());
+					options.snippet(tienda.getDireccion());
+
+					Marker marker = map.addMarker(options);
+
+					markers.put(String.valueOf(i), marker);
+
+				}
+			}
+		}
+	}
+	
 }
