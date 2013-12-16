@@ -59,12 +59,10 @@
     <string name="Cambiando_A_Mapa_Satelite">Cambiando a mapa satelital</string>
     <string name="Cambiando_A_Mapa_Terreno">Cambiando a mapa de terreno</string>
     
+    <string name="Tipo_Tienda_1">Tienda de deportes</string>
+    <string name="Tipo_Tienda_2">Tienda de ropa</string>
+    <string name="Tipo_Tienda_3">Tienda de comestibles</string>
+    <string name="Tipo_Tienda_4">Tienda de ocio</string>
+    <string name="Tipo_Tienda_5">Tienda de informática</string>
     
-    
-    
-    
-    
-    
-    
-
 </resources>

@@ -6,16 +6,26 @@ import java.util.ArrayList;
 public class Store implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private int id;
 	private String nombre;
 	private String direccion;
 	private String telefono;
 	private String horarios;
 	private String website;
+	private int tipoTienda;
 	private String email;
 	private ArrayList<Comment> listadoComentarios;
 	private int numeroFavoritos;
 	private double[] ubicacionGeografica;
 	private Photo foto;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -63,6 +73,14 @@ public class Store implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public int getTipoTienda() {
+		return tipoTienda;
+	}
+
+	public void setTipoTienda(int tipoTienda) {
+		this.tipoTienda = tipoTienda;
 	}
 
 	public ArrayList<Comment> getListadoComentarios() {

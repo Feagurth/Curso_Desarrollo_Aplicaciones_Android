@@ -6,10 +6,15 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Environment;
+
+import com.cabrerizo.luis.tarea4.R;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 public class Utiles {
 
@@ -102,4 +107,60 @@ public class Utiles {
 		return dataFile;
 
 	}
+
+	public static String parseTipoTienda(Context context, int valorTipoTienda) {
+		switch (valorTipoTienda) {
+		case 1:
+			return context.getString(R.string.Tipo_Tienda_1);
+		case 2:
+			return context.getString(R.string.Tipo_Tienda_2);
+		case 3:
+			return context.getString(R.string.Tipo_Tienda_3);
+		case 4:
+			return context.getString(R.string.Tipo_Tienda_4);
+		case 5:
+			return context.getString(R.string.Tipo_Tienda_5);
+		default:
+			return "";
+		}
+	}
+
+	public static int parseColorTipoTienda(int valorTipoTienda)
+	{
+		switch (valorTipoTienda) {
+		case 1:
+			return Color.RED;
+		case 2:
+			return Color.BLUE;
+		case 3:
+			return Color.GREEN;
+		case 4:
+			return Color.YELLOW;
+		case 5:
+			return Color.MAGENTA;
+		default:
+			return Color.WHITE;
+		}
+	}
+	
+	public static float parseIconoMapaTipoTienda(int valorTipoTienda)
+	{
+		switch (valorTipoTienda) {
+		case 1:
+			return BitmapDescriptorFactory.HUE_RED;
+		case 2:
+			return BitmapDescriptorFactory.HUE_BLUE;
+		case 3:
+			return BitmapDescriptorFactory.HUE_GREEN;
+		case 4:
+			return BitmapDescriptorFactory.HUE_YELLOW;
+		case 5:
+			return BitmapDescriptorFactory.HUE_MAGENTA;
+		default:
+			return BitmapDescriptorFactory.HUE_AZURE;
+		}		
+		
+	}
+	
+	
 }

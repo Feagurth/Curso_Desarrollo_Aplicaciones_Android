@@ -22,7 +22,8 @@ public class Data {
 
 			json = context.getAssets().open(name);
 
-			BufferedReader in = new BufferedReader(new InputStreamReader(json, "UTF-8"));
+			BufferedReader in = new BufferedReader(new InputStreamReader(json,
+					"UTF-8"));
 			String str;
 
 			while ((str = in.readLine()) != null) {
@@ -104,6 +105,8 @@ public class Data {
 				JSONObject element = json.getJSONObject(i);
 
 				if (element.getString("type").equals("store")) {
+					
+					String id = element.getString("id");
 					String name = element.getString("name");
 					String address = element.getString("address");
 					String phone = element.getString("phone");
@@ -111,16 +114,19 @@ public class Data {
 							.getString("hoursOfOperation");
 					String url = element.getString("url");
 					String email = element.getString("email");
+					String tipoTienda = element.getString("genre");
 					String favorites = element.getString("favorites");
 
 					Store store = new Store();
 
+					store.setId(Integer.parseInt(id));
 					store.setNombre(name);
 					store.setDireccion(address);
 					store.setTelefono(phone);
 					store.setHorarios(hoursOfOperaion);
 					store.setWebsite(url);
 					store.setEmail(email);
+					store.setTipoTienda(Integer.parseInt(tipoTienda));
 					store.setNumeroFavoritos(Integer.parseInt(favorites));
 
 					if (element.has("location")) {

@@ -14,10 +14,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.cabrerizo.luis.tarea4.R;
+import android.widget.TextView;
 import cabrerizo.luis.tarea4.activities.DetalleActivity;
 import cabrerizo.luis.tarea4.data.Data;
 import cabrerizo.luis.tarea4.data.Store;
+import cabrerizo.luis.tarea4.global.Utiles;
+
+import com.cabrerizo.luis.tarea4.R;
 
 public class ListadoFragment extends Fragment implements OnItemClickListener {
 	ListView lista;
@@ -36,11 +39,25 @@ public class ListadoFragment extends Fragment implements OnItemClickListener {
 		}
 
 		lista.setAdapter(new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_list_item_1, listaTiendas));
+				android.R.layout.simple_list_item_2, android.R.id.text1, listaTiendas)
+		{
+			@Override
+			 public View getView(int position, View convertView, ViewGroup parent) {
+			      View view = super.getView(position, convertView, parent);
+			      TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+			      TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+			      text1.setText(storeArray.get(position).getNombre());
+			      text2.setText(Utiles.parseTipoTienda(getContext(), storeArray.get(position).getTipoTienda()));
+
+			      return view;
+			    }
+		});
+
 		lista.setOnItemClickListener(this);
 		registerForContextMenu(lista);
 
 	}
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
