@@ -65,4 +65,7 @@
     <string name="Tipo_Tienda_4">Tienda de ocio</string>
     <string name="Tipo_Tienda_5">Tienda de informática</string>
     
+    <string name="Favoritos">Favoritos: </string>
+    <string name="Comentarios">Comentarios</string>
+    
 </resources>

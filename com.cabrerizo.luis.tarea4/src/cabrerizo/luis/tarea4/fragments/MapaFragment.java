@@ -33,6 +33,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapaFragment extends SupportMapFragment implements
 		InfoWindowAdapter, OnInfoWindowClickListener {
+	
+	private static LatLng PUEBLA_DE_VICAR = new LatLng(36.80067, -2.64610);
 
 	private GoogleMap map;
 	private Bundle savedInstance;
@@ -95,6 +97,7 @@ public class MapaFragment extends SupportMapFragment implements
 				map.getUiSettings().setMyLocationButtonEnabled(true);
 				map.setInfoWindowAdapter(this);
 				map.setOnInfoWindowClickListener(this);
+				map.moveCamera(CameraUpdateFactory.newLatLngZoom(PUEBLA_DE_VICAR, 10));
 				populateMarkers();
 			}
 		}

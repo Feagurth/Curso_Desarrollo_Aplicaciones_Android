@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import cabrerizo.luis.tarea4.activities.DetalleActivity;
 import cabrerizo.luis.tarea4.activities.FotografiaActivity;
 import cabrerizo.luis.tarea4.data.Comment;
@@ -72,15 +73,27 @@ public class ComentariosFragment extends Fragment {
 		adapter = new SimpleAdapter(vista.getContext(), comentarios,
 				android.R.layout.simple_list_item_2, new String[] { COMENTARIO,
 						FECHA }, new int[] { android.R.id.text1,
-						android.R.id.text2 });
+						android.R.id.text2 }) {
+			public View getView(int position, View convertView, ViewGroup parent) {
+				View view = super.getView(position, convertView, parent);
+				TextView text1 = (TextView) view
+						.findViewById(android.R.id.text1);
+				text1.setTextSize(15);
+
+				return view;
+
+			};
+
+		};
 
 		lista.setAdapter(adapter);
 
 		ArrayList<Comment> commentarios = null;
-		
+
 		int id = getActivity().getIntent().getExtras().getInt("id");
-		
-		Store tienda = Utiles.locateStore(getActivity().getApplicationContext(), id);
+
+		Store tienda = Utiles.locateStore(
+				getActivity().getApplicationContext(), id);
 
 		if (getActivity().getClass() == DetalleActivity.class) {
 			commentarios = tienda.getListadoComentarios();

@@ -17,20 +17,62 @@
         android:layout_height="@dimen/Imagen_Height"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:contentDescription="@string/descripcion_fotografia"/>
+        android:contentDescription="@string/descripcion_fotografia"
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/textoDescriptivo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imagen"
-        android:layout_marginLeft="10sp" />
+        android:layout_alignLeft="@+id/imagen"
+        android:layout_alignRight="@+id/imagen"
+        android:layout_below="@id/imagen" />
+
+    <View
+        android:id="@+id/linea1"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/textoDescriptivo"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:background="@android:color/darker_gray" />
+
+    <ImageView
+        android:id="@+id/estrella"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linea1"
+        android:layout_alignTop="@+id/linea1"
+        android:contentDescription="@string/Favoritos"
+        android:src="@android:drawable/star_on" />
     
-     <fragment
-	   android:name="cabrerizo.luis.tarea4.fragments.ComentariosFragment"
-	   android:id="@+id/com_fragment"
-	   android:layout_below="@id/textoDescriptivo"
-	   android:layout_width="match_parent"
-	   android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/textoFavoritos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linea1"
+        android:layout_toRightOf="@+id/estrella"
+        android:gravity="center_vertical"
+        android:text="@string/Favoritos"
+        android:textAppearance="?android:attr/textAppearanceSmall" />    
+
+        <View
+        android:id="@+id/linea2"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/estrella"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:background="@android:color/darker_gray" />
     
+    
+    <fragment
+        android:id="@+id/com_fragment"
+        android:name="cabrerizo.luis.tarea4.fragments.ComentariosFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linea2"
+        android:layout_alignLeft="@+id/estrella"
+/>
+
 </RelativeLayout>

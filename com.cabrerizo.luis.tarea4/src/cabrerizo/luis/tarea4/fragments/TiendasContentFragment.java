@@ -216,7 +216,6 @@ public class TiendasContentFragment extends Fragment implements TabListener,
 		if (locationClient.isConnected()) {
 			((MapaFragment) fragments[1]).updateLocation(locationClient);
 			locationClient.requestLocationUpdates(locationRequest, this);
-			((MapaFragment) fragments[1]).centerMap(locationClient);
 		}
 	}
 

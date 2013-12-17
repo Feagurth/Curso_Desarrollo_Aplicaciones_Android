@@ -13,31 +13,35 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-	
-	<uses-feature
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>	
+        android:required="true" />
 
     <application
         android:name="cabrerizo.luis.tarea4.App"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/titulo_lista" 
-         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        
+        android:label="@string/titulo_lista"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+         
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDLOLw4P2v2lZ8BGPejuIsKImGBC0QxNTM" />             
+<!--
+Release
 		<meta-data
-    		android:name="com.google.android.gms.version"
-    		android:value="@integer/google_play_services_version" />
-		
-		<meta-data
-		    android:name="com.google.android.maps.v2.API_KEY"
-		    android:value="AIzaSyDLOLw4P2v2lZ8BGPejuIsKImGBC0QxNTM"/>
-        
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyC6ENe2EA55Y82HdnK1CPjpGvxzPuTiNjE" />
+ -->       
+
         <activity
             android:name="cabrerizo.luis.tarea4.activities.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -48,23 +52,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name="cabrerizo.luis.tarea4.activities.DetalleActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_detalle" >
         </activity>
-        
         <activity
             android:name="cabrerizo.luis.tarea4.activities.FotografiaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_fotografia" >
-        </activity>
-        
-        <activity
-            android:name="cabrerizo.luis.tarea4.activities.MarcoImagenesActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_MarcoImagenes" >
         </activity>
     </application>
 

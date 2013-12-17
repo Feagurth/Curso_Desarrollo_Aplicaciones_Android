@@ -254,12 +254,12 @@
         "type": "store",
         "id":7,
         "name": "Pc Coste",
-        "address": "Mallorca 93, 04738 Vicar, Almeria",
+        "address": "Mallorca 93 04738 Vicar, Almeria",
         "phone": "950 55 48 95",
         "hoursOfOperation": "Lunes a Viernes\nMañanas: 10:00 a 14:00\nTardes: 16:30 a 20:30\nSabados\nMañanas 10:00 a 14:00",
         "url": "www.pccoste.es",
         "email": "vicar@pccoste.com",
-        "genre": 5,
+        "genre": 4,
         "comments": [
             {
                 "comment": "Gran servicio tecnico...!",
@@ -285,5 +285,41 @@
             ],
             "favorites": 10
         }
-    }
+    },
+    {
+        "type": "store",
+        "id":8,
+        "name": "La tienda de María",
+        "address": "Calle Alcazaba, 04710 Santa Maria del Aguila El Ejido, Almería",
+        "phone": "699 87 53 46",
+        "hoursOfOperation": "Lunes a Viernes: 10:00 – 21:00\nSabados: 10:00 - 14:00",
+        "url": "www.latiendademaria.eu",
+        "email": "growmaria@latiendademaria.eu",
+        "genre": 5,
+        "comments": [
+            {
+                "comment": "Increible lo que hay aquí...!",
+                "fecha": "20/12/2012 11:37"
+            }
+        ],
+        "favorites": 8,
+        "location": [
+            {
+                "lat": 36.786209,
+                "lon": -2.775465
+            }
+        ],
+        "photo": {
+            "type": "photo",
+            "url": "https://lh6.googleusercontent.com/-RMHERgHiC3w/UcnNUQEpbhI/AAAAAAAAAC4/OZBDUXTwYi4/w800-h563-no/2013-06-25",
+            "description": "Especialistas en semillas",
+            "comments": [
+                {
+                    "comment": "Que ofertas...!",
+                    "fecha": "01/12/2013 16:38"
+                }
+            ],
+            "favorites": 15
+        }
+    }    
 ]

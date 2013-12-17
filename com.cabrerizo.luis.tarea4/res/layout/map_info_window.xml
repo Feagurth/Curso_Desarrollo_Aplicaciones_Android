@@ -31,11 +31,18 @@
             android:id="@+id/infoWindowDescripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
             android:text="@string/Cambiando_A_Mapa_Hibrido"
             android:textColor="#ff7f7f7f"
+            android:ellipsize="end"
+            android:maxWidth="200dp"
             android:textSize="14sp" />
-
     </LinearLayout>
+    
+    <ImageView
+        android:id="@+id/flecha"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/Descripcion_imagenes_marco"
+        android:src="@drawable/ic_data_next" />
     
 </LinearLayout>

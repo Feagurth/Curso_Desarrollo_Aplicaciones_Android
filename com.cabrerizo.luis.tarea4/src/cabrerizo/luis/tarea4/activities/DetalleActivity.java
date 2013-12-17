@@ -1,7 +1,6 @@
 package cabrerizo.luis.tarea4.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.util.Linkify;
@@ -9,11 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
+import cabrerizo.luis.tarea4.App;
 import cabrerizo.luis.tarea4.data.Store;
 import cabrerizo.luis.tarea4.global.Utiles;
 
+import com.android.volley.toolbox.NetworkImageView;
 import com.cabrerizo.luis.tarea4.R;
 
 public class DetalleActivity extends FragmentActivity {
@@ -34,6 +34,8 @@ public class DetalleActivity extends FragmentActivity {
 		final TextView horarios = (TextView) findViewById(R.id.Horarios);
 		final TextView website = (TextView) findViewById(R.id.Website);
 		final TextView eMail = (TextView) findViewById(R.id.EMail);
+		final NetworkImageView fotoDetalle = (NetworkImageView) findViewById(R.id.fotoDetalle);
+		final TextView favoritos = (TextView)findViewById(R.id.textoFavoritos);
 
 		nombre.setText(store.getNombre());
 		direccion.setText(store.getDireccion());
@@ -41,14 +43,14 @@ public class DetalleActivity extends FragmentActivity {
 		horarios.setText(store.getHorarios());
 		website.setText(store.getWebsite());
 		eMail.setText(store.getEmail());
+		fotoDetalle.setImageUrl(store.getFoto().getUrl(), ((App)getApplicationContext()).getImageLoader());
+		favoritos.setText(getString(R.string.Favoritos) + String.valueOf(store.getNumeroFavoritos()));
 
 		Linkify.addLinks(direccion, Linkify.MAP_ADDRESSES);
 		Linkify.addLinks(telefono, Linkify.PHONE_NUMBERS);
 		Linkify.addLinks(website, Linkify.WEB_URLS);
 		Linkify.addLinks(eMail, Linkify.EMAIL_ADDRESSES);
 
-		Button llamada = (Button) findViewById(R.id.botonLlamada);
-		Button imagen = (Button) findViewById(R.id.botonImagen);
 
 		OnClickListener botonImagen = new OnClickListener() {
 
@@ -63,19 +65,7 @@ public class DetalleActivity extends FragmentActivity {
 			}
 		};
 
-		OnClickListener botonLlamada = new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Intent.ACTION_DIAL);
-				intent.setData(Uri.parse("tel:"
-						+ telefono.getText().toString().trim()));
-				startActivity(intent);
-			}
-		};
-
-		llamada.setOnClickListener(botonLlamada);
-		imagen.setOnClickListener(botonImagen);
+		fotoDetalle.setOnClickListener(botonImagen);
 
 	}
 

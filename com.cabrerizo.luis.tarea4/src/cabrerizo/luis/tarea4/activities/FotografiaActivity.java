@@ -35,10 +35,11 @@ public class FotografiaActivity extends FragmentActivity {
 
 		texto = (TextView) findViewById(R.id.textoDescriptivo);
 		imagen = (NetworkImageView) findViewById(R.id.imagen);
+		TextView favoritos = (TextView)findViewById(R.id.textoFavoritos);
 		
 		imagen.setImageUrl(foto.getUrl(), ((App)getApplicationContext()).getImageLoader());
-
 		texto.setText(foto.getDescripcion());
+		favoritos.setText(getString(R.string.Favoritos) + String.valueOf(foto.getNumeroFavoritos()));
 
 	}
 

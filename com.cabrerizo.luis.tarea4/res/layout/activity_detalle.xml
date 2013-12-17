@@ -8,158 +8,183 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="horizontal"
     tools:context=".DetalleActivity" >
 
-	<TextView
-	    android:id="@+id/Nombre"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentLeft="true"
-	    android:textSize="20sp" />
-    
-	<View
-	    android:layout_width="fill_parent"
-	    android:id="@+id/linea1"
-	    android:layout_below="@id/Nombre"
-	    android:layout_height="1dp"
-	    android:layout_marginTop="3dp"
-	    android:layout_marginBottom="3dp"
-	    android:background="@android:color/darker_gray"/>	
-	
+    <TextView
+        android:id="@+id/Nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/linea1"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/Nombre"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:background="@android:color/darker_gray" />
+
     <TextView
         android:id="@+id/textoDireccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linea1"
+        android:layout_alignRight="@+id/Direccion"
         android:layout_below="@+id/linea1"
-        android:layout_marginLeft="30dp"
         android:text="@string/textoDireccion"
         android:textSize="15sp" />
-	
+
     <TextView
         android:id="@+id/Direccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linea1"
+        android:layout_alignRight="@+id/textoTelefono"
         android:layout_below="@+id/textoDireccion"
-        android:layout_marginLeft="30dp"
         android:textSize="12sp" />
-        
+
     <TextView
         android:id="@+id/textoTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linea1"
         android:layout_below="@+id/Direccion"
-        android:layout_marginLeft="30dp"
+        android:layout_toLeftOf="@+id/fotoDetalle"
         android:text="@string/textoTelefono"
-        android:textSize="15sp" />    
-    
+        android:textSize="15sp" />
+
     <TextView
         android:id="@+id/Telefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_alignLeft="@+id/textoTelefono"
         android:layout_below="@+id/textoTelefono"
+        android:layout_toLeftOf="@+id/fotoDetalle"
         android:textSize="12sp" />
 
-	<TextView
+    <TextView
         android:id="@+id/textoWebsite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Telefono"
         android:layout_below="@+id/Telefono"
-        android:layout_marginLeft="30dp"
+        android:layout_toLeftOf="@+id/fotoDetalle"
         android:text="@string/textoWebsite"
         android:textSize="15sp" />
-	
-	<TextView
-	    android:id="@+id/Website"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+
+    <TextView
+        android:id="@+id/Website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textoWebsite"
         android:layout_below="@+id/textoWebsite"
-	    android:textSize="12sp" />
-		
-	    <TextView
+        android:layout_toLeftOf="@+id/fotoDetalle"
+        android:textSize="12sp" />
+
+    <TextView
         android:id="@+id/textoEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Website"
+        android:layout_alignRight="@+id/Website"
         android:layout_below="@+id/Website"
-        android:layout_marginLeft="30dp"
         android:text="@string/textoEMail"
-        android:textSize="15sp" />	
-	
-	<TextView
-	    android:id="@+id/EMail"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/EMail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textoEmail"
+        android:layout_alignRight="@+id/Website"
         android:layout_below="@+id/textoEmail"
-	    android:textSize="12sp" />
-	
-    	<View
-	    android:layout_width="fill_parent"
-	    android:id="@+id/linea2"
-	    android:layout_below="@id/EMail"
-	    android:layout_height="1dp"
-	    android:layout_marginTop="3dp"
-	    android:layout_marginBottom="3dp"
-	    android:background="@android:color/darker_gray"/>	
-	    
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/linea2"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/EMail"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:background="@android:color/darker_gray" />
+
     <TextView
         android:id="@+id/textoHorarios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linea2"
         android:layout_below="@+id/linea2"
-        android:layout_marginLeft="30dp"
         android:text="@string/textoHorarios"
-        android:textSize="15sp" />    
-            
-	<TextView
-	    android:id="@+id/Horarios"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_below="@+id/textoHorarios"
-	    android:textSize="12sp" />
-        	
-	<View
-	    android:layout_width="fill_parent"
-	    android:id="@+id/linea3"
-	    android:layout_below="@id/Horarios"
-	    android:layout_height="1dp"
-	    android:layout_marginTop="3dp"
-	    android:layout_marginBottom="3dp"
-	    android:background="@android:color/darker_gray"/>	
-			
-	<Button
-	    android:id="@+id/botonLlamada"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/linea3"
-	    android:text="@string/botonLlamada" />
+        android:textSize="15sp" />
 
-	<Button
-	    android:id="@+id/botonImagen"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_alignBaseline="@+id/botonLlamada"
-	    android:layout_alignBottom="@+id/botonLlamada"
-	    android:layout_toRightOf="@+id/botonLlamada"
-	    android:text="@string/botonImagen" />
-	
-	<View
-	    android:layout_width="fill_parent"
-	    android:id="@+id/linea4"
-	    android:layout_below="@id/botonLlamada"
-	    android:layout_height="1dp"
-	    android:layout_marginTop="3dp"
-	    android:layout_marginBottom="3dp"
-	    android:background="@android:color/darker_gray"/>	
-	
-	
-	<fragment
-	   android:name="cabrerizo.luis.tarea4.fragments.ComentariosFragment"
-	   android:id="@+id/com_fragment"
-	   android:layout_below="@id/linea4"
-	   android:layout_width="match_parent"
-	   android:layout_height="match_parent" />
-	
+    <TextView
+        android:id="@+id/Horarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textoHorarios"
+        android:layout_below="@+id/textoHorarios"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/linea3"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/Horarios"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:background="@android:color/darker_gray" />
+
+    <View
+        android:id="@+id/linea4"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/estrella"
+        android:layout_marginBottom="3dp"
+        android:background="@android:color/darker_gray" />
+
+    <fragment
+        android:id="@+id/com_fragment"
+        android:name="cabrerizo.luis.tarea4.fragments.ComentariosFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linea4" />
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/fotoDetalle"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linea2"
+        android:layout_alignRight="@+id/linea1"
+        android:layout_alignTop="@+id/linea1"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:clickable="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/abc_ab_solid_dark_holo" />
+
+    <ImageView
+        android:id="@+id/estrella"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/linea3"
+        android:contentDescription="@string/Favoritos"
+        android:src="@android:drawable/star_on" />
+
+    <TextView
+        android:id="@+id/textoFavoritos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/estrella"
+        android:layout_alignRight="@+id/linea3"
+        android:layout_alignTop="@+id/linea3"
+        android:layout_toRightOf="@+id/estrella"
+        android:gravity="center_vertical"
+        android:text="@string/Favoritos"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
 </RelativeLayout>

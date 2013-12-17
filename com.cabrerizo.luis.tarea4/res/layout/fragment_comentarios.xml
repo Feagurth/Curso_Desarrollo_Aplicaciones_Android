@@ -10,6 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/descripcion_icono"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="fitXY"
         android:src="@drawable/talk" />
 
     <Button
@@ -44,5 +48,17 @@
         android:layout_below="@+id/icono" >
 
     </ListView>
+
+    <TextView
+        android:id="@+id/textComentarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lista_comentarios"
+        android:gravity="center_vertical"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/icono"
+        android:text="@string/Comentarios"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
