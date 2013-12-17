@@ -44,7 +44,7 @@ public class ComunidadFragment extends Fragment implements OnRefreshListener {
 
 		imagesArray = new ArrayList<InstagramPicture>();
 		adapter = new ListViewAdapter(getActivity(), imagesArray,
-				R.id.progressBar, R.id.listaImagenes, mPullToRefreshLayout);
+				R.id.progressBar, R.id.listaImagenes, mPullToRefreshLayout, getActivity().getApplicationContext());
 
 		lista.setAdapter(adapter);
 
@@ -64,7 +64,7 @@ public class ComunidadFragment extends Fragment implements OnRefreshListener {
 	public void onRefreshStarted(View view) {
 		imagesArray = new ArrayList<InstagramPicture>();
 		adapter = new ListViewAdapter(getActivity(), imagesArray,
-				R.id.progressBar, R.id.listaImagenes, mPullToRefreshLayout);
+				R.id.progressBar, R.id.listaImagenes, mPullToRefreshLayout, getActivity().getApplicationContext());
 
 		lista.setAdapter(adapter);
 	}

@@ -13,8 +13,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Environment;
 
+import cabrerizo.luis.tarea4.App;
+import cabrerizo.luis.tarea4.data.Store;
+
 import com.cabrerizo.luis.tarea4.R;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Marker;
 
 public class Utiles {
 
@@ -161,6 +165,30 @@ public class Utiles {
 		}		
 		
 	}
+
+	public static Store locateStore(Context context, int valorID)
+	{
+		for (Store tienda : ((App)context).getStoreArray()) {
+			if(tienda.getId() == valorID)
+			{
+				return tienda;
+				
+			}
+		}
+		return null;		
+	}
 	
-	
+	public static Store locateStore(Context context, Marker marker)
+	{
+		int id = Integer.parseInt(((App)context).getMarkers().get(marker));
+				
+		for (Store tienda : ((App)context).getStoreArray()) {
+			if(tienda.getId() == id)
+			{
+				return tienda;
+				
+			}
+		}
+		return null;		
+	}		
 }

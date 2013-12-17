@@ -1,28 +1,27 @@
 package cabrerizo.luis.tarea4.activities;
 
 import java.io.File;
-import java.util.concurrent.ExecutionException;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.cabrerizo.luis.tarea4.R;
+import cabrerizo.luis.tarea4.App;
 import cabrerizo.luis.tarea4.data.Photo;
-import cabrerizo.luis.tarea4.data.UrlToBitmapTask;
 import cabrerizo.luis.tarea4.global.Utiles;
+
+import com.android.volley.toolbox.NetworkImageView;
+import com.cabrerizo.luis.tarea4.R;
 
 public class FotografiaActivity extends FragmentActivity {
 	private static final String FILENAME = "tmpimg.jpg";
 
-	ImageView imagen;
+	NetworkImageView imagen;
 	TextView texto;
 
 	@Override
@@ -30,24 +29,14 @@ public class FotografiaActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fotografia);
 
-		final Photo foto = (Photo) getIntent().getExtras().getSerializable(
-				"photo");
+		int id = getIntent().getExtras().getInt("id");
+		
+		final Photo foto = Utiles.locateStore(getApplicationContext(), id).getFoto();
 
-		imagen = (ImageView) findViewById(R.id.imagen);
 		texto = (TextView) findViewById(R.id.textoDescriptivo);
-
-		UrlToBitmapTask tarea = new UrlToBitmapTask();
-		AsyncTask<String, Void, Bitmap> fotiqui = tarea.execute(foto.getUrl());
-
-		try {
-			imagen.setImageBitmap(fotiqui.get());
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		imagen = (NetworkImageView) findViewById(R.id.imagen);
+		
+		imagen.setImageUrl(foto.getUrl(), ((App)getApplicationContext()).getImageLoader());
 
 		texto.setText(foto.getDescripcion());
 

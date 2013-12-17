@@ -24,6 +24,7 @@
         android:required="true"/>	
 
     <application
+        android:name="cabrerizo.luis.tarea4.App"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/titulo_lista" 

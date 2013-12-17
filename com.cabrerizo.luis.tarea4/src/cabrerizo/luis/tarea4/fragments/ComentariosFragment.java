@@ -17,10 +17,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import com.cabrerizo.luis.tarea4.R;
+import cabrerizo.luis.tarea4.activities.DetalleActivity;
+import cabrerizo.luis.tarea4.activities.FotografiaActivity;
 import cabrerizo.luis.tarea4.data.Comment;
-import cabrerizo.luis.tarea4.data.Photo;
 import cabrerizo.luis.tarea4.data.Store;
+import cabrerizo.luis.tarea4.global.Utiles;
+
+import com.cabrerizo.luis.tarea4.R;
 
 public class ComentariosFragment extends Fragment {
 
@@ -32,7 +35,6 @@ public class ComentariosFragment extends Fragment {
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 
 		OnClickListener listener = new OnClickListener() {
@@ -75,18 +77,15 @@ public class ComentariosFragment extends Fragment {
 		lista.setAdapter(adapter);
 
 		ArrayList<Comment> commentarios = null;
+		
+		int id = getActivity().getIntent().getExtras().getInt("id");
+		
+		Store tienda = Utiles.locateStore(getActivity().getApplicationContext(), id);
 
-		if (getActivity().getIntent().hasExtra("store")) {
-			Store tienda = (Store) getActivity().getIntent().getExtras()
-					.getSerializable("store");
-
+		if (getActivity().getClass() == DetalleActivity.class) {
 			commentarios = tienda.getListadoComentarios();
-
-		} else if (getActivity().getIntent().hasExtra("photo")) {
-			Photo Foto = (Photo) getActivity().getIntent().getExtras()
-					.getSerializable("photo");
-			commentarios = Foto.getListaComentarios();
-
+		} else if (getActivity().getClass() == FotografiaActivity.class) {
+			commentarios = tienda.getFoto().getListaComentarios();
 		}
 
 		for (Comment comment : commentarios) {

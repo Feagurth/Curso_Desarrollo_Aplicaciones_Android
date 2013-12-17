@@ -10,8 +10,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout;
-
 import android.app.Activity;
+import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,8 +21,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.cabrerizo.luis.tarea4.R;
-import cabrerizo.luis.tarea4.global.BitmapLRUCache;
+import cabrerizo.luis.tarea4.App;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,7 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
+import com.cabrerizo.luis.tarea4.R;
 
 public class ListViewAdapter extends BaseAdapter {
 
@@ -68,13 +67,13 @@ public class ListViewAdapter extends BaseAdapter {
 
 	public ListViewAdapter(Activity activity,
 			ArrayList<InstagramPicture> dataArray, int idBarraProgreso,
-			int idListView, PullToRefreshLayout valorPull) {
+			int idListView, PullToRefreshLayout valorPull, Context context) {
 
-		requestQueue = Volley.newRequestQueue(activity.getApplicationContext());
+		requestQueue = ((App)context).getRequestQueue();
 
 		this.dataArray = dataArray;
 		this.inflater = LayoutInflater.from(activity.getApplicationContext());
-		this.imageLoader = new ImageLoader(requestQueue, new BitmapLRUCache());
+		this.imageLoader = ((App)context).getImageLoader();
 
 		barra = (ProgressBar) activity.findViewById(idBarraProgreso);
 		lista = (ListView) activity.findViewById(idListView);

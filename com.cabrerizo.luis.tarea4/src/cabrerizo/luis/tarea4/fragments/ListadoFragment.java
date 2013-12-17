@@ -15,8 +15,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import cabrerizo.luis.tarea4.App;
 import cabrerizo.luis.tarea4.activities.DetalleActivity;
-import cabrerizo.luis.tarea4.data.Data;
 import cabrerizo.luis.tarea4.data.Store;
 import cabrerizo.luis.tarea4.global.Utiles;
 
@@ -24,13 +24,14 @@ import com.cabrerizo.luis.tarea4.R;
 
 public class ListadoFragment extends Fragment implements OnItemClickListener {
 	ListView lista;
-	ArrayList<Store> storeArray = new ArrayList<Store>();
+	ArrayList<Store> storeArray;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		storeArray = Data.ParseStore("data.json", getActivity());
+		storeArray = ((App)getActivity().getApplicationContext()).getStoreArray();
+		
 
 		String[] listaTiendas = new String[storeArray.size()];
 
@@ -79,7 +80,9 @@ public class ListadoFragment extends Fragment implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		Intent intent = new Intent(getActivity(), DetalleActivity.class);
 
-		intent.putExtra("store", storeArray.get(arg2));
+		int id = ((App)getActivity().getApplicationContext()).getStoreArray().get(arg2).getId();
+				
+		intent.putExtra("id", id);
 
 		startActivity(intent);
 	}

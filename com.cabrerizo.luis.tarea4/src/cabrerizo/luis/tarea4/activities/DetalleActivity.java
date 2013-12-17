@@ -11,22 +11,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.cabrerizo.luis.tarea4.R;
 import cabrerizo.luis.tarea4.data.Store;
+import cabrerizo.luis.tarea4.global.Utiles;
+
+import com.cabrerizo.luis.tarea4.R;
 
 public class DetalleActivity extends FragmentActivity {
-
-	public void pruebas() {
-
-	}
+	int id = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalle);
 
-		final Store store = (Store) getIntent().getExtras().getSerializable(
-				"store");
+		id = getIntent().getExtras().getInt("id");
+			
+		final Store store = Utiles.locateStore(getApplicationContext(), id);
 
 		final TextView nombre = (TextView) findViewById(R.id.Nombre);
 		final TextView direccion = (TextView) findViewById(R.id.Direccion);
@@ -54,11 +54,10 @@ public class DetalleActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(),
 						FotografiaActivity.class);
 
-				intent.putExtra("photo", store.getFoto());
+				intent.putExtra("id", id);
 
 				startActivity(intent);
 			}
@@ -68,7 +67,6 @@ public class DetalleActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(Intent.ACTION_DIAL);
 				intent.setData(Uri.parse("tel:"
 						+ telefono.getText().toString().trim()));

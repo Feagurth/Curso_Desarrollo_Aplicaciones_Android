@@ -11,14 +11,13 @@
     android:scrollbars="vertical"
     tools:context=".FotografiaActivity" >
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/imagen"
         android:layout_width="match_parent"
         android:layout_height="@dimen/Imagen_Height"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:contentDescription="@string/descripcion_fotografia"
-        android:src="@drawable/nombre" />
+        android:contentDescription="@string/descripcion_fotografia"/>
 
     <TextView
         android:id="@+id/textoDescriptivo"

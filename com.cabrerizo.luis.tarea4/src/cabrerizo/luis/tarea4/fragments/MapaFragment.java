@@ -1,15 +1,22 @@
 package cabrerizo.luis.tarea4.fragments;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import cabrerizo.luis.tarea4.data.Data;
+import cabrerizo.luis.tarea4.App;
+import cabrerizo.luis.tarea4.activities.DetalleActivity;
 import cabrerizo.luis.tarea4.data.Store;
+import cabrerizo.luis.tarea4.data.UrlToBitmapTask;
 import cabrerizo.luis.tarea4.global.Utiles;
 
 import com.cabrerizo.luis.tarea4.R;
@@ -30,14 +37,17 @@ public class MapaFragment extends SupportMapFragment implements
 	private GoogleMap map;
 	private Bundle savedInstance;
 	public LatLng lastPosition = new LatLng(0, 0);
-	ArrayList<Store> storeArray = new ArrayList<Store>();
+	private ArrayList<Store> storeArray;
+	private HashMap<Marker, String> markers;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.savedInstance = savedInstanceState;
 
-		storeArray = Data.ParseStore("data.json", getActivity());
+		storeArray = ((App) getActivity().getApplicationContext())
+				.getStoreArray();
+		markers = ((App) getActivity().getApplicationContext()).getMarkers();
 	}
 
 	@Override
@@ -110,27 +120,53 @@ public class MapaFragment extends SupportMapFragment implements
 					options.icon(BitmapDescriptorFactory.defaultMarker(Utiles
 							.parseIconoMapaTipoTienda(tienda.getTipoTienda())));
 
-					map.addMarker(options);
+					Marker marker = map.addMarker(options);
+					markers.put(marker, String.valueOf(tienda.getId()));
 				}
 			}
+
+			((App) getActivity().getApplicationContext()).setMarkers(markers);
 		}
 	}
+
 
 	@Override
 	public View getInfoContents(Marker marker) {
 		View window = getActivity().getLayoutInflater().inflate(
 				R.layout.map_info_window, null);
-		
+
 		TextView titulo = (TextView) window.findViewById(R.id.infoWindowTitulo);
-		TextView descripcion = (TextView) window.findViewById(R.id.infoWindowDescripcion);
-		//ImageView imagen = (ImageView)window.findViewById(R.id.infoWindowImagen);
-		
+		TextView descripcion = (TextView) window
+				.findViewById(R.id.infoWindowDescripcion);
+		ImageView imagen = (ImageView) window
+				.findViewById(R.id.infoWindowImagen);
+
+
+		UrlToBitmapTask tarea = new UrlToBitmapTask();
+		AsyncTask<String, Void, Bitmap> fotiqui = tarea.execute(
+				Utiles.locateStore(getActivity().getApplicationContext(), marker)
+				.getFoto().getUrl());
+
+		Bitmap tmp = null;
+
+		try {
+			tmp = Bitmap.createScaledBitmap(fotiqui.get(), 150, 150, false);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+
+		imagen.setImageBitmap(tmp);
+
 		titulo.setText(marker.getTitle());
 		descripcion.setText(marker.getSnippet());
 
 		return window;
 	}
+	
 
+		
 	@Override
 	public View getInfoWindow(Marker marker) {
 		return null;
@@ -138,8 +174,13 @@ public class MapaFragment extends SupportMapFragment implements
 
 	@Override
 	public void onInfoWindowClick(Marker marker) {
-		Toast.makeText(getActivity(), marker.getId(), Toast.LENGTH_LONG).show();
-		
-	}
+		Intent intent = new Intent(getActivity(), DetalleActivity.class);
 
+		int id = Utiles.locateStore(getActivity().getApplicationContext(), marker).getId();
+				
+		intent.putExtra("id", id);
+
+		startActivity(intent);
+
+	}
 }
