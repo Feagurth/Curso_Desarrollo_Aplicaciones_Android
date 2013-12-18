@@ -209,19 +209,12 @@ public class ListViewAdapter extends BaseAdapter {
 		if (((current.getUrl()).indexOf(urlHttp) != -1)
 				|| ((current.getUrl()).indexOf(urlHttps) != -1)) {
 			holder.img.setImageUrl(current.getUrl(), imageLoader);
-			Log.w("[function] CustomListenAdpaterCommunity.getView",
-					"url file: " + String.valueOf(position) + "/"
-							+ String.valueOf(dataArray.size()));
 		} else {
 			holder.img.setImageURI(Uri.parse(current.getUrl()));
 			holder.img.setMinimumHeight(PIC_HEIGHT);
 			holder.img.setMinimumWidth(PIC_WIDTH);
 			holder.img.setMaxHeight(PIC_HEIGHT);
 			holder.img.setMaxWidth(PIC_WIDTH);
-
-			Log.w("[function] CustomListenAdpaterCommunity.getView",
-					"local file: " + String.valueOf(position) + "/"
-							+ String.valueOf(dataArray.size()));
 		}
 
 		return convertView;

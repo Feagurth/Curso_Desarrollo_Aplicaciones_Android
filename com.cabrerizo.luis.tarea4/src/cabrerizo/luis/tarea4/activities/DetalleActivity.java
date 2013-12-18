@@ -70,15 +70,33 @@ public class DetalleActivity extends FragmentActivity {
 	}
 
 	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		
+		if(valor == 0)
+		{
+			menu.getItem(0).setIcon(R.drawable.ic_action_not_important);
+		}
+		else
+		{
+			menu.getItem(0).setIcon(R.drawable.ic_action_important);
+		}
+		
+		return super.onPrepareOptionsMenu(menu);
+	}
+
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.detalle, menu);
 		return true;
 	}
 
+	int valor = 0;
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		
 		switch (item.getItemId()) {
+		
 		case R.id.action_share:
 			Intent intent = new Intent();
 			intent.setAction(Intent.ACTION_SEND);
@@ -108,6 +126,17 @@ public class DetalleActivity extends FragmentActivity {
 			startActivity(Intent.createChooser(intent,
 					getString(R.string.action_share)));
 
+			return true;
+		case R.id.action_star:
+			if(valor == 0 )
+			{
+				valor = 1;
+			}
+			else
+			{
+				valor = 0;				
+			}
+			supportInvalidateOptionsMenu();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

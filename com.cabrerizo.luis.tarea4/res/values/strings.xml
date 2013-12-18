@@ -67,5 +67,9 @@
     
     <string name="Favoritos">Favoritos: </string>
     <string name="Comentarios">Comentarios</string>
+    <string name="Eliminar_Comentario">Eliminar Comentario</string>
+    <string name="Si">Si</string>
+    <string name="No">No</string>
+    <string name="Seguro_Borrar_Comentario">¿Desea borrar el comentario?</string>
     
 </resources>
