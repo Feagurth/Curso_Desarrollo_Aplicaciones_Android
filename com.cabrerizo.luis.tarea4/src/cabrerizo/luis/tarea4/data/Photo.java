@@ -11,6 +11,7 @@ public class Photo implements Serializable {
 	private String descripcion;
 	private ArrayList<Comment> listaComentarios;
 	private int numeroFavoritos;
+	private int esFavorito;
 
 	public String getUrl() {
 		return url;
@@ -50,5 +51,13 @@ public class Photo implements Serializable {
 
 	public void setNumeroFavoritos(int numeroFavoritos) {
 		this.numeroFavoritos = numeroFavoritos;
+	}
+
+	public int getEsFavorito() {
+		return esFavorito;
+	}
+
+	public void setEsFavorito(int esFavorito) {
+		this.esFavorito = esFavorito;
 	}
 }

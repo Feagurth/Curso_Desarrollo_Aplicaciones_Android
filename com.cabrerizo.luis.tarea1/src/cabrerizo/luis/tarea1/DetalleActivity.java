@@ -102,7 +102,6 @@ public class DetalleActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(),FotografiaActivity.class);
 				intent.putExtra("foto", valor);
 				startActivity(intent);
@@ -113,7 +112,7 @@ public class DetalleActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub				
+			
 				Intent intent = new Intent(Intent.ACTION_DIAL);
 				intent.setData(Uri.parse("tel:" + telefono.getText().toString().trim()));
 				startActivity(intent); 				

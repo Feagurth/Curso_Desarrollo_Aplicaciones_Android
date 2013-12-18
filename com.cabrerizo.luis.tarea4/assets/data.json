@@ -2,13 +2,14 @@
     {
         "type": "store",
         "id": 1,
-        "name": "Decimas",
+        "name": "Décimas",
         "address": "Calle Juan Carlos Onetti 15, Roquetas de Mar, Almería",
         "phone": "950 32 49 04",
         "hoursOfOperation": "Lunes a Sabado : 9:00 - 16:00",
         "url": "www.decimas.es",
         "email": "info@decimas.es",
         "genre": 1,
+        "isfavorite": 0, 
         "comments": [
             {
                 "comment": "Mi lugar favorito!",
@@ -33,7 +34,8 @@
         "photo": {
             "idfoto" : 1,
             "url": "http://www.tiendeo.com/galeria/negocio/738/decimas1.jpg",
-            "description": "Tienda de Deporte Decimas",
+            "description": "Tienda de Deporte Décimas",
+            "isfavorite": 1,
             "comments": [
                 {
                     "comment": "Me encanta!",
@@ -57,6 +59,7 @@
         "url": "www.spf.com/es",
         "email": "copo@eu.spf.com",
         "genre": 2,
+        "isfavorite": 0,
         "comments": [
             {
                 "comment": "Los pantalones de campana son lo más",
@@ -78,6 +81,7 @@
             "idfoto" : 2,
             "url": "http://www.copo.es/imagenes/empresas/zoomfotogaleria-125.jpg",
             "description": "Tienda en El Ejido",
+            "isfavorite": 0,
             "comments": [
                 {
                     "comment": "Que estilazo!!!",
@@ -97,10 +101,11 @@
         "name": "H & M",
         "address": "Prolongación Avenida Mediterráneo s/n, 04009 Almería",
         "phone": "901 12 00 84",
-        "hoursOfOperation": "Lunes a Sabado: 10:00 – 22:00",
+        "hoursOfOperation": "Lunes a Sabado: 10:00 - 22:00",
         "url": "www.hm.com/es/",
         "email": "info@hm.com",
         "genre": 2,
+        "isfavorite": 1,
         "comments": [
             {
                 "comment": "No tienen tallas grandes...",
@@ -119,9 +124,10 @@
             "type": "photo",
             "url": "http://www.bonaire.es/W/cms_sites/SITE_9241/images9241/tiendas/tienda_hm_img.jpg",
             "description": "Tienda en Almería",
+            "isfavorite": 0,
             "comments": [
                 {
-                    "comment": "Que foto mas chula..!",
+                    "comment": "Que foto más chula..!",
                     "fecha": "09/09/2009 09:09"
                 }
             ],
@@ -134,10 +140,11 @@
         "name": "Decathlon",
         "address": "Autovía A7, Salida km 429, 04738 Vicar, Almería, Almería",
         "phone": "950 18 72 87",
-        "hoursOfOperation": "Lunes a Sabado: 09:00 – 22:00",
+        "hoursOfOperation": "Lunes a Sabado: 09:00 - 22:00",
         "url": "www.decathlon.es",
         "email": "vicar@Decathlon.es",
         "genre": 1,
+        "isfavorite": 1,
         "comments": [
             {
                 "comment": "Estan faltos de personal...",
@@ -155,6 +162,7 @@
             "idfoto" : 4,
             "url": "http://cdn1.glgcdn.com/tim/w260/h/z1/cdscuento_com/shttp%253A%252F%252Fstatic.dscuento.com%252Fimages%252F14%252F285%252F3001%252F349209%252F5%252Fdecathlon-_1353923660392.jpg",
             "description": "Tienda Decathlon",
+            "isfavorite": 1,
             "comments": [
                 {
                     "comment": "El mejor surtido",
@@ -170,10 +178,11 @@
         "name": "Frutos Secos Isabel",
         "address": "Avda. Roquetas 54, 04740 Roquetas de Mar, Almería",
         "phone": "950 32 48 62",
-        "hoursOfOperation": "Lunes a Viernes\nMañanas: 10:00 a 14:00\nTardes: 16:30 a 20:30\nSabados\nMañanas 11:00 a 15:00",
+        "hoursOfOperation": "Lunes a Viernes\Mañanas: 10:00 - 14:00\nTardes: 16:30 - 20:30\nSabados\nMañanas 11:00 - 15:00",
         "url": "www.frutossecosisabel.com",
         "email": "info@frutossecosisabel.com",
         "genre": 3,
+        "isfavorite": 1,
         "comments": [
             {
                 "comment": "Los mejores caramelos del mundo...!",
@@ -199,6 +208,7 @@
             "idfoto" : 5,
             "url": "https://scontent-a-cdg.xx.fbcdn.net/hphotos-prn1/1010734_10201462952722517_443540204_n.jpg",
             "description": "Tienda en Roquetas de Mar",
+            "isfavorite": 1,
             "comments": [
                 {
                     "comment": "El mejor lugar del mundo...!",
@@ -220,12 +230,13 @@
         "type": "store",
         "id": 6,
         "name": "Game",
-        "address": "Carretera De Almerimar S/N. C.C. Y De Ocio Copo L-106-107 04700, El Ejido, Almeria",
+        "address": "Carretera De Almerimar S/N. C.C. Y De Ocio Copo L-106-107 04700, El Ejido, Almería",
         "phone": "950 48 45 85",
         "hoursOfOperation": "Lunes a Sabado : 10:00 - 22:00",
         "url": "www.game.es",
         "email": "elejido@game.es",
         "genre": 4,
+        "isfavorite": 1,
         "comments": [
             {
                 "comment": "La mejor tienda del mundo...!!",
@@ -247,9 +258,10 @@
             "idfoto" : 6,
             "url": "http://pixel2pixel.files.wordpress.com/2012/04/game-espac3b1a.jpg",
             "description": "Frontal Centro Game",
+            "isfavorite": 1,
             "comments": [
                 {
-                    "comment": "Siguen sin tener el ultimo CoD!!!",
+                    "comment": "Siguen sin tener el último CoD!!!",
                     "fecha": "02/08/2013 00:55"
                 }
             ],
@@ -262,10 +274,11 @@
         "name": "Pc Coste",
         "address": "Mallorca 93 04738 Vicar, Almeria",
         "phone": "950 55 48 95",
-        "hoursOfOperation": "Lunes a Viernes\nMañanas: 10:00 a 14:00\nTardes: 16:30 a 20:30\nSabados\nMañanas 10:00 a 14:00",
+        "hoursOfOperation": "Lunes a Viernes\nMañanas: 10:00 - 14:00\nTardes: 16:30 - 20:30\nSabados\nMañanas 10:00 - 14:00",
         "url": "www.pccoste.es",
         "email": "vicar@pccoste.com",
         "genre": 4,
+        "isfavorite": 1,
         "comments": [
             {
                 "comment": "Gran servicio tecnico...!",
@@ -283,6 +296,7 @@
              "idfoto" : 7,
             "url": "http://backoffice.tiendeo.com/galeria/negocio/401/pccoste.jpg",
             "description": "Pc Coste, tu tienda amiga",
+            "isfavorite": 0,
             "comments": [
                 {
                     "comment": "Los mejores",
@@ -298,10 +312,11 @@
         "name": "La tienda de María",
         "address": "Calle Alcazaba, 04710 Santa Maria del Aguila El Ejido, Almería",
         "phone": "699 87 53 46",
-        "hoursOfOperation": "Lunes a Viernes: 10:00 – 21:00\nSabados: 10:00 - 14:00",
+        "hoursOfOperation": "Lunes a Viernes: 10:00 - 21:00\nSabados: 10:00 - 14:00",
         "url": "www.latiendademaria.eu",
         "email": "growmaria@latiendademaria.eu",
         "genre": 4,
+        "isfavorite": 1,
         "comments": [
             {
                 "comment": "Increible lo que hay aquí...!",
@@ -319,6 +334,7 @@
              "idfoto" : 8,
             "url": "https://lh6.googleusercontent.com/-RMHERgHiC3w/UcnNUQEpbhI/AAAAAAAAAC4/OZBDUXTwYi4/w800-h563-no/2013-06-25",
             "description": "Especialistas en semillas",
+            "isfavorite": 1,
             "comments": [
                 {
                     "comment": "Que ofertas...!",

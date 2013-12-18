@@ -207,7 +207,6 @@ public class TiendasContentFragment extends Fragment implements TabListener,
 
 	@Override
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -221,8 +220,6 @@ public class TiendasContentFragment extends Fragment implements TabListener,
 
 	@Override
 	public void onDisconnected() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

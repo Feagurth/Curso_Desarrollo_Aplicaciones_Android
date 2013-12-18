@@ -118,8 +118,8 @@ public class Data {
 					String email = element.getString("email");
 					String tipoTienda = element.getString("genre");
 					String favorites = element.getString("favorites");
-					String genre = element.getString("genre");
-
+					String esFavorito = element.getString("isfavorite");
+					
 					Store store = new Store();
 
 					store.setId(Integer.parseInt(id));
@@ -131,7 +131,7 @@ public class Data {
 					store.setEmail(email);
 					store.setTipoTienda(Integer.parseInt(tipoTienda));
 					store.setNumeroFavoritos(Integer.parseInt(favorites));
-					store.setTipoTienda(Integer.parseInt(genre));
+					store.setEsFavorito(Integer.parseInt(esFavorito));
 
 					if (element.has("location")) {
 						JSONArray obj = element.getJSONArray("location");
@@ -154,6 +154,9 @@ public class Data {
 						String picDesc = fotoObj.getString("description");
 						String picFav = fotoObj.getString("favorites");
 						String picId = fotoObj.getString("idfoto");
+						String picEsFavorito = fotoObj.getString("isfavorite");
+						
+						
 
 						if (fotoObj.has("comments")) {
 							foto.setListaComentarios(Data.ParseComments(fotoObj
@@ -164,6 +167,7 @@ public class Data {
 						foto.setDescripcion(picDesc);
 						foto.setNumeroFavoritos(Integer.parseInt(picFav));
 						foto.setUrl(picUrl);
+						foto.setEsFavorito(Integer.parseInt(picEsFavorito));
 					}
 
 					store.setFoto(foto);
@@ -205,6 +209,8 @@ public class Data {
 						.getColumnIndex("favorites")));
 				store.setTipoTienda(cursor.getInt(cursor
 						.getColumnIndex("genre")));
+				store.setEsFavorito(cursor.getInt(cursor
+						.getColumnIndex("isfavorite")));
 
 				double[] location = new double[2];
 
@@ -258,6 +264,8 @@ public class Data {
 								.getColumnIndex("descripcion")));
 						photo.setNumeroFavoritos(cursorPhoto.getInt(cursorPhoto
 								.getColumnIndex("favorites")));
+						photo.setEsFavorito(cursorPhoto.getInt(cursorPhoto
+								.getColumnIndex("isfavorite")));
 					}
 
 					Cursor cursorCommentsPhoto = db.readCommentsPhoto(String

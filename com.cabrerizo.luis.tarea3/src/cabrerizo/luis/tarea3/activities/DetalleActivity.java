@@ -57,9 +57,7 @@ public class DetalleActivity extends FragmentActivity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(),FotografiaActivity.class);
-				
 				intent.putExtra("photo", store.getFoto());
 				
 				startActivity(intent);
@@ -70,7 +68,7 @@ public class DetalleActivity extends FragmentActivity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub				
+			
 				Intent intent = new Intent(Intent.ACTION_DIAL);
 				intent.setData(Uri.parse("tel:" + telefono.getText().toString().trim()));
 				startActivity(intent); 				

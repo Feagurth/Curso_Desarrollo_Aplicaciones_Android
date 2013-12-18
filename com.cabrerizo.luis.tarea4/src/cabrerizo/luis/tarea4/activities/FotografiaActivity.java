@@ -23,6 +23,7 @@ public class FotografiaActivity extends FragmentActivity {
 
 	NetworkImageView imagen;
 	TextView texto;
+	int esFavorito = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class FotografiaActivity extends FragmentActivity {
 		favoritos.setText(getString(R.string.Favoritos)
 				+ String.valueOf(foto.getNumeroFavoritos()));
 
+		esFavorito = foto.getEsFavorito();
 	}
 
 	@Override
@@ -55,20 +57,48 @@ public class FotografiaActivity extends FragmentActivity {
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 
-		Bitmap bitmap = ((BitmapDrawable) imagen.getDrawable()).getBitmap();
+		switch (item.getItemId()) {
 
-		File fichero = Utiles.saveFile(bitmap, FILENAME);
+		case R.id.action_share: {
 
-		Intent intent = new Intent();
-		intent.setAction(Intent.ACTION_SEND);
-		intent.putExtra("sms_body", (String) getText(R.string.msg_share_pic)
-				+ texto.getText());
-		intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(fichero));
-		intent.setType("image/*");
-		startActivity(Intent.createChooser(intent,
-				getText(R.string.action_share)));
+			Bitmap bitmap = ((BitmapDrawable) imagen.getDrawable()).getBitmap();
 
-		return true;
+			File fichero = Utiles.saveFile(bitmap, FILENAME);
+
+			Intent intent = new Intent();
+			intent.setAction(Intent.ACTION_SEND);
+			intent.putExtra("sms_body",
+					(String) getText(R.string.msg_share_pic) + texto.getText());
+			intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(fichero));
+			intent.setType("image/*");
+			startActivity(Intent.createChooser(intent,
+					getText(R.string.action_share)));
+
+			return true;
+		}
+		case R.id.action_star:
+			if (esFavorito == 0) {
+				esFavorito = 1;
+			} else {
+				esFavorito = 0;
+			}
+			supportInvalidateOptionsMenu();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+
+		if (esFavorito == 0) {
+			menu.getItem(0).setIcon(R.drawable.ic_action_not_important);
+		} else {
+			menu.getItem(0).setIcon(R.drawable.ic_action_important);
+		}
+
+		return super.onPrepareOptionsMenu(menu);
 	}
 
 }

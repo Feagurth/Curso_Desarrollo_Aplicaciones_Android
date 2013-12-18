@@ -18,6 +18,7 @@ import com.cabrerizo.luis.tarea4.R;
 
 public class DetalleActivity extends FragmentActivity {
 	int id = -1;
+	int esFavorito = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class DetalleActivity extends FragmentActivity {
 				((App) getApplicationContext()).getImageLoader());
 		favoritos.setText(getString(R.string.Favoritos)
 				+ String.valueOf(store.getNumeroFavoritos()));
+		
+		esFavorito = store.getEsFavorito();
 
 		Linkify.addLinks(direccion, Linkify.MAP_ADDRESSES);
 		Linkify.addLinks(telefono, Linkify.PHONE_NUMBERS);
@@ -73,7 +76,7 @@ public class DetalleActivity extends FragmentActivity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
-		if (valor == 0) {
+		if (esFavorito == 0) {
 			menu.getItem(0).setIcon(R.drawable.ic_action_not_important);
 		} else {
 			menu.getItem(0).setIcon(R.drawable.ic_action_important);
@@ -87,8 +90,6 @@ public class DetalleActivity extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.detalle, menu);
 		return true;
 	}
-
-	int valor = 0;
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -126,10 +127,10 @@ public class DetalleActivity extends FragmentActivity {
 
 			return true;
 		case R.id.action_star:
-			if (valor == 0) {
-				valor = 1;
+			if (esFavorito == 0) {
+				esFavorito = 1;
 			} else {
-				valor = 0;
+				esFavorito = 0;
 			}
 			supportInvalidateOptionsMenu();
 			return true;
@@ -137,5 +138,4 @@ public class DetalleActivity extends FragmentActivity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
 }

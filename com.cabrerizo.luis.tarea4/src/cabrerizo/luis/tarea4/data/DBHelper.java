@@ -12,13 +12,14 @@ public class DBHelper extends SQLiteOpenHelper {
 			+ "phone TEXT NOT NULL, " + "hoursOfOperation TEXT NOT NULL, "
 			+ "url TEXT NOT NULL, " + "email TEXT NOT NULL, "
 			+ "favorites INTEGER NOT NULL, " + "genre INTEGER NOT NULL, "
-			+ "location TEXT NOT NULL)";
+			+ "location TEXT NOT NULL, isfavorite INTEGER NOT NULL)";
 
 	public String CREATE_TABLE_PHOTO = "CREATE TABLE Photo("
 			+ "IdPhoto INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
 			+ "url TEXT NOT NULL, "
 			+ "descripcion TEXT NOT NULL, "
 			+ "favorites int NOT NULL, "
+			+ "isfavorite INTEGER NOT NULL,"
 			+ "IdStore INTEGER NOT NULL, "
 			+ "FOREIGN KEY (IdStore) REFERENCES Store(IdStore) ON DELETE CASCADE ON UPDATE CASCADE);";
 

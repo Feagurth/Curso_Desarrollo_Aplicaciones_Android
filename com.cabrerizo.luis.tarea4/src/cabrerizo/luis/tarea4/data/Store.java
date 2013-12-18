@@ -16,6 +16,7 @@ public class Store implements Serializable {
 	private String email;
 	private ArrayList<Comment> listaComentarios;
 	private int numeroFavoritos;
+	private int esFavorito;
 	private double[] ubicacionGeografica;
 	private Photo foto;
 
@@ -97,6 +98,14 @@ public class Store implements Serializable {
 
 	public void setNumeroFavoritos(int numeroFavoritos) {
 		this.numeroFavoritos = numeroFavoritos;
+	}
+
+	public int getEsFavorito() {
+		return esFavorito;
+	}
+
+	public void setEsFavorito(int esFavorito) {
+		this.esFavorito = esFavorito;
 	}
 
 	public double[] getUbicacionGeografica() {

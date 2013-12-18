@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class DBAdapter {
 	private DBHelper dbHelper;
 	private static final String DATABASE_NAME = "kmall.db";
-	private static final int DATABASE_VERSION = 5;
+	private static final int DATABASE_VERSION = 8;
 
 	public DBAdapter(Context context) {
 		dbHelper = new DBHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -121,6 +121,7 @@ public class DBAdapter {
 				"location",
 				store.getUbicacionGeografica()[0] + "|"
 						+ store.getUbicacionGeografica()[1]);
+		values.put("isfavorite", store.getEsFavorito());
 
 		return values;
 
@@ -133,6 +134,7 @@ public class DBAdapter {
 		values.put("descripcion", foto.getDescripcion());
 		values.put("favorites", foto.getNumeroFavoritos());
 		values.put("IdStore", IdStore);
+		values.put("isfavorite", foto.getEsFavorito());
 
 		return values;
 	}

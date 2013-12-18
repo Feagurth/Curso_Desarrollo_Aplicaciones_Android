@@ -32,7 +32,6 @@ public class ComentariosFragment extends Fragment{
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 	
 		OnClickListener listener = new OnClickListener() {

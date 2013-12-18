@@ -43,8 +43,6 @@ public class TiendasContentFragment extends Fragment
 
 		@Override
 		public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
-			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
@@ -71,7 +69,7 @@ public class TiendasContentFragment extends Fragment
 
 		@Override
 		public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
-			// TODO Auto-generated method stub			
+		
 		}
 
 		@Override
