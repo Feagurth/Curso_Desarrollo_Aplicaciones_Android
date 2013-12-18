@@ -69,11 +69,11 @@ public class ListViewAdapter extends BaseAdapter {
 			ArrayList<InstagramPicture> dataArray, int idBarraProgreso,
 			int idListView, PullToRefreshLayout valorPull, Context context) {
 
-		requestQueue = ((App)context).getRequestQueue();
+		requestQueue = ((App) context).getRequestQueue();
 
 		this.dataArray = dataArray;
 		this.inflater = LayoutInflater.from(activity.getApplicationContext());
-		this.imageLoader = ((App)context).getImageLoader();
+		this.imageLoader = ((App) context).getImageLoader();
 
 		barra = (ProgressBar) activity.findViewById(idBarraProgreso);
 		lista = (ListView) activity.findViewById(idListView);

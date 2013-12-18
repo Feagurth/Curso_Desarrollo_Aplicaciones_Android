@@ -30,8 +30,8 @@ public class ListadoFragment extends Fragment implements OnItemClickListener {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		storeArray = ((App)getActivity().getApplicationContext()).getStoreArray();
-		
+		storeArray = ((App) getActivity().getApplicationContext())
+				.getStoreArray();
 
 		String[] listaTiendas = new String[storeArray.size()];
 
@@ -40,25 +40,27 @@ public class ListadoFragment extends Fragment implements OnItemClickListener {
 		}
 
 		lista.setAdapter(new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_list_item_2, android.R.id.text1, listaTiendas)
-		{
+				android.R.layout.simple_list_item_2, android.R.id.text1,
+				listaTiendas) {
 			@Override
-			 public View getView(int position, View convertView, ViewGroup parent) {
-			      View view = super.getView(position, convertView, parent);
-			      TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-			      TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-			      text1.setText(storeArray.get(position).getNombre());
-			      text2.setText(Utiles.parseTipoTienda(getContext(), storeArray.get(position).getTipoTienda()));
+			public View getView(int position, View convertView, ViewGroup parent) {
+				View view = super.getView(position, convertView, parent);
+				TextView text1 = (TextView) view
+						.findViewById(android.R.id.text1);
+				TextView text2 = (TextView) view
+						.findViewById(android.R.id.text2);
+				text1.setText(storeArray.get(position).getNombre());
+				text2.setText(Utiles.parseTipoTienda(getContext(), storeArray
+						.get(position).getTipoTienda()));
 
-			      return view;
-			    }
+				return view;
+			}
 		});
 
 		lista.setOnItemClickListener(this);
 		registerForContextMenu(lista);
 
 	}
-
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,8 +82,9 @@ public class ListadoFragment extends Fragment implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		Intent intent = new Intent(getActivity(), DetalleActivity.class);
 
-		int id = ((App)getActivity().getApplicationContext()).getStoreArray().get(arg2).getId();
-				
+		int id = ((App) getActivity().getApplicationContext()).getStoreArray()
+				.get(arg2).getId();
+
 		intent.putExtra("id", id);
 
 		startActivity(intent);

@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.database.Cursor;
 
 public class Data {
 
@@ -105,7 +107,7 @@ public class Data {
 				JSONObject element = json.getJSONObject(i);
 
 				if (element.getString("type").equals("store")) {
-					
+
 					String id = element.getString("id");
 					String name = element.getString("name");
 					String address = element.getString("address");
@@ -116,6 +118,7 @@ public class Data {
 					String email = element.getString("email");
 					String tipoTienda = element.getString("genre");
 					String favorites = element.getString("favorites");
+					String genre = element.getString("genre");
 
 					Store store = new Store();
 
@@ -128,6 +131,7 @@ public class Data {
 					store.setEmail(email);
 					store.setTipoTienda(Integer.parseInt(tipoTienda));
 					store.setNumeroFavoritos(Integer.parseInt(favorites));
+					store.setTipoTienda(Integer.parseInt(genre));
 
 					if (element.has("location")) {
 						JSONArray obj = element.getJSONArray("location");
@@ -137,7 +141,7 @@ public class Data {
 					}
 
 					if (element.has("comments")) {
-						store.setListadoComentarios(Data.ParseComments(element
+						store.setListaComentarios(Data.ParseComments(element
 								.getJSONArray("comments")));
 					}
 
@@ -149,12 +153,14 @@ public class Data {
 						String picUrl = fotoObj.getString("url");
 						String picDesc = fotoObj.getString("description");
 						String picFav = fotoObj.getString("favorites");
+						String picId = fotoObj.getString("idfoto");
 
 						if (fotoObj.has("comments")) {
 							foto.setListaComentarios(Data.ParseComments(fotoObj
 									.getJSONArray("comments")));
 						}
 
+						foto.setIdfoto(Integer.parseInt(picId));
 						foto.setDescripcion(picDesc);
 						foto.setNumeroFavoritos(Integer.parseInt(picFav));
 						foto.setUrl(picUrl);
@@ -171,4 +177,122 @@ public class Data {
 		}
 		return storeArray;
 	}
+
+	public static ArrayList<Store> ParseFromDatabase(DBAdapter db) {
+		ArrayList<Store> resultado = new ArrayList<Store>();
+
+		Cursor cursor = db.readStore(null);
+		Store store = null;
+		Photo photo = null;
+		Comment comment;
+
+		if (cursor.getCount() > 0) {
+
+			while (cursor.moveToNext()) {
+				store = new Store();
+
+				store.setId(cursor.getInt(cursor.getColumnIndex("IdStore")));
+				store.setNombre(cursor.getString(cursor.getColumnIndex("name")));
+				store.setDireccion(cursor.getString(cursor
+						.getColumnIndex("address")));
+				store.setTelefono(cursor.getString(cursor
+						.getColumnIndex("phone")));
+				store.setHorarios(cursor.getString(cursor
+						.getColumnIndex("hoursOfOperation")));
+				store.setWebsite(cursor.getString(cursor.getColumnIndex("url")));
+				store.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+				store.setNumeroFavoritos(cursor.getInt(cursor
+						.getColumnIndex("favorites")));
+				store.setTipoTienda(cursor.getInt(cursor
+						.getColumnIndex("genre")));
+
+				double[] location = new double[2];
+
+				StringTokenizer tokens = new StringTokenizer(
+						cursor.getString(cursor.getColumnIndex("location")),
+						"|");
+
+				location[0] = Double.parseDouble(tokens.nextToken());
+				location[1] = Double.parseDouble(tokens.nextToken());
+
+				store.setUbicacionGeografica(location);
+
+				Cursor cursorCommentsStore = db.readCommentsStore(String
+						.valueOf(store.getId()));
+
+				if (cursorCommentsStore.getCount() > 0) {
+					ArrayList<Comment> listaComentarios = new ArrayList<Comment>();
+
+					while (cursorCommentsStore.moveToNext()) {
+						comment = new Comment();
+
+						comment.setIdComentario(cursorCommentsStore
+								.getInt(cursorCommentsStore
+										.getColumnIndex("IdCommentStore")));
+
+						comment.setComentario(cursorCommentsStore
+								.getString(cursorCommentsStore
+										.getColumnIndex("comment")));
+						comment.setFecha(cursorCommentsStore
+								.getString(cursorCommentsStore
+										.getColumnIndex("datecomment")));
+
+						listaComentarios.add(comment);
+					}
+
+					store.setListaComentarios(listaComentarios);
+				}
+
+				Cursor cursorPhoto = db
+						.readPhoto(String.valueOf(store.getId()));
+
+				if (cursorPhoto.getCount() > 0) {
+					while (cursorPhoto.moveToNext()) {
+						photo = new Photo();
+
+						photo.setIdfoto(cursorPhoto.getInt(cursorPhoto
+								.getColumnIndex("IdPhoto")));
+						photo.setUrl(cursorPhoto.getString(cursorPhoto
+								.getColumnIndex("url")));
+						photo.setDescripcion(cursorPhoto.getString(cursorPhoto
+								.getColumnIndex("descripcion")));
+						photo.setNumeroFavoritos(cursorPhoto.getInt(cursorPhoto
+								.getColumnIndex("favorites")));
+					}
+
+					Cursor cursorCommentsPhoto = db.readCommentsPhoto(String
+							.valueOf(photo.getIdfoto()));
+
+					if (cursorCommentsPhoto.getCount() > 0) {
+						ArrayList<Comment> listaComentarios = new ArrayList<Comment>();
+
+						while (cursorCommentsPhoto.moveToNext()) {
+							comment = new Comment();
+
+							comment.setIdComentario(cursorCommentsPhoto
+									.getInt(cursorCommentsPhoto
+											.getColumnIndex("IdCommentPhoto")));
+
+							comment.setComentario(cursorCommentsPhoto
+									.getString(cursorCommentsPhoto
+											.getColumnIndex("comment")));
+							comment.setFecha(cursorCommentsPhoto
+									.getString(cursorCommentsPhoto
+											.getColumnIndex("datecomment")));
+
+							listaComentarios.add(comment);
+						}
+
+						photo.setListaComentarios(listaComentarios);
+					}
+
+					store.setFoto(photo);
+				}
+				resultado.add(store);
+			}
+		}
+
+		return resultado;
+	}
+
 }

@@ -30,16 +30,19 @@ public class FotografiaActivity extends FragmentActivity {
 		setContentView(R.layout.activity_fotografia);
 
 		int id = getIntent().getExtras().getInt("id");
-		
-		final Photo foto = Utiles.locateStore(getApplicationContext(), id).getFoto();
+
+		final Photo foto = Utiles.locateStore(getApplicationContext(), id)
+				.getFoto();
 
 		texto = (TextView) findViewById(R.id.textoDescriptivo);
 		imagen = (NetworkImageView) findViewById(R.id.imagen);
-		TextView favoritos = (TextView)findViewById(R.id.textoFavoritos);
-		
-		imagen.setImageUrl(foto.getUrl(), ((App)getApplicationContext()).getImageLoader());
+		TextView favoritos = (TextView) findViewById(R.id.textoFavoritos);
+
+		imagen.setImageUrl(foto.getUrl(),
+				((App) getApplicationContext()).getImageLoader());
 		texto.setText(foto.getDescripcion());
-		favoritos.setText(getString(R.string.Favoritos) + String.valueOf(foto.getNumeroFavoritos()));
+		favoritos.setText(getString(R.string.Favoritos)
+				+ String.valueOf(foto.getNumeroFavoritos()));
 
 	}
 

@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		drawerList = (ListView) findViewById(R.id.leftDrawer);
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 		drawerOptions = getResources().getStringArray(R.array.drawer_options);

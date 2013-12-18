@@ -14,7 +14,7 @@ public class Store implements Serializable {
 	private String website;
 	private int tipoTienda;
 	private String email;
-	private ArrayList<Comment> listadoComentarios;
+	private ArrayList<Comment> listaComentarios;
 	private int numeroFavoritos;
 	private double[] ubicacionGeografica;
 	private Photo foto;
@@ -83,12 +83,12 @@ public class Store implements Serializable {
 		this.tipoTienda = tipoTienda;
 	}
 
-	public ArrayList<Comment> getListadoComentarios() {
-		return listadoComentarios;
+	public ArrayList<Comment> getListaComentarios() {
+		return listaComentarios;
 	}
 
-	public void setListadoComentarios(ArrayList<Comment> listadoComentarios) {
-		this.listadoComentarios = listadoComentarios;
+	public void setListaComentarios(ArrayList<Comment> listaComentarios) {
+		this.listaComentarios = listaComentarios;
 	}
 
 	public int getNumeroFavoritos() {
@@ -114,4 +114,5 @@ public class Store implements Serializable {
 	public void setFoto(Photo foto) {
 		this.foto = foto;
 	}
+
 }

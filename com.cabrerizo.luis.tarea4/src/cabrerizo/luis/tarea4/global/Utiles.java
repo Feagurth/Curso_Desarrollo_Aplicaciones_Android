@@ -129,8 +129,7 @@ public class Utiles {
 		}
 	}
 
-	public static int parseColorTipoTienda(int valorTipoTienda)
-	{
+	public static int parseColorTipoTienda(int valorTipoTienda) {
 		switch (valorTipoTienda) {
 		case 1:
 			return Color.RED;
@@ -146,9 +145,8 @@ public class Utiles {
 			return Color.WHITE;
 		}
 	}
-	
-	public static float parseIconoMapaTipoTienda(int valorTipoTienda)
-	{
+
+	public static float parseIconoMapaTipoTienda(int valorTipoTienda) {
 		switch (valorTipoTienda) {
 		case 1:
 			return BitmapDescriptorFactory.HUE_RED;
@@ -162,33 +160,29 @@ public class Utiles {
 			return BitmapDescriptorFactory.HUE_MAGENTA;
 		default:
 			return BitmapDescriptorFactory.HUE_AZURE;
-		}		
-		
+		}
+
 	}
 
-	public static Store locateStore(Context context, int valorID)
-	{
-		for (Store tienda : ((App)context).getStoreArray()) {
-			if(tienda.getId() == valorID)
-			{
+	public static Store locateStore(Context context, int valorID) {
+		for (Store tienda : ((App) context).getStoreArray()) {
+			if (tienda.getId() == valorID) {
 				return tienda;
-				
+
 			}
 		}
-		return null;		
+		return null;
 	}
-	
-	public static Store locateStore(Context context, Marker marker)
-	{
-		int id = Integer.parseInt(((App)context).getMarkers().get(marker));
-				
-		for (Store tienda : ((App)context).getStoreArray()) {
-			if(tienda.getId() == id)
-			{
+
+	public static Store locateStore(Context context, Marker marker) {
+		int id = Integer.parseInt(((App) context).getMarkers().get(marker));
+
+		for (Store tienda : ((App) context).getStoreArray()) {
+			if (tienda.getId() == id) {
 				return tienda;
-				
+
 			}
 		}
-		return null;		
-	}		
+		return null;
+	}
 }

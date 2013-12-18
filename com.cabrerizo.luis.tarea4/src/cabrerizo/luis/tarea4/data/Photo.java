@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Photo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private int idfoto;
 	private String url;
 	private String descripcion;
 	private ArrayList<Comment> listaComentarios;
@@ -13,6 +14,14 @@ public class Photo implements Serializable {
 
 	public String getUrl() {
 		return url;
+	}
+
+	public int getIdfoto() {
+		return idfoto;
+	}
+
+	public void setIdfoto(int idfoto) {
+		this.idfoto = idfoto;
 	}
 
 	public void setUrl(String url) {

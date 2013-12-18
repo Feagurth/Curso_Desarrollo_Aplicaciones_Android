@@ -25,7 +25,7 @@ public class DetalleActivity extends FragmentActivity {
 		setContentView(R.layout.activity_detalle);
 
 		id = getIntent().getExtras().getInt("id");
-			
+
 		final Store store = Utiles.locateStore(getApplicationContext(), id);
 
 		final TextView nombre = (TextView) findViewById(R.id.Nombre);
@@ -35,7 +35,7 @@ public class DetalleActivity extends FragmentActivity {
 		final TextView website = (TextView) findViewById(R.id.Website);
 		final TextView eMail = (TextView) findViewById(R.id.EMail);
 		final NetworkImageView fotoDetalle = (NetworkImageView) findViewById(R.id.fotoDetalle);
-		final TextView favoritos = (TextView)findViewById(R.id.textoFavoritos);
+		final TextView favoritos = (TextView) findViewById(R.id.textoFavoritos);
 
 		nombre.setText(store.getNombre());
 		direccion.setText(store.getDireccion());
@@ -43,14 +43,15 @@ public class DetalleActivity extends FragmentActivity {
 		horarios.setText(store.getHorarios());
 		website.setText(store.getWebsite());
 		eMail.setText(store.getEmail());
-		fotoDetalle.setImageUrl(store.getFoto().getUrl(), ((App)getApplicationContext()).getImageLoader());
-		favoritos.setText(getString(R.string.Favoritos) + String.valueOf(store.getNumeroFavoritos()));
+		fotoDetalle.setImageUrl(store.getFoto().getUrl(),
+				((App) getApplicationContext()).getImageLoader());
+		favoritos.setText(getString(R.string.Favoritos)
+				+ String.valueOf(store.getNumeroFavoritos()));
 
 		Linkify.addLinks(direccion, Linkify.MAP_ADDRESSES);
 		Linkify.addLinks(telefono, Linkify.PHONE_NUMBERS);
 		Linkify.addLinks(website, Linkify.WEB_URLS);
 		Linkify.addLinks(eMail, Linkify.EMAIL_ADDRESSES);
-
 
 		OnClickListener botonImagen = new OnClickListener() {
 
@@ -71,16 +72,13 @@ public class DetalleActivity extends FragmentActivity {
 
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		
-		if(valor == 0)
-		{
+
+		if (valor == 0) {
 			menu.getItem(0).setIcon(R.drawable.ic_action_not_important);
-		}
-		else
-		{
+		} else {
 			menu.getItem(0).setIcon(R.drawable.ic_action_important);
 		}
-		
+
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -91,12 +89,12 @@ public class DetalleActivity extends FragmentActivity {
 	}
 
 	int valor = 0;
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		
+
 		switch (item.getItemId()) {
-		
+
 		case R.id.action_share:
 			Intent intent = new Intent();
 			intent.setAction(Intent.ACTION_SEND);
@@ -128,13 +126,10 @@ public class DetalleActivity extends FragmentActivity {
 
 			return true;
 		case R.id.action_star:
-			if(valor == 0 )
-			{
+			if (valor == 0) {
 				valor = 1;
-			}
-			else
-			{
-				valor = 0;				
+			} else {
+				valor = 0;
 			}
 			supportInvalidateOptionsMenu();
 			return true;

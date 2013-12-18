@@ -31,6 +31,7 @@
             }
         ],
         "photo": {
+            "idfoto" : 1,
             "url": "http://www.tiendeo.com/galeria/negocio/738/decimas1.jpg",
             "description": "Tienda de Deporte Decimas",
             "comments": [
@@ -74,6 +75,7 @@
             }
         ],
         "photo": {
+            "idfoto" : 2,
             "url": "http://www.copo.es/imagenes/empresas/zoomfotogaleria-125.jpg",
             "description": "Tienda en El Ejido",
             "comments": [
@@ -113,6 +115,7 @@
             }
         ],
         "photo": {
+            "idfoto" : 3,
             "type": "photo",
             "url": "http://www.bonaire.es/W/cms_sites/SITE_9241/images9241/tiendas/tienda_hm_img.jpg",
             "description": "Tienda en Almería",
@@ -149,6 +152,7 @@
             }
         ],
         "photo": {
+            "idfoto" : 4,
             "url": "http://cdn1.glgcdn.com/tim/w260/h/z1/cdscuento_com/shttp%253A%252F%252Fstatic.dscuento.com%252Fimages%252F14%252F285%252F3001%252F349209%252F5%252Fdecathlon-_1353923660392.jpg",
             "description": "Tienda Decathlon",
             "comments": [
@@ -192,6 +196,7 @@
             }
         ],
         "photo": {
+            "idfoto" : 5,
             "url": "https://scontent-a-cdg.xx.fbcdn.net/hphotos-prn1/1010734_10201462952722517_443540204_n.jpg",
             "description": "Tienda en Roquetas de Mar",
             "comments": [
@@ -239,6 +244,7 @@
             }
         ],
         "photo": {
+            "idfoto" : 6,
             "url": "http://pixel2pixel.files.wordpress.com/2012/04/game-espac3b1a.jpg",
             "description": "Frontal Centro Game",
             "comments": [
@@ -274,7 +280,7 @@
             }
         ],
         "photo": {
-            "type": "photo",
+             "idfoto" : 7,
             "url": "http://backoffice.tiendeo.com/galeria/negocio/401/pccoste.jpg",
             "description": "Pc Coste, tu tienda amiga",
             "comments": [
@@ -295,7 +301,7 @@
         "hoursOfOperation": "Lunes a Viernes: 10:00 – 21:00\nSabados: 10:00 - 14:00",
         "url": "www.latiendademaria.eu",
         "email": "growmaria@latiendademaria.eu",
-        "genre": 5,
+        "genre": 4,
         "comments": [
             {
                 "comment": "Increible lo que hay aquí...!",
@@ -310,7 +316,7 @@
             }
         ],
         "photo": {
-            "type": "photo",
+             "idfoto" : 8,
             "url": "https://lh6.googleusercontent.com/-RMHERgHiC3w/UcnNUQEpbhI/AAAAAAAAAC4/OZBDUXTwYi4/w800-h563-no/2013-06-25",
             "description": "Especialistas en semillas",
             "comments": [

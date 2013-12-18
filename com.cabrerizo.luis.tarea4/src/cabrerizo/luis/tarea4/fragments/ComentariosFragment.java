@@ -124,7 +124,7 @@ public class ComentariosFragment extends Fragment {
 				getActivity().getApplicationContext(), id);
 
 		if (getActivity().getClass() == DetalleActivity.class) {
-			commentarios = tienda.getListadoComentarios();
+			commentarios = tienda.getListaComentarios();
 		} else if (getActivity().getClass() == FotografiaActivity.class) {
 			commentarios = tienda.getFoto().getListaComentarios();
 		}

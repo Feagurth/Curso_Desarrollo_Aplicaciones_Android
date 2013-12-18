@@ -5,8 +5,17 @@ import java.io.Serializable;
 public class Comment implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private int IdComentario;
 	private String comentario;
 	private String fecha;
+
+	public int getIdComentario() {
+		return IdComentario;
+	}
+
+	public void setIdComentario(int idComentario) {
+		IdComentario = idComentario;
+	}
 
 	public String getComentario() {
 		return comentario;

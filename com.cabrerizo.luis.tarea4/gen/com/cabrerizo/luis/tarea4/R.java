@@ -1302,7 +1302,6 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f05002d;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int borrar_comentario=0x7f050078;
         public static final int boton_comentarios=0x7f05005f;
         public static final int btnCamara=0x7f050067;
         public static final int checkbox=0x7f050035;
@@ -1350,10 +1349,10 @@ containing a value of this type.
         public static final int listaImagenes=0x7f050066;
         public static final int listaTiendas=0x7f05006a;
         public static final int lista_comentarios=0x7f050061;
-        public static final int mapa_hibrido=0x7f05007b;
-        public static final int mapa_normal=0x7f050079;
-        public static final int mapa_satelite=0x7f05007a;
-        public static final int mapa_terreno=0x7f05007c;
+        public static final int mapa_hibrido=0x7f05007a;
+        public static final int mapa_normal=0x7f050078;
+        public static final int mapa_satelite=0x7f050079;
+        public static final int mapa_terreno=0x7f05007b;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
@@ -1472,9 +1471,8 @@ containing a value of this type.
         public static final int detalle=0x7f0d0000;
         public static final int fotocomunidad=0x7f0d0001;
         public static final int fotografia=0x7f0d0002;
-        public static final int listacomentarios=0x7f0d0003;
-        public static final int main=0x7f0d0004;
-        public static final int mapa=0x7f0d0005;
+        public static final int main=0x7f0d0003;
+        public static final int mapa=0x7f0d0004;
     }
     public static final class string {
         public static final int Cambiando_A_Mapa_Hibrido=0x7f0a004d;

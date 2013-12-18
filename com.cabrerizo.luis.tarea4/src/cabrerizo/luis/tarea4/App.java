@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.app.Application;
+import cabrerizo.luis.tarea4.data.Comment;
+import cabrerizo.luis.tarea4.data.DBAdapter;
 import cabrerizo.luis.tarea4.data.Data;
 import cabrerizo.luis.tarea4.data.Store;
 import cabrerizo.luis.tarea4.global.BitmapLRUCache;
@@ -19,10 +21,13 @@ public class App extends Application {
 	private ArrayList<Store> storeArray;
 	private HashMap<Marker, String> markers;
 	private ImageLoader imageLoader;
+	private DBAdapter db;
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
+
+		db = new DBAdapter(this);
 
 		storeArray = new ArrayList<Store>();
 		markers = new HashMap<Marker, String>();
@@ -30,8 +35,31 @@ public class App extends Application {
 		requestQueue = Volley.newRequestQueue(this);
 		requestQueue.start();
 
-		storeArray = Data.ParseStore("data.json", this);
-		
+		int IdStore;
+		int IdPhoto;
+
+		if (!db.hasValues("STORE")) {
+			storeArray = Data.ParseStore("data.json", this);
+
+			for (Store tienda : storeArray) {
+
+				IdStore = db.insertStore(tienda);
+
+				IdPhoto = db.insertPhoto(tienda.getFoto(), IdStore);
+
+				for (Comment comentario : tienda.getListaComentarios()) {
+					db.insertCommentStore(comentario, IdStore);
+				}
+
+				for (Comment comentario : tienda.getFoto()
+						.getListaComentarios()) {
+					db.insertCommentPhoto(comentario, IdPhoto);
+				}
+			}
+		} else {
+			storeArray = Data.ParseFromDatabase(db);
+		}
+
 		imageLoader = new ImageLoader(requestQueue, new BitmapLRUCache());
 
 	}
@@ -68,5 +96,12 @@ public class App extends Application {
 		this.imageLoader = imageLoader;
 	}
 
+	public DBAdapter getDb() {
+		return db;
+	}
+
+	public void setDb(DBAdapter db) {
+		this.db = db;
+	}
 
 }

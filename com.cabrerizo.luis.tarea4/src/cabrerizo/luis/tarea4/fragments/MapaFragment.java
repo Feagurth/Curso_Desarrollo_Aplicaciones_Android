@@ -33,7 +33,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapaFragment extends SupportMapFragment implements
 		InfoWindowAdapter, OnInfoWindowClickListener {
-	
+
 	private static LatLng PUEBLA_DE_VICAR = new LatLng(36.80067, -2.64610);
 
 	private GoogleMap map;
@@ -92,13 +92,14 @@ public class MapaFragment extends SupportMapFragment implements
 					map.moveCamera(CameraUpdateFactory.newLatLngZoom(
 							lastPosition, 10));
 				}
-				map.setMyLocationEnabled(true);
 				map.getUiSettings().setZoomControlsEnabled(false);
 				map.getUiSettings().setMyLocationButtonEnabled(true);
 				map.setInfoWindowAdapter(this);
 				map.setOnInfoWindowClickListener(this);
-				map.moveCamera(CameraUpdateFactory.newLatLngZoom(PUEBLA_DE_VICAR, 10));
+				map.moveCamera(CameraUpdateFactory.newLatLngZoom(
+						PUEBLA_DE_VICAR, 10));
 				populateMarkers();
+				map.setMyLocationEnabled(true);
 			}
 		}
 
@@ -132,7 +133,6 @@ public class MapaFragment extends SupportMapFragment implements
 		}
 	}
 
-
 	@Override
 	public View getInfoContents(Marker marker) {
 		View window = getActivity().getLayoutInflater().inflate(
@@ -144,10 +144,9 @@ public class MapaFragment extends SupportMapFragment implements
 		ImageView imagen = (ImageView) window
 				.findViewById(R.id.infoWindowImagen);
 
-
 		UrlToBitmapTask tarea = new UrlToBitmapTask();
-		AsyncTask<String, Void, Bitmap> fotiqui = tarea.execute(
-				Utiles.locateStore(getActivity().getApplicationContext(), marker)
+		AsyncTask<String, Void, Bitmap> fotiqui = tarea.execute(Utiles
+				.locateStore(getActivity().getApplicationContext(), marker)
 				.getFoto().getUrl());
 
 		Bitmap tmp = null;
@@ -167,9 +166,7 @@ public class MapaFragment extends SupportMapFragment implements
 
 		return window;
 	}
-	
 
-		
 	@Override
 	public View getInfoWindow(Marker marker) {
 		return null;
@@ -179,8 +176,9 @@ public class MapaFragment extends SupportMapFragment implements
 	public void onInfoWindowClick(Marker marker) {
 		Intent intent = new Intent(getActivity(), DetalleActivity.class);
 
-		int id = Utiles.locateStore(getActivity().getApplicationContext(), marker).getId();
-				
+		int id = Utiles.locateStore(getActivity().getApplicationContext(),
+				marker).getId();
+
 		intent.putExtra("id", id);
 
 		startActivity(intent);
