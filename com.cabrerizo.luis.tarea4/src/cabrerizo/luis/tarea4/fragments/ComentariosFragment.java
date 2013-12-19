@@ -127,8 +127,7 @@ public class ComentariosFragment extends Fragment {
 				AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
 
 				adb.setTitle(getString(R.string.Eliminar_Comentario));
-				adb.setMessage(getString(R.string.Seguro_Borrar_Comentario)
-						+ " " + posicion);
+				adb.setMessage(getString(R.string.Seguro_Borrar_Comentario));
 				adb.setNegativeButton(getString(R.string.No), null);
 				adb.setPositiveButton(getString(R.string.Si),
 						new AlertDialog.OnClickListener() {
