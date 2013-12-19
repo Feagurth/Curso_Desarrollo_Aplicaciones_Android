@@ -1,17 +1,17 @@
 package cabrerizo.luis.tarea4.data;
 
-import cabrerizo.luis.tarea4.data.models.Comment;
-import cabrerizo.luis.tarea4.data.models.Photo;
-import cabrerizo.luis.tarea4.data.models.Store;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import cabrerizo.luis.tarea4.data.models.Comment;
+import cabrerizo.luis.tarea4.data.models.Photo;
+import cabrerizo.luis.tarea4.data.models.Store;
 
 public class DBAdapter {
 	private DBHelper dbHelper;
 	private static final String DATABASE_NAME = "kmall.db";
-	private static final int DATABASE_VERSION = 8;
+	private static final int DATABASE_VERSION = 9;
 
 	public DBAdapter(Context context) {
 		dbHelper = new DBHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -258,6 +258,34 @@ public class DBAdapter {
 			db.close();
 		}
 		return resultado;
-	}	
+	}
+	
+	public int deleteComment(int id, boolean esFoto)
+	{
+		int resultado = -1;
+		String tabla;
+		String clave;
 
+		if(esFoto)
+		{
+			tabla = "CommentsPhoto";
+			clave = "IdCommentPhoto";
+		}
+		else
+		{
+			tabla = "CommentsStore";
+			clave = "IdCommentStore";
+		}
+
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		try {
+			resultado = db.delete(tabla, clave + " =?", new String[]{String.valueOf(id)});
+		} catch (Exception e) {
+			resultado = -1;
+		} finally {
+			db.close();
+		}
+		return resultado;		
+	}
 }

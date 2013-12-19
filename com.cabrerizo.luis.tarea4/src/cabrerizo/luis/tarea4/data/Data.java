@@ -335,8 +335,6 @@ public class Data {
 		return storeArray;
 	}
 	
-	
-
 	public static Store locateStore(Context context, int valorID) {
 		for (Store tienda : ((App) context).getStoreArray()) {
 			if (tienda.getId() == valorID) {
@@ -379,5 +377,48 @@ public class Data {
 				break;
 			}
 		}
+	}
+
+	public static ArrayList<Comment> updateCommentsFromDatabase(Context context, int id, boolean esFoto)
+	{
+		ArrayList<Comment> listaComentarios = new ArrayList<Comment>();
+		Comment comment;
+		String columnaId;
+		Cursor cursor;
+		
+		if(esFoto)
+		{
+			cursor = ((App)context).getDb().readCommentsPhoto(String.valueOf(id));
+			columnaId = "IdCommentPhoto";
+			
+		}
+		else
+		{
+			cursor = ((App)context).getDb().readCommentsStore(String.valueOf(id));
+			columnaId = "IdCommentStore";
+		}
+
+		if (cursor.getCount() > 0) {
+
+			while (cursor.moveToNext()) {
+				comment = new Comment();
+
+				comment.setIdComentario(cursor
+						.getInt(cursor
+								.getColumnIndex(columnaId)));
+
+				comment.setComentario(cursor
+						.getString(cursor
+								.getColumnIndex("comment")));
+				comment.setFecha(cursor
+						.getString(cursor
+								.getColumnIndex("datecomment")));
+
+				listaComentarios.add(comment);
+			}				
+				
+		}
+
+		return listaComentarios;
 	}
 }

@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import cabrerizo.luis.tarea4.App;
 import cabrerizo.luis.tarea4.activities.DetalleActivity;
 import cabrerizo.luis.tarea4.activities.FotografiaActivity;
 import cabrerizo.luis.tarea4.data.Data;
@@ -36,6 +37,10 @@ public class ComentariosFragment extends Fragment {
 	private static final String FECHA = "Fecha";
 	private View vista;
 	private List<HashMap<String, String>> comentarios = new ArrayList<HashMap<String, String>>();
+	private ArrayList<Comment> listaComentarios;
+	private boolean esFoto;
+	private int IdInsertar;
+	
 	private SimpleAdapter adapter;
 
 	@Override
@@ -46,7 +51,7 @@ public class ComentariosFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				HashMap<String, String> comentario = new HashMap<String, String>();
+
 				String fecha = new SimpleDateFormat("dd/MM/yyyy HH:mm",
 						Locale.getDefault()).format(Calendar.getInstance()
 						.getTime());
@@ -57,10 +62,34 @@ public class ComentariosFragment extends Fragment {
 				String valor = textoComentario.getText().toString().trim();
 
 				if (!valor.isEmpty()) {
-					comentario.put(COMENTARIO, valor);
-					comentario.put(FECHA, fecha);
+					
+					Comment cmt = new Comment();
+					cmt.setComentario(valor);
+					cmt.setFecha(fecha);
+					
+					if(esFoto)
+					{
+						((App)getActivity().getApplicationContext()).getDb().insertCommentPhoto(cmt, IdInsertar);
+						listaComentarios = Data.updateCommentsFromDatabase(getActivity().getApplicationContext(), IdInsertar, true);
+					}
+					else
+					{
+						((App)getActivity().getApplicationContext()).getDb().insertCommentStore(cmt, IdInsertar);
+						listaComentarios = Data.updateCommentsFromDatabase(getActivity().getApplicationContext(), IdInsertar, false);
+					}
+										
 
-					comentarios.add(0, comentario);
+					comentarios.clear();
+					HashMap<String, String> comentario;
+					
+					for (Comment comment : listaComentarios) {
+
+						comentario = new HashMap<String, String>();
+
+						comentario.put(COMENTARIO, comment.getComentario());
+						comentario.put(FECHA, comment.getFecha());
+						comentarios.add(comentario);
+					}
 
 					adapter.notifyDataSetChanged();
 
@@ -70,31 +99,6 @@ public class ComentariosFragment extends Fragment {
 		};
 
 		ListView lista = (ListView) vista.findViewById(R.id.lista_comentarios);
-
-		lista.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> a, View v, int position,
-					long id) {
-
-				final int posicion = position;
-
-				AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
-
-				adb.setTitle(getString(R.string.Eliminar_Comentario));
-				adb.setMessage(getString(R.string.Seguro_Borrar_Comentario)
-						+ " " + posicion);
-				adb.setNegativeButton(getString(R.string.No), null);
-				adb.setPositiveButton(getString(R.string.Si),
-						new AlertDialog.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface arg0, int arg1) {
-								comentarios.remove(posicion);
-								adapter.notifyDataSetChanged();
-
-							}
-						});
-				adb.show();
-			}
-		});
 
 		Button boton = (Button) vista.findViewById(R.id.boton_comentarios);
 		boton.setOnClickListener(listener);
@@ -113,25 +117,62 @@ public class ComentariosFragment extends Fragment {
 			};
 
 		};
+		
+		lista.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> a, View v, int position,
+					long id) {
+
+				final int posicion = position;
+
+				AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
+
+				adb.setTitle(getString(R.string.Eliminar_Comentario));
+				adb.setMessage(getString(R.string.Seguro_Borrar_Comentario)
+						+ " " + posicion);
+				adb.setNegativeButton(getString(R.string.No), null);
+				adb.setPositiveButton(getString(R.string.Si),
+						new AlertDialog.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface arg0, int arg1) {
+								((App)getActivity().getApplicationContext()).getDb().deleteComment(buscaIdPorPosición(posicion), esFoto);								
+								comentarios.remove(posicion);
+								adapter.notifyDataSetChanged();
+							}
+						});
+				adb.show();
+			}
+		});
+		
 
 		lista.setAdapter(adapter);
-
-		ArrayList<Comment> commentarios = null;
 
 		int id = getActivity().getIntent().getExtras().getInt("id");
 
 		Store tienda = Data.locateStore(
 				getActivity().getApplicationContext(), id);
-
+		
 		if (getActivity().getClass() == DetalleActivity.class) {
-			commentarios = tienda.getListaComentarios();
+			esFoto = false;
+			IdInsertar = tienda.getId();
+			
+			listaComentarios = Data.updateCommentsFromDatabase(getActivity().getApplicationContext(), id, esFoto);
+			tienda.setListaComentarios(listaComentarios);
+			
 		} else if (getActivity().getClass() == FotografiaActivity.class) {
-			commentarios = tienda.getFoto().getListaComentarios();
+			esFoto = true;
+			IdInsertar = tienda.getFoto().getIdfoto();
+			
+			listaComentarios = Data.updateCommentsFromDatabase(getActivity().getApplicationContext(), id, esFoto);
+			tienda.getFoto().setListaComentarios(listaComentarios);
+			
 		}
+		
+		
+		HashMap<String, String> comentario;
+		
+		for (Comment comment : listaComentarios) {
 
-		for (Comment comment : commentarios) {
-
-			HashMap<String, String> comentario = new HashMap<String, String>();
+			comentario = new HashMap<String, String>();
 
 			comentario.put(COMENTARIO, comment.getComentario());
 			comentario.put(FECHA, comment.getFecha());
@@ -139,6 +180,13 @@ public class ComentariosFragment extends Fragment {
 		}
 
 		adapter.notifyDataSetChanged();
+	}
+	
+	
+	
+	private int buscaIdPorPosición(int posicion)
+	{
+		return listaComentarios.get(posicion).getIdComentario();
 	}
 
 	@Override
