@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -118,10 +118,11 @@ public class ComentariosFragment extends Fragment {
 
 		};
 		
-		lista.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> a, View v, int position,
-					long id) {
+		lista.setOnItemLongClickListener(new OnItemLongClickListener() {
 
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int position, long arg3) {
 				final int posicion = position;
 
 				AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
@@ -139,8 +140,13 @@ public class ComentariosFragment extends Fragment {
 							}
 						});
 				adb.show();
-			}
+				
+				return true;			
+				}
 		});
+		
+		
+
 		
 
 		lista.setAdapter(adapter);
