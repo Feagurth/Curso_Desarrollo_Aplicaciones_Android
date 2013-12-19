@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import cabrerizo.luis.tarea4.App;
 import cabrerizo.luis.tarea4.activities.DetalleActivity;
-import cabrerizo.luis.tarea4.data.Store;
+import cabrerizo.luis.tarea4.data.models.Store;
 import cabrerizo.luis.tarea4.global.Utiles;
 
 import com.cabrerizo.luis.tarea4.R;

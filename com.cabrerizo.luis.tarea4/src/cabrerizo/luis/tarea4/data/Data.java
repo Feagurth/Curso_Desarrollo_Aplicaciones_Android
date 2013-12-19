@@ -11,6 +11,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cabrerizo.luis.tarea4.App;
+import cabrerizo.luis.tarea4.data.models.Comment;
+import cabrerizo.luis.tarea4.data.models.Photo;
+import cabrerizo.luis.tarea4.data.models.Store;
+
+import com.google.android.gms.maps.model.Marker;
+
 import android.content.Context;
 import android.database.Cursor;
 
@@ -119,7 +126,7 @@ public class Data {
 					String tipoTienda = element.getString("genre");
 					String favorites = element.getString("favorites");
 					String esFavorito = element.getString("isfavorite");
-					
+
 					Store store = new Store();
 
 					store.setId(Integer.parseInt(id));
@@ -155,8 +162,6 @@ public class Data {
 						String picFav = fotoObj.getString("favorites");
 						String picId = fotoObj.getString("idfoto");
 						String picEsFavorito = fotoObj.getString("isfavorite");
-						
-						
 
 						if (fotoObj.has("comments")) {
 							foto.setListaComentarios(Data.ParseComments(fotoObj
@@ -303,4 +308,76 @@ public class Data {
 		return resultado;
 	}
 
+	public static ArrayList<Store> JsonToDatabase(String filename, Context context, DBAdapter db)
+	{
+		ArrayList<Store> storeArray;
+		int IdStore;
+		int IdPhoto;
+	
+		storeArray = Data.ParseStore(filename, context);
+
+		for (Store tienda : storeArray) {
+
+			IdStore = db.insertStore(tienda);
+
+			IdPhoto = db.insertPhoto(tienda.getFoto(), IdStore);
+
+			for (Comment comentario : tienda.getListaComentarios()) {
+				db.insertCommentStore(comentario, IdStore);
+			}
+
+			for (Comment comentario : tienda.getFoto()
+					.getListaComentarios()) {
+				db.insertCommentPhoto(comentario, IdPhoto);
+			}	
+		}
+		
+		return storeArray;
+	}
+	
+	
+
+	public static Store locateStore(Context context, int valorID) {
+		for (Store tienda : ((App) context).getStoreArray()) {
+			if (tienda.getId() == valorID) {
+				return tienda;
+
+			}
+		}
+		return null;
+	}
+
+	public static Store locateStore(Context context, Marker marker) {
+		int id = Integer.parseInt(((App) context).getMarkers().get(marker));
+
+		for (Store tienda : ((App) context).getStoreArray()) {
+			if (tienda.getId() == id) {
+				return tienda;
+
+			}
+		}
+		return null;
+	}
+
+	public static void updateStore(Context context, Store store) {
+		ArrayList<Store> lista = ((App) context).getStoreArray();
+
+		for (int i = 0; i < lista.size(); i++) {
+			if (store.getId() == lista.get(i).getId()) {
+				lista.set(i, store);
+				break;
+			}
+		}
+	}
+
+	public static void updatePhoto(Context context, Photo foto, int IdStore) {
+		ArrayList<Store> lista = ((App) context).getStoreArray();
+
+		for (int i = 0; i < lista.size(); i++) {
+			if (IdStore == lista.get(i).getId()) {
+				lista.get(i).setFoto(foto);
+				break;
+			}
+		}
+	}
 }

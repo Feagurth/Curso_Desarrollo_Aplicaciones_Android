@@ -1,4 +1,4 @@
-package cabrerizo.luis.tarea4.data;
+package cabrerizo.luis.tarea4.global;
 
 import java.io.IOException;
 import java.io.InputStream;

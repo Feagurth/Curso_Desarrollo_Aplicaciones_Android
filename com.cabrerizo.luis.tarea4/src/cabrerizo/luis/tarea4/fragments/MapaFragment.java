@@ -15,8 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import cabrerizo.luis.tarea4.App;
 import cabrerizo.luis.tarea4.activities.DetalleActivity;
-import cabrerizo.luis.tarea4.data.Store;
-import cabrerizo.luis.tarea4.data.UrlToBitmapTask;
+import cabrerizo.luis.tarea4.data.Data;
+import cabrerizo.luis.tarea4.data.models.Store;
+import cabrerizo.luis.tarea4.global.UrlToBitmapTask;
 import cabrerizo.luis.tarea4.global.Utiles;
 
 import com.cabrerizo.luis.tarea4.R;
@@ -145,7 +146,7 @@ public class MapaFragment extends SupportMapFragment implements
 				.findViewById(R.id.infoWindowImagen);
 
 		UrlToBitmapTask tarea = new UrlToBitmapTask();
-		AsyncTask<String, Void, Bitmap> fotiqui = tarea.execute(Utiles
+		AsyncTask<String, Void, Bitmap> fotiqui = tarea.execute(Data
 				.locateStore(getActivity().getApplicationContext(), marker)
 				.getFoto().getUrl());
 
@@ -176,7 +177,7 @@ public class MapaFragment extends SupportMapFragment implements
 	public void onInfoWindowClick(Marker marker) {
 		Intent intent = new Intent(getActivity(), DetalleActivity.class);
 
-		int id = Utiles.locateStore(getActivity().getApplicationContext(),
+		int id = Data.locateStore(getActivity().getApplicationContext(),
 				marker).getId();
 
 		intent.putExtra("id", id);

@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import cabrerizo.luis.tarea4.App;
+import cabrerizo.luis.tarea4.data.models.InstagramPicture;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;

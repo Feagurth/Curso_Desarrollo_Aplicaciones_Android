@@ -231,7 +231,7 @@ public class TiendasContentFragment extends Fragment implements TabListener,
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle presses on the action bar items
+
 		switch (item.getItemId()) {
 		case R.id.mapa_hibrido:
 			Toast.makeText(getActivity(), R.string.Cambiando_A_Mapa_Hibrido,

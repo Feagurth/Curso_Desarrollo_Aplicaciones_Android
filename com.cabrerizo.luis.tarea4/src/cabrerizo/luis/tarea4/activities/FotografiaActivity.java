@@ -12,7 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import cabrerizo.luis.tarea4.App;
-import cabrerizo.luis.tarea4.data.Photo;
+import cabrerizo.luis.tarea4.data.Data;
+import cabrerizo.luis.tarea4.data.models.Photo;
 import cabrerizo.luis.tarea4.global.Utiles;
 
 import com.android.volley.toolbox.NetworkImageView;
@@ -23,16 +24,17 @@ public class FotografiaActivity extends FragmentActivity {
 
 	NetworkImageView imagen;
 	TextView texto;
-	int esFavorito = 0;
+	int IdStore;
+	Photo foto;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fotografia);
 
-		int id = getIntent().getExtras().getInt("id");
+		IdStore = getIntent().getExtras().getInt("id");
 
-		final Photo foto = Utiles.locateStore(getApplicationContext(), id)
+		foto = Data.locateStore(getApplicationContext(), IdStore)
 				.getFoto();
 
 		texto = (TextView) findViewById(R.id.textoDescriptivo);
@@ -45,7 +47,6 @@ public class FotografiaActivity extends FragmentActivity {
 		favoritos.setText(getString(R.string.Favoritos)
 				+ String.valueOf(foto.getNumeroFavoritos()));
 
-		esFavorito = foto.getEsFavorito();
 	}
 
 	@Override
@@ -77,11 +78,14 @@ public class FotografiaActivity extends FragmentActivity {
 			return true;
 		}
 		case R.id.action_star:
-			if (esFavorito == 0) {
-				esFavorito = 1;
+			if (foto.getEsFavorito() == 0) {
+				foto.setEsFavorito(1);
 			} else {
-				esFavorito = 0;
+				foto.setEsFavorito(0);
 			}
+			
+			Data.updatePhoto(getApplicationContext(), foto, IdStore);			
+			((App)getApplicationContext()).getDb().updatePhoto(foto, IdStore);
 			supportInvalidateOptionsMenu();
 			return true;
 		default:
@@ -92,7 +96,7 @@ public class FotografiaActivity extends FragmentActivity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
-		if (esFavorito == 0) {
+		if (foto.getEsFavorito() == 0) {
 			menu.getItem(0).setIcon(R.drawable.ic_action_not_important);
 		} else {
 			menu.getItem(0).setIcon(R.drawable.ic_action_important);

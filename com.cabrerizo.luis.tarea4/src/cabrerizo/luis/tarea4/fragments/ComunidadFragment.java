@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import com.cabrerizo.luis.tarea4.R;
-import cabrerizo.luis.tarea4.data.InstagramPicture;
 import cabrerizo.luis.tarea4.data.ListViewAdapter;
+import cabrerizo.luis.tarea4.data.models.InstagramPicture;
 
 public class ComunidadFragment extends Fragment implements OnRefreshListener {
 

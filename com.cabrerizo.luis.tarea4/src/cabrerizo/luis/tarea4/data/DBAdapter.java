@@ -1,5 +1,8 @@
 package cabrerizo.luis.tarea4.data;
 
+import cabrerizo.luis.tarea4.data.models.Comment;
+import cabrerizo.luis.tarea4.data.models.Photo;
+import cabrerizo.luis.tarea4.data.models.Store;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -218,5 +221,43 @@ public class DBAdapter {
 
 		return cursor;
 	}
+
+	public int updateStore(Store store) {
+		int resultado = -1;
+
+		ContentValues values = buildfromStore(store);
+
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		try {
+			resultado = db.updateWithOnConflict("STORE", values, "IdStore =?",
+					new String[] { String.valueOf(store.getId()) },
+					SQLiteDatabase.CONFLICT_ROLLBACK);
+		} catch (Exception e) {
+			resultado = -1;
+		} finally {
+			db.close();
+		}
+		return resultado;
+	}
+	
+	public int updatePhoto(Photo foto, int IdStore) {
+		int resultado = -1;
+
+		ContentValues values = buildfromPhoto(foto, IdStore);
+
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		try {
+			resultado = db.updateWithOnConflict("PHOTO", values, "IdPhoto =?",
+					new String[] { String.valueOf(foto.getIdfoto()) },
+					SQLiteDatabase.CONFLICT_ROLLBACK);
+		} catch (Exception e) {
+			resultado = -1;
+		} finally {
+			db.close();
+		}
+		return resultado;
+	}	
 
 }

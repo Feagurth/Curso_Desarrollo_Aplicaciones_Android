@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.app.Application;
-import cabrerizo.luis.tarea4.data.Comment;
 import cabrerizo.luis.tarea4.data.DBAdapter;
 import cabrerizo.luis.tarea4.data.Data;
-import cabrerizo.luis.tarea4.data.Store;
+import cabrerizo.luis.tarea4.data.models.Store;
 import cabrerizo.luis.tarea4.global.BitmapLRUCache;
 
 import com.android.volley.RequestQueue;
@@ -35,27 +34,8 @@ public class App extends Application {
 		requestQueue = Volley.newRequestQueue(this);
 		requestQueue.start();
 
-		int IdStore;
-		int IdPhoto;
-
 		if (!db.hasValues("STORE")) {
-			storeArray = Data.ParseStore("data.json", this);
-
-			for (Store tienda : storeArray) {
-
-				IdStore = db.insertStore(tienda);
-
-				IdPhoto = db.insertPhoto(tienda.getFoto(), IdStore);
-
-				for (Comment comentario : tienda.getListaComentarios()) {
-					db.insertCommentStore(comentario, IdStore);
-				}
-
-				for (Comment comentario : tienda.getFoto()
-						.getListaComentarios()) {
-					db.insertCommentPhoto(comentario, IdPhoto);
-				}
-			}
+			storeArray = Data.JsonToDatabase("data.json", this, db);
 		} else {
 			storeArray = Data.ParseFromDatabase(db);
 		}

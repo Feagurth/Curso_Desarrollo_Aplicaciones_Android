@@ -1,7 +1,8 @@
-package cabrerizo.luis.tarea4.data;
+package cabrerizo.luis.tarea4.data.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 
 public class Photo implements Serializable {
 

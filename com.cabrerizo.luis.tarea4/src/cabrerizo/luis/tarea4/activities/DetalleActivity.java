@@ -10,33 +10,30 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import cabrerizo.luis.tarea4.App;
-import cabrerizo.luis.tarea4.data.Store;
-import cabrerizo.luis.tarea4.global.Utiles;
+import cabrerizo.luis.tarea4.data.Data;
+import cabrerizo.luis.tarea4.data.models.Store;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.cabrerizo.luis.tarea4.R;
 
 public class DetalleActivity extends FragmentActivity {
-	int id = -1;
-	int esFavorito = 0;
+	Store store;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalle);
 
-		id = getIntent().getExtras().getInt("id");
+		store = Data.locateStore(getApplicationContext(), getIntent().getExtras().getInt("id"));
 
-		final Store store = Utiles.locateStore(getApplicationContext(), id);
-
-		final TextView nombre = (TextView) findViewById(R.id.Nombre);
-		final TextView direccion = (TextView) findViewById(R.id.Direccion);
-		final TextView telefono = (TextView) findViewById(R.id.Telefono);
-		final TextView horarios = (TextView) findViewById(R.id.Horarios);
-		final TextView website = (TextView) findViewById(R.id.Website);
-		final TextView eMail = (TextView) findViewById(R.id.EMail);
-		final NetworkImageView fotoDetalle = (NetworkImageView) findViewById(R.id.fotoDetalle);
-		final TextView favoritos = (TextView) findViewById(R.id.textoFavoritos);
+		TextView nombre = (TextView) findViewById(R.id.Nombre);
+		TextView direccion = (TextView) findViewById(R.id.Direccion);
+		TextView telefono = (TextView) findViewById(R.id.Telefono);
+		TextView horarios = (TextView) findViewById(R.id.Horarios);
+		TextView website = (TextView) findViewById(R.id.Website);
+		TextView eMail = (TextView) findViewById(R.id.EMail);
+		NetworkImageView fotoDetalle = (NetworkImageView) findViewById(R.id.fotoDetalle);
+		TextView favoritos = (TextView) findViewById(R.id.textoFavoritos);
 
 		nombre.setText(store.getNombre());
 		direccion.setText(store.getDireccion());
@@ -49,8 +46,6 @@ public class DetalleActivity extends FragmentActivity {
 		favoritos.setText(getString(R.string.Favoritos)
 				+ String.valueOf(store.getNumeroFavoritos()));
 		
-		esFavorito = store.getEsFavorito();
-
 		Linkify.addLinks(direccion, Linkify.MAP_ADDRESSES);
 		Linkify.addLinks(telefono, Linkify.PHONE_NUMBERS);
 		Linkify.addLinks(website, Linkify.WEB_URLS);
@@ -63,7 +58,7 @@ public class DetalleActivity extends FragmentActivity {
 				Intent intent = new Intent(getApplicationContext(),
 						FotografiaActivity.class);
 
-				intent.putExtra("id", id);
+				intent.putExtra("id", store.getId());
 
 				startActivity(intent);
 			}
@@ -76,7 +71,7 @@ public class DetalleActivity extends FragmentActivity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
-		if (esFavorito == 0) {
+		if (store.getEsFavorito() == 0) {
 			menu.getItem(0).setIcon(R.drawable.ic_action_not_important);
 		} else {
 			menu.getItem(0).setIcon(R.drawable.ic_action_important);
@@ -127,11 +122,15 @@ public class DetalleActivity extends FragmentActivity {
 
 			return true;
 		case R.id.action_star:
-			if (esFavorito == 0) {
-				esFavorito = 1;
+			if (store.getEsFavorito() == 0) {
+				store.setEsFavorito(1);
 			} else {
-				esFavorito = 0;
+				store.setEsFavorito(0);
 			}
+
+			Data.updateStore(getApplicationContext(), store);
+			((App)getApplicationContext()).getDb().updateStore(store);
+			
 			supportInvalidateOptionsMenu();
 			return true;
 		default:

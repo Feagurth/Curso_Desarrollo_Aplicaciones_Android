@@ -24,9 +24,9 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import cabrerizo.luis.tarea4.activities.DetalleActivity;
 import cabrerizo.luis.tarea4.activities.FotografiaActivity;
-import cabrerizo.luis.tarea4.data.Comment;
-import cabrerizo.luis.tarea4.data.Store;
-import cabrerizo.luis.tarea4.global.Utiles;
+import cabrerizo.luis.tarea4.data.Data;
+import cabrerizo.luis.tarea4.data.models.Comment;
+import cabrerizo.luis.tarea4.data.models.Store;
 
 import com.cabrerizo.luis.tarea4.R;
 
@@ -120,7 +120,7 @@ public class ComentariosFragment extends Fragment {
 
 		int id = getActivity().getIntent().getExtras().getInt("id");
 
-		Store tienda = Utiles.locateStore(
+		Store tienda = Data.locateStore(
 				getActivity().getApplicationContext(), id);
 
 		if (getActivity().getClass() == DetalleActivity.class) {
