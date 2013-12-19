@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.TextView;
 import cabrerizo.luis.tarea4.App;
 import cabrerizo.luis.tarea4.data.Data;
@@ -18,6 +19,7 @@ import com.cabrerizo.luis.tarea4.R;
 
 public class DetalleActivity extends FragmentActivity {
 	Store store;
+	TextView favoritos;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,7 @@ public class DetalleActivity extends FragmentActivity {
 		TextView website = (TextView) findViewById(R.id.Website);
 		TextView eMail = (TextView) findViewById(R.id.EMail);
 		NetworkImageView fotoDetalle = (NetworkImageView) findViewById(R.id.fotoDetalle);
-		TextView favoritos = (TextView) findViewById(R.id.textoFavoritos);
+		favoritos = (TextView) findViewById(R.id.textoFavoritos);
 
 		nombre.setText(store.getNombre());
 		direccion.setText(store.getDireccion());
@@ -50,7 +52,7 @@ public class DetalleActivity extends FragmentActivity {
 		Linkify.addLinks(telefono, Linkify.PHONE_NUMBERS);
 		Linkify.addLinks(website, Linkify.WEB_URLS);
 		Linkify.addLinks(eMail, Linkify.EMAIL_ADDRESSES);
-
+		
 		OnClickListener botonImagen = new OnClickListener() {
 
 			@Override
@@ -65,6 +67,8 @@ public class DetalleActivity extends FragmentActivity {
 		};
 
 		fotoDetalle.setOnClickListener(botonImagen);
+		
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
 	}
 
@@ -124,12 +128,19 @@ public class DetalleActivity extends FragmentActivity {
 		case R.id.action_star:
 			if (store.getEsFavorito() == 0) {
 				store.setEsFavorito(1);
+				store.setNumeroFavoritos(store.getNumeroFavoritos() + 1);
 			} else {
+				store.setNumeroFavoritos(store.getNumeroFavoritos() - 1);
 				store.setEsFavorito(0);
 			}
 
+			
 			Data.updateStore(getApplicationContext(), store);
 			((App)getApplicationContext()).getDb().updateStore(store);
+			
+			favoritos.setText(getString(R.string.Favoritos)
+					+ String.valueOf(store.getNumeroFavoritos()));
+
 			
 			supportInvalidateOptionsMenu();
 			return true;

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
 import cabrerizo.luis.tarea4.App;
 import cabrerizo.luis.tarea4.data.Data;
@@ -24,6 +25,7 @@ public class FotografiaActivity extends FragmentActivity {
 
 	NetworkImageView imagen;
 	TextView texto;
+	TextView favoritos;
 	int IdStore;
 	Photo foto;
 
@@ -39,7 +41,7 @@ public class FotografiaActivity extends FragmentActivity {
 
 		texto = (TextView) findViewById(R.id.textoDescriptivo);
 		imagen = (NetworkImageView) findViewById(R.id.imagen);
-		TextView favoritos = (TextView) findViewById(R.id.textoFavoritos);
+		favoritos = (TextView) findViewById(R.id.textoFavoritos);
 
 		imagen.setImageUrl(foto.getUrl(),
 				((App) getApplicationContext()).getImageLoader());
@@ -47,11 +49,11 @@ public class FotografiaActivity extends FragmentActivity {
 		favoritos.setText(getString(R.string.Favoritos)
 				+ String.valueOf(foto.getNumeroFavoritos()));
 
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.fotografia, menu);
 		return true;
 	}
@@ -80,12 +82,19 @@ public class FotografiaActivity extends FragmentActivity {
 		case R.id.action_star:
 			if (foto.getEsFavorito() == 0) {
 				foto.setEsFavorito(1);
+				foto.setNumeroFavoritos(foto.getNumeroFavoritos() + 1);
 			} else {
+				foto.setNumeroFavoritos(foto.getNumeroFavoritos() - 1);
 				foto.setEsFavorito(0);
 			}
 			
 			Data.updatePhoto(getApplicationContext(), foto, IdStore);			
 			((App)getApplicationContext()).getDb().updatePhoto(foto, IdStore);
+			
+			favoritos.setText(getString(R.string.Favoritos)
+					+ String.valueOf(foto.getNumeroFavoritos()));
+
+			
 			supportInvalidateOptionsMenu();
 			return true;
 		default:

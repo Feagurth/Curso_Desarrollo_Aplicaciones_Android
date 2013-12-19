@@ -25,27 +25,29 @@
     <application
         android:name="cabrerizo.luis.tarea4.App"
         android:allowBackup="true"
+        android:configChanges="keyboardHidden|orientation|screenSize"
         android:icon="@drawable/ic_launcher"
         android:label="@string/titulo_lista"
+        android:screenOrientation="portrait"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-         
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDLOLw4P2v2lZ8BGPejuIsKImGBC0QxNTM" />             
-<!--
+            android:value="AIzaSyDLOLw4P2v2lZ8BGPejuIsKImGBC0QxNTM" />
+        <!--
 Release
 		<meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyC6ENe2EA55Y82HdnK1CPjpGvxzPuTiNjE" />
- -->       
+        -->
 
         <activity
             android:name="cabrerizo.luis.tarea4.activities.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,12 +57,14 @@ Release
         <activity
             android:name="cabrerizo.luis.tarea4.activities.DetalleActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_detalle" >
+            android:label="@string/title_activity_detalle"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="cabrerizo.luis.tarea4.activities.FotografiaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_fotografia" >
+            android:label="@string/title_activity_fotografia"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
