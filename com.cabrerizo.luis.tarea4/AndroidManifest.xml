@@ -33,15 +33,21 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        
+        <!-- Debug --> 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDLOLw4P2v2lZ8BGPejuIsKImGBC0QxNTM" />
-        <!--
-Release
+
+
+         
+        <!--  Release -->
+<!--        
 		<meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyC6ENe2EA55Y82HdnK1CPjpGvxzPuTiNjE" />
-        -->
+ -->
 
         <activity
             android:name="cabrerizo.luis.tarea4.activities.MainActivity"
